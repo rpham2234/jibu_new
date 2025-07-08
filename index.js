@@ -10,7 +10,17 @@ app.set('view engine', 'handlebars');
 const port = process.env.port || 3500;
 
 app.get('/', (req, res) => {
-  res.render("home")
+
+  //DATA
+  const countries = require('./data/home/countries.json');
+  const franchisees = require('./data/home/franchisees.json');
+  
+
+
+  res.render("home", { 
+    franchisees,
+    countries
+   });
 })
 
 app.get('/projects', (req, res) => {
@@ -25,13 +35,9 @@ app.get('/signup', (req, res) => {
   res.render("signup")
 })
 
-app.get("/download/rphamcv.docx", (req, res) => {
-  res.download(path.resolve("./downloadables/rphamcv.docx"))
-})
+// app.js or your Express route file
 
-app.get("/download/rphamcv.pdf", (req, res) => {
-  res.download(path.resolve("./downloadables/rphamcv.pdf"))
-})
+
 
 
 app.listen(port, () => {

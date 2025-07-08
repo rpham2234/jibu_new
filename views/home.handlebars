@@ -107,222 +107,50 @@
       <center>
         <p></p>        
         <!--Country Cards-->  
-        <div class="col-sm-6">
-
-            <h1>Jibu is avaliable in these countries</h1>
-            <div class="row justify-content-center">
-                <div class="col-sm-3">
-                    <div class="card">
-                        <img class="card-img-top" src="https://cdn.countryflags.com/thumbs/burundi/flag-400.png"  alt="card image cap"/>
-                        <h4 class="card-title">Burundi</h4>
+          <h1>Jibu is avaliable in these countries</h1>
+          <div class="container">
+            <div class="row gy-4 justify-content-center">
+              {{#each countries}}
+                <div class="col-sm-3 col-md-3">
+                  <div class="card h-300">
+                    <img class="card-img-top" src="{{this.flag}}" alt="{{this.country}}">
+                    <div class="card-body">
+                      <h4 class="card-title"><a href="{{this.link}}">{{this.country}}</a></h4>
                     </div>
+                  </div>
                 </div>
-
-                <div class="col-sm-3">
-                    <div class="card">
-                        <img class="card-img-top" src="https://cdn.countryflags.com/thumbs/ghana/flag-400.png"  alt="card image cap"/>
-                        <h4 class="card-title">Ghana</h4>
-                    </div>
-                </div>
-
-                <div class="col-sm-3">
-                    <div class="card">
-                        <img class="card-img-top" src="https://cdn.countryflags.com/thumbs/kenya/flag-400.png"  alt="card image cap"/>
-                        <h4 class="card-title">Kenya</h4>
-                    </div>
-                </div>
-
-                <div class="col-sm-3">
-                    <div class="card">
-                        <img class="card-img-top" src="https://cdn.countryflags.com/thumbs/uganda/flag-400.png"  alt="card image cap"/>
-                        <h4 class="card-title">Uganda</h4>
-                    </div>
-                </div>
-
-                
+              {{/each}}
             </div>
-            <p></p>
-            <div class="row justify-content-center ">
-
-                <div class="col-sm-3">
-                    <div class="card">
-                        <img class="card-img-top" src="https://cdn.countryflags.com/thumbs/tanzania/flag-400.png" alt="card image cap"/>
-                        <h4 class="card-title"><a href="#">Tanzania</a></h4>
-                    </div>
-                </div>
-            
-               <div class="col-sm-3">
-                    <div class="card">
-                        <img class="card-img-top" src="https://cdn.countryflags.com/thumbs/zambia/flag-400.png" alt="card image cap"/>
-                        <h4 class="card-title">Zambia</h4>
-                    </div>
-                </div>
-
-                <div class="col-sm-3">
-                    <div class="card">
-                        <img class="card-img-top" src="https://cdn.countryflags.com/thumbs/congo-democratic-republic-of-the/flag-400.png" alt="card image cap"/>
-                        <h4 class="card-title">DRC</h4>
-                    </div>
-                </div> 
-
-                <div class="col-sm-3">
-                    <div class="card">
-                        <img class="card-img-top" src="https://cdn.countryflags.com/thumbs/rwanda/flag-400.png" alt="card image cap"/>
-                        <h4 class="card-title">Rwanda</h4>
-                    </div>
-                </div> 
-              </div>
-            </center>
+          </div>
 
         </div>
           <p></p>
           <center>
           <h1>Watch Our Video</h1>
-          <iframe width="1280" height="720" src="https://www.youtube.com/embed/eaEsiP72XBk" title="JIBU - Transforming Opportunity To Thrive" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          <div class="ratio ratio-16x9" style="max-width: 800px; margin: 0 auto;">
+            <iframe src="https://www.youtube.com/embed/eaEsiP72XBk" title="JIBU - Transforming Opportunity To Thrive" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
           <p></p>
         </center>
         <!--Franchisees-->
         <h1 class="text-center">Meet some of our Franchisees</h1>
 
         <div class="container">
-          <div class="d-flex justify-content-center">
-            <div class="row gy-4">
-
-              <!-- Rehema Uwamahoro -->
-              <div class="col-sm-6 col-md-4 col-lg-2">
+          <div class="row gy-4 justify-content-center">
+            {{#each franchisees}}
+              <div class="col-sm-2 col-md-4 col-lg-2">
                 <div class="card h-100">
-                  <img class="card-img-top" src="https://jibuco.com/wp-content/uploads/2022/10/Uwamahoro-Rehema-Franchisee-Rwamagana-min-731x1024.jpg" alt="Rehema Uwamahoro"/>
+                  <img class="card-img-top" src="{{this.image}}" alt="{{this.name}}">
                   <div class="card-body">
-                    <h4 class="card-title">Rehema Uwamahoro</h4>
-                    <p class="card-text">Franchisee in Rwamagana, Rwanda</p>
+                    <h4 class="card-title">{{this.name}}</h4>
+                    <p class="card-text">{{this.location}}</p>
                   </div>
                 </div>
               </div>
-
-              <!-- Dorcus -->
-              <div class="col-sm-6 col-md-4 col-lg-2">
-                <div class="card h-100">
-                  <img class="card-img-top" src="https://jibuco.com/wp-content/uploads/2023/01/MG_2009-1-jpg.webp" alt="Dorcus"/>
-                  <div class="card-body">
-                    <h4 class="card-title">Dorcus</h4>
-                    <p class="card-text">Franchisee in Buruburu, Kenya</p>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Mediatrice Muvuna -->
-              <div class="col-sm-6 col-md-4 col-lg-2">
-                <div class="card h-100">
-                  <img class="card-img-top" src="https://jibuco.com/wp-content/uploads/2022/10/Mediatrice-Muvuna-Franchisee-Kinamba-min-731x1024.jpg" alt="Mediatrice Muvuna"/>
-                  <div class="card-body">
-                    <h4 class="card-title">Mediatrice Muvuna</h4>
-                    <p class="card-text">Franchisee in Kinamba, Musanze, Nyagatare - Rwanda</p>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Carol Mbabazi -->
-              <div class="col-sm-6 col-md-4 col-lg-2">
-                <div class="card h-100">
-                  <img class="card-img-top" src="https://jibuco.com/wp-content/uploads/2022/10/Carol-Mbabazi-Franchisee-Kicukiro-and-Sonatube-min-731x1024.jpg" alt="Carol Mbabazi"/>
-                  <div class="card-body">
-                    <h4 class="card-title">Carol Mbabazi</h4>
-                    <p class="card-text">Franchisee in Kicukiro & Sonatube, Rwanda</p>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Ivan Ntabazi -->
-              <div class="col-sm-6 col-md-4 col-lg-2">
-                <div class="card h-100">
-                  <img class="card-img-top" src="https://jibuco.com/wp-content/uploads/2023/02/IVAN-NTABAZI-min-731x1024.webp" alt="Ivan Ntabazi"/>
-                  <div class="card-body">
-                    <h4 class="card-title">Ivan Ntabazi</h4>
-                    <p class="card-text">Franchisee in Ggaba & Munyonyo, Uganda</p>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Ian Odong -->
-              <div class="col-sm-6 col-md-4 col-lg-2">
-                <div class="card h-100">
-                  <img class="card-img-top" src="https://jibuco.com/wp-content/uploads/2022/10/IAN-ODONG-JIBU-NTINDA-MAY_16-min-731x1024.jpg" alt="Ian Odong"/>
-                  <div class="card-body">
-                    <h4 class="card-title">Ian Odong</h4>
-                    <p class="card-text">Franchisee in Ntinda, Uganda</p>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Charity Wafula -->
-              <div class="col-sm-6 col-md-4 col-lg-2">
-                <div class="card h-100">
-                  <img class="card-img-top" src="https://jibuco.com/wp-content/uploads/2023/02/Charity-Wafula-Franchisee-Karen-min-1-731x1024.webp" alt="Charity Wafula"/>
-                  <div class="card-body">
-                    <h4 class="card-title">Charity Wafula</h4>
-                    <p class="card-text">Franchisee in Karen, Kenya</p>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Rosine Uwamaharo -->
-              <div class="col-sm-6 col-md-4 col-lg-2">
-                <div class="card h-100">
-                  <img class="card-img-top" src="https://jibuco.com/wp-content/uploads/2023/02/Uwamaharo-Rosine-Franchisee-Nyamata-and-Gasogi-1-min-731x1024.webp" alt="Rosine Uwamaharo"/>
-                  <div class="card-body">
-                    <h4 class="card-title">Rosine Uwamaharo</h4>
-                    <p class="card-text">Franchisee in Nyamata & Gasogi 1, Rwanda</p>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Aimee Kanyoni -->
-              <div class="col-sm-6 col-md-4 col-lg-2">
-                <div class="card h-100">
-                  <img class="card-img-top" src="https://jibuco.com/wp-content/uploads/2023/02/Aimee-Kanyoni-Franchisee-Ville-min-819x1024-min-1-731x1024.webp" alt="Aimee Kanyoni"/>
-                  <div class="card-body">
-                    <h4 class="card-title">Aimee Kanyoni</h4>
-                    <p class="card-text">Franchisee in Ville, DRC Goma</p>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Bahati Patient -->
-              <div class="col-sm-6 col-md-4 col-lg-2">
-                <div class="card h-100">
-                  <img class="card-img-top" src="https://jibuco.com/wp-content/uploads/2023/02/Bahati-Patient-Franchisee-Unigom-min-min-731x1024.webp" alt="Bahati Patient"/>
-                  <div class="card-body">
-                    <h4 class="card-title">Bahati Patient</h4>
-                    <p class="card-text">Franchisee in Unigom, DRC Goma</p>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Eric Nsengimana -->
-              <div class="col-sm-6 col-md-4 col-lg-2">
-                <div class="card h-100">
-                  <img class="card-img-top" src="https://jibuco.com/wp-content/uploads/2023/02/Eric-Nsengimana-Franchisee-Virunga-2-min-min-1-731x1024.webp" alt="Eric Nsengimana"/>
-                  <div class="card-body">
-                    <h4 class="card-title">Eric Nsengimana</h4>
-                    <p class="card-text">Franchisee in Virunga 2, DRC Goma</p>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Walter Opio -->
-              <div class="col-sm-6 col-md-4 col-lg-2">
-                <div class="card h-100">
-                  <img class="card-img-top" src="https://jibuco.com/wp-content/uploads/2023/02/WALTER-OPIYO-OJIJO-JIBU-LWEZA-FEB_16-min-731x1024-min-731x1024.webp" alt="Walter Opio"/>
-                  <div class="card-body">
-                    <h4 class="card-title">Walter Opio</h4>
-                    <p class="card-text">Franchisee in Najjanankumbi</p>
-                  </div>
-                </div>
-              </div>
-
-            </div>
+            {{/each}}
           </div>
         </div>
+
 
         <p></p>
     </body>
