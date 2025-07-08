@@ -12,8 +12,8 @@ const port = process.env.port || 3500;
 app.get('/', (req, res) => {
 
   //DATA
-  const countries = require('./data/home/countries.json');
-  const franchisees = require('./data/home/franchisees.json');
+  const countries = require('./data/global/home/countries.json');
+  const franchisees = require('./data/global/home/franchisees.json');
   
 
 
@@ -23,9 +23,6 @@ app.get('/', (req, res) => {
    });
 })
 
-app.get('/projects', (req, res) => {
-  res.render("projects")
-})
 
 app.get('/about', (req, res) => {
   res.render("about")
