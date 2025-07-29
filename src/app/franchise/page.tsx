@@ -1,6 +1,6 @@
 "use client";
 
-import FranchiseForm from "@/components/FranchiseForm";
+import FranchiseForm from "@/components/franchise/FranchiseForm";
 import HeroImage from "@/components/HeroImage";
 import React from "react";
 

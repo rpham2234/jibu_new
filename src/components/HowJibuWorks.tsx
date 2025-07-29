@@ -1,6 +1,6 @@
 export default function HowJibuWorks() {
   return (
-    <section className="px-4 py-16 bg-white text-center">
+    <section className="px-4 py-8 bg-white text-center">
       <div className="max-w-4xl mx-auto">
         {/* Heading */}
         <h2 className="text-3xl md:text-4xl font-bold mb-4">

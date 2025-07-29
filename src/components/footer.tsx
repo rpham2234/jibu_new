@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { FaFacebook, FaTwitter, FaInstagram, FaWhatsapp, FaLinkedin } from "react-icons/fa";
 
 export default function Footer() {
   return (
@@ -32,7 +33,7 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:underline">
+                <a href="/franchise" className="hover:underline">
                   Jibu Franchise Opportunity
                 </a>
               </li>
@@ -53,17 +54,17 @@ export default function Footer() {
           <div className="space-y-4 text-center md:text-left">
             <h6 className="uppercase font-bold">Social</h6>
             <div className="flex justify-center md:justify-start gap-2">
-              <a href="#" className="bg-blue-600 p-2 rounded hover:bg-blue-700">
-                <i className="bi bi-facebook"></i>
+              <a href="https://www.facebook.com/JibuCo" className="bg-blue-600 p-2 rounded hover:bg-blue-700">
+                <FaFacebook className="text-white h-5 w-5" />
               </a>
               <a href="#" className="bg-pink-600 p-2 rounded hover:bg-pink-700">
-                <i className="bi bi-instagram"></i>
+                <FaInstagram className="text-white h-5 w-5" />
               </a>
-              <a href="#" className="bg-blue-400 p-2 rounded hover:bg-blue-500">
-                <i className="bi bi-twitter"></i>
+              <a href="https://x.com/JibuCo" className="bg-blue-400 p-2 rounded hover:bg-blue-500">
+                <FaTwitter className="text-white h-5 w-5" />
               </a>
-              <a href="#" className="bg-green-600 p-2 rounded hover:bg-green-700">
-                <i className="bi bi-whatsapp"></i>
+              <a href="https://www.linkedin.com/company/jibu/posts/?feedView=all" className="bg-blue-700 p-2 rounded hover:bg-blue-900">
+                <FaLinkedin className="text-white h-5 w-5" />
               </a>
             </div>
           </div>
@@ -83,7 +84,7 @@ export default function Footer() {
                 "Uganda",
               ].map((country) => (
                 <li key={country}>
-                  <a href="#" className="hover:underline inline-flex items-center gap-1">
+                  <a href={country.toLowerCase()} className="hover:underline inline-flex items-center gap-1">
                     <i className="bi bi-skype"></i>
                     {country}
                   </a>

@@ -32,7 +32,7 @@ export default function FranchiseeCarousel({
   };
 
   return (
-    <section className="px-6 py-16 bg-white">
+    <section className="px-6 py-8 bg-white">
       <h2 className="text-3xl md:text-4xl font-bold mb-6">{title}</h2>
       <div className="relative">
         {/* Arrows */}
