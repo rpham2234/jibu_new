@@ -1,9 +1,11 @@
 "use client";
 
+import Options from "@/components/countries/options";
 import ProductGrid from "@/components/countries/productGrid";
 import Header from "@/components/countries/uganda/header";
 import HeroImage from "@/components/HeroImage";
 import React from "react";
+import ReactCountryFlag from "react-country-flag"
 
 
 const products = [
@@ -84,6 +86,7 @@ export default function uganda() {
     <main>
       <HeroImage imageurl="https://jibuco.com/wp-content/uploads/2022/11/Ghana-launch.jpg" showText={true} title="We Deliver to your doorstep" subtitle="" showButton={false} />
       <Header />
+      <Options />
       <ProductGrid products={products}/>
     </main>
   )};
