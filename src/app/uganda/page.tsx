@@ -85,7 +85,7 @@ export default function uganda() {
   return (
     <main>
       <HeroImage imageurl="https://jibuco.com/wp-content/uploads/2022/11/Ghana-launch.jpg" showText={true} title="We Deliver to your doorstep" subtitle="" showButton={false} />
-      <Header />
+      <Header country="Uganda" countryCode="UG"/>
       <Options />
       <ProductGrid products={products}/>
     </main>

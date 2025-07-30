@@ -25,7 +25,7 @@ export default function RootLayout({
 }>) {
   const pathname = usePathname()
   const noLayoutRoutes = ['/uganda']; //this is layout for global site. We dont want this to apply to country sites.
-  const hideLayout = noLayoutRoutes.includes(pathname); 
+  const hideLayout = noLayoutRoutes.some(route => pathname.startsWith(route));
   return (
     <html lang="en">
       <body className={`${inter.className} bg-zinc-200`}>

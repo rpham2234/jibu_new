@@ -54,6 +54,9 @@ export default function Navbar() {
                 Home
               </Link>
             </li>
+            <li className="flex items-center">
+              <CountryDropDown />
+            </li>
             <li>
               <Link href="/about" className="hover:text-gray-200 font-semibold px-0 py-2 flex items-center">
                 About
@@ -88,9 +91,6 @@ export default function Navbar() {
               <Link href="#" className="hover:text-gray-200 font-semibold italic px-0 py-2 flex items-center">
                 Jibuntu
               </Link>
-            </li>
-            <li className="flex items-center">
-              <CountryDropDown />
             </li>
           </ul>
 

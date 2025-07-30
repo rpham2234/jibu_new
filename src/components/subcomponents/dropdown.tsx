@@ -4,7 +4,7 @@ import { ChevronDownIcon } from '@heroicons/react/20/solid'
 export default function CountryDropDown() {
   return (
     <Menu as="div" className="relative inline-block">
-      <MenuButton className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-xs ring-1 ring-gray-300 ring-inset hover:bg-gray-50">
+      <MenuButton className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-blue-300 px-3 py-2 text-sm font-semibold text-gray-900 shadow-xs  ring-inset hover:bg-blue-500">
         Country
         <ChevronDownIcon aria-hidden="true" className="-mr-1 size-5 text-gray-400" />
       </MenuButton>
@@ -26,9 +26,9 @@ export default function CountryDropDown() {
                 "Rwanda",
                 "Uganda",
               ].map((country) => (
-                <MenuItem>
+                <MenuItem key={country}>
                     <a
-                    href={country.toLowerCase()}
+                    href={"/" + country.toLowerCase()}
                     className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
                     >
                     {country}

@@ -86,7 +86,7 @@ export default function CountryNavbar() {
             </li>
             <li>
               <Link
-                href="/contact"
+                href="/uganda/contact"
                 className="hover:text-gray-200 font-semibold px-0 py-2 flex items-center"
               >
                 Contact Us
