@@ -2,7 +2,7 @@
 
 export default function ContactForm() {
   return (
-    <div className="isolate bg-white px-6 py-24 sm:py-32 lg:px-8">
+    <div className="isolate bg-white px-6 py-24 sm:py-32 lg:px-16 xl:px-48">
       <div className="mx-auto max-w-7xl">
         {/* Two-column grid for desktop, single-column for mobile */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
