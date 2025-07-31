@@ -5,16 +5,15 @@ import Image from "next/image";
 import { useState } from "react";
 import { ShoppingCartIcon } from "@heroicons/react/24/solid";
 import CountryDropDown from "../subcomponents/dropdown";
-import { usePathname } from "next/navigation";
 
-export default function CountryNavbar() {
+export default function CountryNavbar({country="uganda",}:{country?: string;}) {
   const [isOpen, setIsOpen] = useState(false);
-  const pathname = usePathname();
+  
 
   return (
     <nav className="bg-[#005499] text-white">
       <div className="max-w-8xl mx-auto px-4 py-3 flex justify-between items-center">
-        <Link href="/uganda" className="flex items-center">
+        <Link href={"/" + country} className="flex items-center">
           <Image
             src="https://jibuco.com/wp-content/uploads/2022/09/Jibu-Website-Artwork-2_Jibu-Logo-150x48-white.png"
             alt="Jibu Logo"
@@ -64,7 +63,7 @@ export default function CountryNavbar() {
             </li>
             <li>
               <Link
-                href="#products"
+                href={`/${country}#products`}
                 className="hover:text-gray-200 font-semibold px-0 py-2 flex items-center"
               >
                 Our Products
@@ -72,7 +71,7 @@ export default function CountryNavbar() {
             </li>
             <li>
               <Link
-                href={`${pathname}/franchise`}
+                href={`/${country}/franchise`}
                 className="hover:text-gray-200 font-semibold px-0 py-2 flex items-center"
               >
                 Franchise Locations
@@ -88,7 +87,7 @@ export default function CountryNavbar() {
             </li>
             <li>
               <Link
-                href={`${pathname}/contact`}
+                href={`/${country}/contact`}
                 className="hover:text-gray-200 font-semibold px-0 py-2 flex items-center"
               >
                 Contact Us
