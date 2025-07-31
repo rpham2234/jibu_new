@@ -5,9 +5,11 @@ import Image from "next/image";
 import { useState } from "react";
 import { ShoppingCartIcon } from "@heroicons/react/24/solid";
 import CountryDropDown from "../subcomponents/dropdown";
+import { usePathname } from "next/navigation";
 
 export default function CountryNavbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <nav className="bg-[#005499] text-white">
@@ -62,7 +64,7 @@ export default function CountryNavbar() {
             </li>
             <li>
               <Link
-                href="/uganda/products"
+                href="#products"
                 className="hover:text-gray-200 font-semibold px-0 py-2 flex items-center"
               >
                 Our Products
@@ -70,7 +72,7 @@ export default function CountryNavbar() {
             </li>
             <li>
               <Link
-                href="/uganda/franchise"
+                href={`${pathname}/franchise`}
                 className="hover:text-gray-200 font-semibold px-0 py-2 flex items-center"
               >
                 Franchise Locations
@@ -78,7 +80,7 @@ export default function CountryNavbar() {
             </li>
             <li>
               <Link
-                href="/uganda/bids-tenders"
+                href="bids-tenders"
                 className="hover:text-gray-200 font-semibold px-0 py-2 flex items-center"
               >
                 Bids & Tenders
@@ -86,7 +88,7 @@ export default function CountryNavbar() {
             </li>
             <li>
               <Link
-                href="/uganda/contact"
+                href={`${pathname}/contact`}
                 className="hover:text-gray-200 font-semibold px-0 py-2 flex items-center"
               >
                 Contact Us
@@ -95,7 +97,7 @@ export default function CountryNavbar() {
             <CountryDropDown />
             <li>
                 <Link
-                href="/contact"
+                href="#"
                 className="hover:text-gray-200 font-semibold px-0 py-2 flex items-center"
                 >
                     <ShoppingCartIcon height={24} width={24}/>
