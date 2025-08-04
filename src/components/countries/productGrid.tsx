@@ -10,6 +10,7 @@ interface Product {
   productName: string;
   price: number;
   color: string;
+  type:string;
 }
 
 interface ProductGridProps {
@@ -28,6 +29,7 @@ export default function ProductGrid({ products = [] }: ProductGridProps) {
             productName={product.productName}
             price={product.price}
             color={product.color}
+            type={product.type}
           />
         ))}
       </div>

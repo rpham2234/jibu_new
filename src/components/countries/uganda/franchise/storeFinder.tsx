@@ -31,7 +31,7 @@ function RecenterMap({ position }: { position: [number, number] }) {
   return null;
 }
 
-export default function StoreLocator({ stores, center, zoom = 13 }: StoreLocatorProps) {
+export default function StoreLocator({ stores, center, zoom = 13, country }: StoreLocatorProps) {
   const [selectedPosition, setSelectedPosition] = useState<[number, number] | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -45,7 +45,7 @@ export default function StoreLocator({ stores, center, zoom = 13 }: StoreLocator
     <div className="flex flex-col lg:flex-row-reverse">
       {/* Map Section */}
       <div className="w-full lg:w-2/3 h-[400px] lg:h-[600px]">
-        <MapContainer center={center} zoom={zoom} style={{ height: '100%', width: '100%' }}>
+        <MapContainer key={country} center={center} zoom={zoom} style={{ height: '100%', width: '100%' }}>
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution="&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"

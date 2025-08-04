@@ -5,75 +5,140 @@ import ProductGrid from "@/components/countries/productGrid";
 import Header from "@/components/countries/uganda/header";
 import HeroImage from "@/components/HeroImage";
 import React from "react";
-import ReactCountryFlag from "react-country-flag"
+
 
 
 const products = [
   {
     _id: 1,
-    productName: 'Earthen Bottle',
-    href: '#',
-    price: '$48',
-    img: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/category-page-04-image-card-01.jpg',
-    imageAlt: 'Tall slender porcelain bottle with natural clay textured body and cork stopper.',
+    productName: "20L Tap New",
+    price: "Fr 15,500",
+    type: "New",
+    img: "https://jibuco.com/wp-content/uploads/2024/12/Artboard-1-300x300.webp",
+    imageAlt: "20L Tap New – Rwanda listing"
   },
   {
     _id: 2,
-    productName: 'Nomad Tumbler',
-    href: '#',
-    price: '$35',
-    img: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/category-page-04-image-card-02.jpg',
-    imageAlt: 'Olive drab green insulated bottle with flared screw lid and flat top.',
+    productName: "20L Tap Refill",
+    price: "Fr 2,000",
+    type: "Refill",
+    img: "https://jibuco.com/wp-content/uploads/2024/12/Artboard-1-300x300.webp",
+    imageAlt: "20L Tap Refill – Rwanda listing"
   },
   {
     _id: 3,
-    productName: 'Focus Paper Refill',
-    href: '#',
-    price: '$89',
-    img: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/category-page-04-image-card-03.jpg',
-    imageAlt: 'Person using a pen to cross a task off a productivity paper card.',
+    productName: "20L Jerrycan New",
+    price: "Fr 5,500",
+    type: "New",
+    img: "https://jibuco.com/wp-content/uploads/2024/12/Artboard-11.webp",
+    imageAlt: "20L Jerrycan New – Rwanda listing"
   },
   {
     _id: 4,
-    productName: 'Machined Mechanical Pencil',
-    href: '#',
-    price: '$35',
-    img: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/category-page-04-image-card-04.jpg',
-    imageAlt: 'Hand holding black machined steel mechanical pencil with brass tip and top.',
+    productName: "20L Jerrycan Refill",
+    price: "Fr 2,000",
+    type: "Refill",
+    img: "https://jibuco.com/wp-content/uploads/2024/12/Artboard-11.webp",
+    imageAlt: "20L Jerrycan Refill – Rwanda listing"
   },
   {
     _id: 5,
-    productName: 'Focus Card Tray',
-    href: '#',
-    price: '$64',
-    img: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/category-page-04-image-card-05.jpg',
-    imageAlt: 'Paper card sitting upright in walnut card holder on desk.',
+    productName: "18.9L Bottle New",
+    price: "Fr 12,000",
+    type: "New",
+    img: "https://jibuco.com/wp-content/uploads/2024/12/Artboard-8-300x300.webp",
+    imageAlt: "18.9L Bottle New – Rwanda listing"
   },
   {
     _id: 6,
-    productName: 'Focus Multi-Pack',
-    href: '#',
-    price: '$39',
-    img: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/category-page-04-image-card-06.jpg',
-    imageAlt: 'Stack of 3 small drab green cardboard paper card refill boxes with white text.',
+    productName: "18.9L Bottle Refill",
+    price: "Fr 2,000",
+    type: "Refill",
+    img: "https://jibuco.com/wp-content/uploads/2024/12/Artboard-8-300x300.webp",
+    imageAlt: "18.9L Bottle Refill – Rwanda listing"
   },
   {
     _id: 7,
-    productName: 'Brass Scissors',
-    href: '#',
-    price: '$50',
-    img: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/category-page-04-image-card-07.jpg',
-    imageAlt: 'Brass scissors with geometric design, black steel finger holes, and included upright brass stand.',
+    productName: "10L Jerrycan New",
+    price: "Fr 3,500",
+    type: "New",
+    img: "https://jibuco.com/wp-content/uploads/2024/12/Artboard-12-300x300.webp",
+    imageAlt: "10L Jerrycan New – Rwanda listing"
   },
   {
     _id: 8,
-    productName: 'Focus Carry Pouch',
-    href: '#',
-    price: '$32',
-    img: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/category-page-04-image-card-08.jpg',
-    imageAlt: 'Textured gray felt pouch for paper cards with snap button flap and elastic pen holder loop.',
+    productName: "10L Jerrycan Refill",
+    price: "Fr 1,200",
+    type: "Refill",
+    img: "https://jibuco.com/wp-content/uploads/2024/12/Artboard-12-300x300.webp",
+    imageAlt: "10L Jerrycan Refill – Rwanda listing"
   },
+  {
+    _id: 9,
+    productName: "5L Jerrycan New",
+    price: "Fr 2,500",
+    type: "New",
+    img: "https://jibuco.com/wp-content/uploads/2024/12/Artboard-1-300x300.webp",
+    imageAlt: "5L Jerrycan New – Rwanda listing"
+  },
+  {
+    _id: 10,
+    productName: "5L Jerrycan Refill",
+    price: "Fr 1,000",
+    type: "Refill",
+    img: "https://jibuco.com/wp-content/uploads/2024/12/Artboard-1-300x300.webp",
+    imageAlt: "5L Jerrycan Refill – Rwanda listing"
+  },
+  {
+    _id: 11,
+    productName: "6KG Cylinder Full Set",
+    price: "Fr 32,700",
+    type: "New",
+    img: "https://jibuco.com/wp-content/uploads/2024/12/Artboard-13-300x300.webp",
+    imageAlt: "6KG Cylinder Full Set"
+  },
+  {
+    _id: 12,
+    productName: "6KG Cylinder Refill",
+    price: "Fr 10,000",
+    type: "Refill",
+    img: "https://jibuco.com/wp-content/uploads/2024/12/Artboard-13-300x300.webp",
+    imageAlt: "6KG Cylinder Refill"
+  },
+  {
+    _id: 13,
+    productName: "12KG Cylinder New",
+    price: "Fr 57,400",
+    type: "New",
+    img: "https://jibuco.com/wp-content/uploads/2024/12/Artboard-14-300x300.webp",
+    imageAlt: "12KG Cylinder New"
+  },
+  {
+    _id: 14,
+    productName: "12KG Cylinder Refill",
+    price: "Fr 20,000",
+    type: "Refill",
+    img: "https://jibuco.com/wp-content/uploads/2024/12/Artboard-14-300x300.webp",
+    imageAlt: "12KG Cylinder Refill"
+  },
+  {
+    _id: 15,
+    productName: "1L Aluminium Bottle",
+    price: "Fr 3,000",
+    type: "New",
+    img: "https://jibuco.com/wp-content/uploads/2024/12/Artboard-6-300x300.webp",
+    imageAlt: "1L Aluminium Bottle – Rwanda listing"
+  },
+  {
+    _id: 16,
+    productName: "Jibu Family Porridge",
+    price: "Fr 2,000",
+    type: "New",
+    img: "https://jibuco.com/wp-content/uploads/2024/12/Artboard-15-300x300.webp",
+    imageAlt: "Jibu Family Porridge – Rwanda listing"
+  }
 ]
+
 
 export default function uganda() {
   return (

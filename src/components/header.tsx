@@ -8,7 +8,7 @@ import CountryDropDown from "./subcomponents/dropdown";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedCountry, setSelectedCountry] = useState("UG"); // Default: Uganda
+  const [selectedCountry, setSelectedCountry] = useState(["UG", "KE"]); // Default: Uganda
 
   return (
     <nav className="bg-[#005499] text-white">

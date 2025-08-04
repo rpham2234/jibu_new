@@ -24,7 +24,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const pathname = usePathname()
-  const noLayoutRoutes = ['/uganda']; //this is layout for global site. We dont want this to apply to country sites.
+  const noLayoutRoutes = ['/uganda', '/kenya', '/burundi', '/kenya', '/tanzania', '/zambia', '/rwanda', '/drc', '/ghana']; //this is layout for global site. We dont want this to apply to country sites.
   const hideLayout = noLayoutRoutes.some(route => pathname.startsWith(route));
   return (
     <html lang="en">

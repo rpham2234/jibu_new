@@ -7,7 +7,7 @@ export default function ProductCard(props) {
             <img src={props.img}
                     alt="Product" className="h-80 w-72 object-cover rounded-t-xl" />
             <div className="px-4 py-3 w-72">
-                <span className="text-gray-400 mr-3 uppercase text-xs">Brand</span>
+                <span className="text-gray-400 mr-3 uppercase text-xs">{props.type}</span>
                 <p className="text-lg font-bold text-black truncate block capitalize">{props.productName}</p>
                 <div className="flex items-center">
                     <p className="text-lg font-semibold text-black cursor-auto my-3">{props.price}</p>

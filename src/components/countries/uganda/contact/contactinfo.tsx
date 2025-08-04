@@ -4,12 +4,12 @@ import React from 'react';
 import { FaFacebook, FaTwitter, FaInstagram, FaWhatsapp, FaLinkedin } from "react-icons/fa";
 
 export default function ContactInfo({
-    phone = "",
-    address = "",
-    facebook = "#",
-    instagram = "#",
-    twitter = "#",
-    linkedin = "#",
+    phone = "+1234567890",
+    address = "sample address",
+    facebook = "facebook link",
+    instagram = "instagram link",
+    twitter = "twitter link",
+    linkedin = "linkedin link",
 
     }: {
     phone?: string;
