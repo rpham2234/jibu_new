@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from 'next/image';
 
 export default function AboutPage() {
   return (
@@ -10,7 +11,7 @@ export default function AboutPage() {
         <div className="bg-[#F8F8FF] rounded shadow p-6">
           <div className="grid md:grid-cols-2 gap-6 items-center">
             <div>
-              <h1 className="text-3xl font-bold">Jibu Means "Solution"</h1>
+              <h1 className="text-3xl font-bold">Jibu Means &quot;Solution&quot;</h1>
               <h3 className="text-xl text-gray-500 mb-4">What we do</h3>
               <p className="mb-3">
                 Jibu capitalizes, equips, and trains emerging market
@@ -28,7 +29,7 @@ export default function AboutPage() {
               </button>
             </div>
             <div>
-              <img
+              <Image
                 src="https://res.cloudinary.com/dp6oxybgv/image/upload/v1656254871/76833319-3130-4f34-bea8-0e759161e8e5_xjszvp.jpg"
                 alt="Jibu Franchise"
                 className="w-full rounded"
@@ -55,7 +56,7 @@ export default function AboutPage() {
               </p>
             </div>
             <div>
-              <img
+              <Image
                 src="https://jibuco.com/wp-content/uploads/2022/09/Jibu-Website-Artwork_Jibu-Mum-and-Son-min-768x612.jpg"
                 alt="Jibu Mom and Son"
                 className="w-full rounded"
@@ -117,7 +118,7 @@ export default function AboutPage() {
               </p>
             </div>
             <div>
-              <img
+              <Image
                 src="https://jibuco.com/wp-content/uploads/2022/09/Jibu-Website-Artwork-Production-Unit_Jibu-768x510.jpeg"
                 alt="Jibu Production"
                 className="w-full rounded"
@@ -128,7 +129,7 @@ export default function AboutPage() {
 
         {/* Section 5 */}
         <div className="bg-[#F8F8FF] rounded shadow p-6">
-          <img
+          <Image
             src="https://jibuco.com/wp-content/uploads/2022/09/Jibu-Website-Artwork-Water-Process-Table_Jibu-Water-Purifying-Process-1536x831.png"
             alt="Water Process Table"
             className="w-full rounded"

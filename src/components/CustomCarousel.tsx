@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from 'next/image';
 
 type Slide = {
   src: string;
@@ -26,7 +27,7 @@ export default function CustomCarousel({ slides,}: { slides: Slide[];}) {
   return (
     <div className="relative w-full max-w-5xl mx-auto overflow-hidden rounded-lg">
       <div className="relative">
-        <img
+        <Image
           src={slide.src}
           alt={slide.alt}
           className="w-full h-auto"

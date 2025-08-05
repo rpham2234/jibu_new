@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/solid"; // or use Heroicons
+import Image from 'next/image';
 
 type Franchisee = {
     name: string;
@@ -60,7 +61,7 @@ export default function FranchiseeCarousel({
                 key={i}
                 className="w-72 flex-shrink-0 bg-white rounded shadow-md text-center"
               >
-                <img
+                <Image
                   src={f.image}
                   alt={f.name}
                   className="w-full h-80 object-cover rounded-t"

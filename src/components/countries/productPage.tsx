@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Star } from "lucide-react";
+import Image from 'next/image';
 
 export default function ProductPage() {
   const [selectedColor, setSelectedColor] = useState("black");
@@ -17,7 +17,7 @@ export default function ProductPage() {
       {/* Left Section - Images */}
       <div>
         <div className="mb-4">
-          <img
+          <Image
             src="https://jibuco.com/rw/wp-content/uploads/sites/4/2024/02/Artboard-1-jpg.webp"
             alt="Basic Tee Main"
             className="rounded-lg w-full"
