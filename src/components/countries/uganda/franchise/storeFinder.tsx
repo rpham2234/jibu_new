@@ -1,10 +1,9 @@
 'use client';
 
-import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import { useState, useEffect } from 'react';
 import 'leaflet/dist/leaflet.css';
+import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import L from 'leaflet';
-
 
 export interface Store {
   name: string;
@@ -26,7 +25,6 @@ const markerIcon = new L.Icon({
   popupAnchor: [1, -34],
 });
 
-// Helper component to recenter map
 function RecenterMap({ position }: { position: [number, number] }) {
   const map = useMap();
   useEffect(() => {
@@ -38,6 +36,7 @@ function RecenterMap({ position }: { position: [number, number] }) {
 export default function StoreLocator({ stores, center, zoom = 13, country }: StoreLocatorProps) {
   const [selectedPosition, setSelectedPosition] = useState<[number, number] | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
+  const [showMap, setShowMap] = useState(false);
 
   const filteredStores = stores.filter(
     (store) =>
@@ -45,44 +44,50 @@ export default function StoreLocator({ stores, center, zoom = 13, country }: Sto
       store.address.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  /*
-  // Cleanup map container on unmount
+  // Lazy-load map when user scrolls
   useEffect(() => {
-    return () => {
-      const container = L.DomUtil.get('map'); // the map container div
-      if (container && container._leaflet_id) {
-        container._leaflet_id = null; // reset map instance
+    const onScroll = () => {
+      if (!showMap && window.scrollY > 200) {
+        setShowMap(true);
       }
     };
-  }, []);
-  */
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, [showMap]);
 
   return (
     <div className="flex flex-col lg:flex-row-reverse">
       {/* Map Section */}
       <div className="w-full lg:w-2/3 h-[400px] lg:h-[600px]">
-        <MapContainer
-          key={country}
-          id="map"
-          center={center || [0, 0]}
-          zoom={zoom}
-          style={{ height: '100%', width: '100%' }}
-        >
-          <TileLayer
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            attribution="&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
-          />
+        {showMap ? (
+          <MapContainer
+            key={country}
+            id="map"
+            center={center || [0, 0]}
+            zoom={zoom}
+            style={{ height: '100%', width: '100%' }}
+          >
+            <TileLayer
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              attribution="&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
+            />
 
-          {filteredStores.map((store, index) => (
-            <Marker key={index} position={store.position} icon={markerIcon}>
-              <Popup>
-                <h3 className="font-bold">{store.name}</h3>
-                <p>{store.address}</p>
-              </Popup>
-            </Marker>
-          ))}
-          {selectedPosition && <RecenterMap position={selectedPosition} />}
-        </MapContainer>
+            {filteredStores.map((store, index) => (
+              <Marker key={index} position={store.position} icon={markerIcon}>
+                <Popup>
+                  <h3 className="font-bold">{store.name}</h3>
+                  <p>{store.address}</p>
+                </Popup>
+              </Marker>
+            ))}
+
+            {selectedPosition && <RecenterMap position={selectedPosition} />}
+          </MapContainer>
+        ) : (
+          <div className="w-full h-full flex items-center justify-center bg-gray-200 text-gray-500">
+            Loading map...
+          </div>
+        )}
       </div>
 
       {/* Store List Section */}
@@ -101,7 +106,10 @@ export default function StoreLocator({ stores, center, zoom = 13, country }: Sto
               <li
                 key={index}
                 className="border-b pb-2 cursor-pointer hover:bg-gray-100 p-2 rounded"
-                onClick={() => setSelectedPosition(store.position)}
+                onClick={() => {
+                  setSelectedPosition(store.position);
+                  setShowMap(true); // Ensure map shows when clicking store
+                }}
               >
                 <p className="font-bold">{store.name}</p>
                 <p className="text-sm">{store.address}</p>

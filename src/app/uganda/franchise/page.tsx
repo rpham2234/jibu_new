@@ -1,7 +1,12 @@
 'use client'
-import StoreLocator from '@/components/countries/uganda/franchise/storeFinder'
+import dynamic from 'next/dynamic'
 import React from 'react'
 import {info} from "../info"
+
+const StoreLocator = dynamic(() => import('@/components/countries/uganda/franchise/storeFinder'), {
+  ssr: false,
+});
+
 
 export default function Page() {
 
@@ -17,7 +22,7 @@ export default function Page() {
                 <h1 className="text-3xl md:text-6xl font-semibold mb-4">Find a Jibu Franchise Near you</h1> 
             </div>
             <div className="px-0 md:px-8 xl:px-32 py-8 ">
-                <StoreLocator stores={stores} center={info.center as [number, number]} country={info.country.toLowerCase()} />
+                <StoreLocator stores={stores} center={info.center as [number, number]}  country={info.country.toLowerCase()} />
             </div>
             
         </div>
