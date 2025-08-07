@@ -1,32 +1,12 @@
 "use client";
 
 import AboutStats from "@/components/AboutStats";
-import CustomCarousel from "@/components/CustomCarousel";
 import FranchiseeCarousel from "@/components/Franchisee Carousel";
 import HeroImage from "@/components/HeroImage";
 import HowJibuWorks from "@/components/HowJibuWorks";
 
 export default function Home() {
 
-  const slides = [
-    {
-      src: "https://mdbootstrap.com/img/Photos/Others/images/76.jpg",
-      alt: "Scenery 1",
-      title: "Welcome to My Blog",
-      description: "Explore articles, tutorials, and more.",
-      ctaLabel: "Read More",
-      ctaLink: "/blog",
-    },
-    {
-      src: "https://mdbootstrap.com/img/Photos/Others/images/77.jpg",
-      alt: "Scenery 2",
-      title: "See cool stuff",
-      description: "Explore articles, tutorials, and more.",
-      ctaLabel: "About us",
-      ctaLink: "/about",
-    },
-    // Add more slides...
-  ];
 
   const franchisees = [
     {

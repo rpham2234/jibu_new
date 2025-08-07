@@ -61,11 +61,14 @@ export default function FranchiseeCarousel({
                 key={i}
                 className="w-72 flex-shrink-0 bg-white rounded shadow-md text-center"
               >
-                <Image
-                  src={f.image}
-                  alt={f.name}
-                  className="w-full h-80 object-cover rounded-t"
-                />
+                <div className="relative w-[300px] h-[400px]">
+                  <Image
+                    src={f.image}
+                    alt={f.name}
+                    fill
+                    className="w-full h-80 object-cover rounded-t"
+                  />
+                </div>
                 <div className="p-4">
                   <h3 className="font-semibold">{f.name}</h3>
                   <p className="text-sm text-gray-500">{f.location}</p>

@@ -1,9 +1,10 @@
 'use client';
 
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
+
 
 export interface Store {
   name: string;
@@ -15,6 +16,7 @@ interface StoreLocatorProps {
   stores: Store[];
   center?: [number, number];
   zoom?: number;
+  country?: string;
 }
 
 const markerIcon = new L.Icon({
@@ -27,7 +29,9 @@ const markerIcon = new L.Icon({
 // Helper component to recenter map
 function RecenterMap({ position }: { position: [number, number] }) {
   const map = useMap();
-  map.setView(position, map.getZoom());
+  useEffect(() => {
+    map.setView(position, map.getZoom());
+  }, [position, map]);
   return null;
 }
 
@@ -41,15 +45,34 @@ export default function StoreLocator({ stores, center, zoom = 13, country }: Sto
       store.address.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+  /*
+  // Cleanup map container on unmount
+  useEffect(() => {
+    return () => {
+      const container = L.DomUtil.get('map'); // the map container div
+      if (container && container._leaflet_id) {
+        container._leaflet_id = null; // reset map instance
+      }
+    };
+  }, []);
+  */
+
   return (
     <div className="flex flex-col lg:flex-row-reverse">
       {/* Map Section */}
       <div className="w-full lg:w-2/3 h-[400px] lg:h-[600px]">
-        <MapContainer key={country} center={center} zoom={zoom} style={{ height: '100%', width: '100%' }}>
+        <MapContainer
+          key={country}
+          id="map"
+          center={center || [0, 0]}
+          zoom={zoom}
+          style={{ height: '100%', width: '100%' }}
+        >
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution="&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
           />
+
           {filteredStores.map((store, index) => (
             <Marker key={index} position={store.position} icon={markerIcon}>
               <Popup>
@@ -58,7 +81,6 @@ export default function StoreLocator({ stores, center, zoom = 13, country }: Sto
               </Popup>
             </Marker>
           ))}
-
           {selectedPosition && <RecenterMap position={selectedPosition} />}
         </MapContainer>
       </div>
@@ -66,8 +88,6 @@ export default function StoreLocator({ stores, center, zoom = 13, country }: Sto
       {/* Store List Section */}
       <div className="w-full lg:w-1/3 p-4 lg:p-8">
         <h2 className="text-xl font-semibold mb-4">Search for a Jibustore</h2>
-
-        {/* Search Bar */}
         <input
           type="text"
           placeholder="Search"
@@ -75,8 +95,6 @@ export default function StoreLocator({ stores, center, zoom = 13, country }: Sto
           onChange={(e) => setSearchQuery(e.target.value)}
           className="w-full p-2 mb-4 border rounded-md bg-gray-200"
         />
-
-        {/* Store List */}
         <ul className="space-y-4">
           {filteredStores.length > 0 ? (
             filteredStores.map((store, index) => (

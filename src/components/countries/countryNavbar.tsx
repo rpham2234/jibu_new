@@ -55,10 +55,18 @@ export default function CountryNavbar({country="uganda",}:{country?: string;}) {
           <ul className="flex flex-col lg:flex-row gap-2 lg:gap-6 mt-4 lg:mt-0">
             <li>
               <Link
+                href={"/" + country}
+                className="hover:text-gray-200 font-semibold px-0 py-2 flex items-center"
+              >
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link
                 href="/"
                 className="hover:text-gray-200 font-semibold px-0 py-2 flex items-center"
               >
-                Global Site
+                Jibu Global
               </Link>
             </li>
             <li>
