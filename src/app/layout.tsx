@@ -7,6 +7,7 @@ import Container from "@/components/container";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { usePathname } from "next/navigation";
+import Example from "@/components/header_new";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,7 +31,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.className} bg-zinc-200`}>
         <Container>
-          {!hideLayout && <Header />}
+          {!hideLayout && <Example />}
           {children}
           {!hideLayout && <Footer />}
         </Container>
