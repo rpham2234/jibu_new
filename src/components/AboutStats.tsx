@@ -9,7 +9,7 @@ export default function AboutStats() {
         <div className="grid md:grid-cols-2 gap-12">
           {/* Left: Headline + Description */}
           <div>
-            <h2 className="text-3xl md:text-5xl font-bold leading-tight mb-4">
+            <h2 className="text-3xl md:text-5xl  leading-tight mb-4">
               Local Owners <br /> Driving Lasting <br /> Solutions
             </h2>
             <p className="text-sm md:text-base text-white/90 max-w-md">
@@ -20,19 +20,19 @@ export default function AboutStats() {
           {/* Right: Metrics */}
           <div className="grid grid-cols-2 gap-6 text-center md:text-left">
             <div>
-              <p className="text-3xl md:text-4xl font-bold">8</p>
+              <p className="text-3xl md:text-5xl">8</p>
               <p className="text-sm">Countries Served</p>
             </div>
             <div>
-              <p className="text-3xl md:text-4xl font-bold">10k</p>
+              <p className="text-3xl md:text-5xl">10k</p>
               <p className="text-sm">Retail Points</p>
             </div>
             <div>
-              <p className="text-3xl md:text-4xl font-bold">160+</p>
+              <p className="text-3xl md:text-5xl">160+</p>
               <p className="text-sm">Franchises Launched</p>
             </div>
             <div>
-              <p className="text-3xl md:text-4xl font-bold">490M</p>
+              <p className="text-3xl md:text-5xl">490M</p>
               <p className="text-sm">Litres Distributed</p>
             </div>
           </div>

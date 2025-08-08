@@ -21,6 +21,7 @@ export default function HeroImage({
   subtitle?: string;
   showButton?: boolean;
 }) {
+  
   return (
     <section className="relative w-full h-[500px] md:h-[600px]">
       {/* Background Image */}
@@ -38,7 +39,7 @@ export default function HeroImage({
       {/* Conditionally Render Text */}
       {showText && (
         <div className="absolute bottom-10 left-10 text-white max-w-xl">
-          <h1 className="text-3xl md:text-6xl font-semibold mb-4">
+          <h1 className="text-3xl md:text-6xl mb-4">
             {title}
           </h1>
           <p className="mb-6 text-sm md:text-base">

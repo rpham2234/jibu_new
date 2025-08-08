@@ -5,11 +5,11 @@ import Image from 'next/image';
 
 export default function AboutPage() {
   return (
-    <div className="flex justify-center px-4">
+    <div className="flex justify-center px-4 bg-[#1fbbe4]">
       <div className="max-w-6xl w-full space-y-16">
-        
+        <p></p>
         {/* Section 1 */}
-        <section className="bg-[#F8F8FF] rounded shadow p-6">
+        <section className="bg-[#ffffff] rounded shadow p-6">
           <div className="grid md:grid-cols-2 gap-6 items-center">
             <div>
               <h1 className="text-3xl font-bold">Jibu Means &quot;Solution&quot;</h1>
@@ -38,7 +38,7 @@ export default function AboutPage() {
         </section>
 
         {/* Section 2 */}
-        <section className="bg-[#F8F8FF] rounded shadow p-6">
+        <section className="bg-[#ffffff] rounded shadow p-6">
           <div className="grid md:grid-cols-2 gap-6 items-center">
             <div>
               <h2 className="text-2xl font-bold mb-4">Who we are</h2>
@@ -63,7 +63,7 @@ export default function AboutPage() {
         </section>
 
         {/* Section 3 */}
-        <section className="bg-[#F8F8FF] rounded shadow p-6">
+        <section className="bg-[#ffffff] rounded shadow p-6">
           <div className="grid md:grid-cols-2 gap-6 items-center">
             <div>
               <h2 className="text-2xl font-bold mb-4">The Jibu Story</h2>
@@ -93,7 +93,7 @@ export default function AboutPage() {
         </section>
 
         {/* Section 4 */}
-        <section className="bg-[#F8F8FF] rounded shadow p-6">
+        <section className="bg-[#ffffff] rounded shadow p-6">
           <div className="grid md:grid-cols-2 gap-6 items-center">
             <div>
               <h2 className="text-2xl font-bold mb-4">The Jibu Water Purifying Process</h2>
@@ -125,7 +125,7 @@ export default function AboutPage() {
         </section>
 
         {/* Section 5 */}
-        <section className="bg-[#F8F8FF] rounded shadow p-6">
+        <section className="bg-[#ffffff] rounded shadow p-6">
           <Image
             src="https://jibuco.com/wp-content/uploads/2022/09/Jibu-Website-Artwork-Water-Process-Table_Jibu-Water-Purifying-Process-1536x831.png"
             alt="Water Process Table"
@@ -135,6 +135,7 @@ export default function AboutPage() {
             className="w-full rounded"
           />
         </section>
+        <p></p>
       </div>
     </div>
   );
