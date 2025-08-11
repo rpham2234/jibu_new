@@ -2,12 +2,13 @@
 
 import React from 'react';
 import Image from 'next/image';
+import PageTitle from '@/components/subcomponents/pageTitle';
 
 export default function AboutPage() {
   return (
     <div className="flex justify-center px-4 bg-[#1fbbe4]">
       <div className="max-w-6xl w-full space-y-16">
-        <p></p>
+        <PageTitle title='About Us'/>
         {/* Section 1 */}
         <section className="bg-[#ffffff] rounded shadow p-6">
           <div className="grid md:grid-cols-2 gap-6 items-center">

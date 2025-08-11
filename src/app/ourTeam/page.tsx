@@ -1,6 +1,7 @@
 "use client";
 
-import FranchiseeCarousel from "@/components/Franchisee Carousel";
+import CardCarousel from "@/components/SampleCarousel";
+import PageTitle from "@/components/subcomponents/pageTitle";
 import React from "react";
 
 export default function ourTeam() {
@@ -82,8 +83,8 @@ export default function ourTeam() {
 
   return (
     <main>
-      <h1 className="text-3xl md:text-4xl font-bold mb-6 text-center">Meet Our Team</h1>
-      <FranchiseeCarousel franchisees={execs} title="Our Executive Team"/>
-      <FranchiseeCarousel franchisees={board} title="Board Members"/>
+      <PageTitle title="Meet Our Team" />
+      <CardCarousel items={execs} title="Our Executive Team"/>
+      <CardCarousel items={board} title="Our Board Members"/>
     </main>
   )};
