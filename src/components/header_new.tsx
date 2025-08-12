@@ -10,9 +10,9 @@ const navigation = [
   { name: 'Franchise Opportunity', href: '/franchise', current: false },
   { name: 'Our Team', href: '/ourTeam', current: false },
   { name: 'Careers', href: '#', current: false },
-  { name: 'Jibu Stories', href: '#', current: false },
+  { name: 'Jibu Stories', href: '/stories', current: false },
   { name: 'FAQ', href: '#', current: false },
-  { name: 'Jibuntu', href: '#', current: false },
+  { name: 'Jibuntu', href: 'https://jibuntu.org/', current: false },
 ]
 
 function classNames(...classes: (string | false | null | undefined)[]): string {

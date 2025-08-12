@@ -84,7 +84,7 @@ export default function ourTeam() {
   return (
     <main>
       <PageTitle title="Meet Our Team" />
-      <CardCarousel items={execs} title="Our Executive Team"/>
       <CardCarousel items={board} title="Our Board Members"/>
+      <CardCarousel items={execs} title="Our Executive Team"/>
     </main>
   )};
