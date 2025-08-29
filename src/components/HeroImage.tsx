@@ -1,8 +1,4 @@
 // app/components/HeroImage.tsx
-
-// Hero image has customizable parameters, to be used across different pages. Default Parameters are for homepage, but can be customized for different pages. 
-
-
 "use client";
 
 import Image from "next/image";
@@ -21,9 +17,8 @@ export default function HeroImage({
   subtitle?: string;
   showButton?: boolean;
 }) {
-  
   return (
-    <section className="relative w-full h-[500px] md:h-[600px]">
+    <section className="relative w-full h-[400px] md:h-[600px] lg:h-[700px]">
       {/* Background Image */}
       <Image
         src={imageurl}
@@ -31,6 +26,7 @@ export default function HeroImage({
         fill
         priority
         className="object-cover"
+        sizes="100vw"
       />
 
       {/* Overlay */}
@@ -38,19 +34,21 @@ export default function HeroImage({
 
       {/* Conditionally Render Text */}
       {showText && (
-        <div className="absolute bottom-10 left-10 text-white max-w-xl">
-          <h1 className="text-3xl md:text-6xl mb-4">
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-4 md:px-8">
+          <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-4 leading-snug">
             {title}
           </h1>
-          <p className="mb-6 text-sm md:text-base">
+          <p className="mb-6 text-sm sm:text-base md:text-lg max-w-2xl">
             {subtitle}
           </p>
-          {showButton && (<Link
-            href="/about"
-            className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded transition"
-          >
-            Learn More
-          </Link>)}
+          {showButton && (
+            <Link
+              href="/about"
+              className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-md text-sm sm:text-base transition"
+            >
+              Learn More
+            </Link>
+          )}
         </div>
       )}
     </section>

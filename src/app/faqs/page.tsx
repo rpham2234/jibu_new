@@ -23,7 +23,7 @@ export default function FAQPage() {
   return (
     <main className="bg-[#1b559b]">
       <HeroImage imageurl="https://jibuco.com/wp-content/uploads/2022/09/FAQBanner.jpeg" title="FAQs" subtitle="Questions most frequently asked about Jibu, Inc." showButton={false} />
-      <div className="bg-white border border-gray-200 divide-y divide-gray-200 rounded-xl m-12">
+      <div className="bg-white border border-gray-200 divide-y divide-gray-200 rounded-xl m-6 md:m-12">
         {questions.map((question, index) => (
             <details key={index} className="p-6 group">
                 <summary className="flex items-center justify-between cursor-pointer">

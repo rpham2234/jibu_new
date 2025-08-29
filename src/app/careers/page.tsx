@@ -1,7 +1,6 @@
 "use client";
 
 import OpenPositionsPage from "@/components/careers/careers-card";
-import FranchiseForm from "@/components/franchise/FranchiseForm";
 import HeroImage from "@/components/HeroImage";
 import React from "react";
 
