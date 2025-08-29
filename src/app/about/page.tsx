@@ -6,14 +6,14 @@ import PageTitle from '@/components/subcomponents/pageTitle';
 
 export default function AboutPage() {
   return (
-    <div className="flex justify-center px-4 bg-[#1fbbe4]">
-      <div className="max-w-6xl w-full space-y-16">
-        <PageTitle title='About Us'/>
+    <div className="flex justify-center px-4 py-8 bg-[#1b559b]">
+      <div className="max-w-6xl w-full space-y-8">
+        {/*<PageTitle title='About Us'/>*/}
         {/* Section 1 */}
         <section className="bg-[#ffffff] rounded shadow p-6">
           <div className="grid md:grid-cols-2 gap-6 items-center">
             <div>
-              <h1 className="text-3xl font-bold">Jibu Means &quot;Solution&quot;</h1>
+              <h1 className="text-3xl font-semibold md:text-4xl">Jibu Means &quot;Solution&quot;</h1>
               <h3 className="text-xl text-gray-500 mb-4">What we do</h3>
               <p className="mb-3">
                 Jibu capitalizes, equips, and trains emerging market entrepreneurs to launch and grow essential service franchises, with drinking water as our anchor product.
@@ -21,9 +21,7 @@ export default function AboutPage() {
               <p className="mb-4">
                 Franchises purify existing water sources in high-density urban and peri-urban communities and distribute to the neighborhood within walking distance of their storefronts. Franchisees also sell additional Jibu products and services.
               </p>
-              <button className="bg-sky-600 hover:bg-sky-700 text-white px-4 py-2 text-lg rounded">
-                Learn more about the Jibu Franchise Model
-              </button>
+              
             </div>
             <div>
               <Image
@@ -42,7 +40,7 @@ export default function AboutPage() {
         <section className="bg-[#ffffff] rounded shadow p-6">
           <div className="grid md:grid-cols-2 gap-6 items-center">
             <div>
-              <h2 className="text-2xl font-bold mb-4">Who we are</h2>
+              <h2 className="text-3xl font-semibold mb-4">Who we are</h2>
               <p className="mb-3">
                 Jibu, Inc is a for-profit social enterprise that prioritizes impact in our communities. Our hybrid approach stimulates responsible economic growth and independence. Through local entrepreneurship we produce safe drinking water as well as supply other essential products like LPG and fortified porridge.
               </p>
@@ -67,7 +65,7 @@ export default function AboutPage() {
         <section className="bg-[#ffffff] rounded shadow p-6">
           <div className="grid md:grid-cols-2 gap-6 items-center">
             <div>
-              <h2 className="text-2xl font-bold mb-4">The Jibu Story</h2>
+              <h2 className="text-3xl font-semibold mb-4">The Jibu Story</h2>
               <div className="aspect-video max-w-xl mx-auto">
                 <iframe
                   className="w-full h-full rounded"
@@ -79,7 +77,7 @@ export default function AboutPage() {
               </div>
             </div>
             <div>
-              <h2 className="text-2xl font-bold mb-4">Our Production Process</h2>
+              <h2 className="text-3xl font-semibold mb-4">Our Production Process</h2>
               <div className="aspect-video max-w-xl mx-auto">
                 <iframe
                   className="w-full h-full rounded"
@@ -97,7 +95,7 @@ export default function AboutPage() {
         <section className="bg-[#ffffff] rounded shadow p-6">
           <div className="grid md:grid-cols-2 gap-6 items-center">
             <div>
-              <h2 className="text-2xl font-bold mb-4">The Jibu Water Purifying Process</h2>
+              <h2 className="text-3xl font-semibold mb-4">The Jibu Water Purifying Process</h2>
               <p className="mb-3">
                 Jibu aims at consistently producing safe drinking water through its four-step filtration method. We use internationally accredited purification systems like ultrafiltration and blended RO-hybrid technology.
               </p>
@@ -136,7 +134,7 @@ export default function AboutPage() {
             className="w-full rounded"
           />
         </section>
-        <p></p>
+     
       </div>
     </div>
   );
