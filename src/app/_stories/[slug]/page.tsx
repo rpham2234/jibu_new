@@ -24,12 +24,12 @@ async function getPost(slug: string): Promise<WPPost> {
   return data[0];
 }
 
-export default async function StoryPage({
+export default async function Page({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>
 }) {
-  const post = await getPost(params.slug);
+  const post = await getPost((await params).slug);
   const image =
     post._embedded?.["wp:featuredmedia"]?.[0]?.source_url || "";
 

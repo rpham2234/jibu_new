@@ -1,90 +1,37 @@
 "use client";
 
-import CardCarousel from "@/components/SampleCarousel";
+import CardCarousel, { TeamMember } from "@/components/ExecutiveCarousel";
 import PageTitle from "@/components/subcomponents/pageTitle";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { getTeam, getExecs } from "./getTeam";
 
-export default function ourTeam() {
+export default function OurTeam() {
+  const [execs, setExecs] = useState<TeamMember[]>([]);
+  const [board, setBoard] = useState<TeamMember[]>([]);
 
-  const execs = [
-  {
-      "name": "Galen Welsch",
-      "location": "Chief Executive Officer",
-      "image": "https://jibuco.com/wp-content/uploads/2022/09/Galen-Welsch-Jibu-min-829x1024.jpg"
-    },
-    {
-      "name": "Antonia Nalunga",
-      "location": "Franchisee in Buruburu, Kenya",
-      "image": "https://jibuco.com/wp-content/uploads/2022/09/Antonia-Nalunga-819x1024.jpeg"
+  useEffect(() => {
+  getExecs().then((data) => {
+    if (process.env.NODE_ENV === "development") {
+      console.log("Execs:", data);
     }
-  ]
-  const board = [
-  {
-      "name": "Rehema Uwamahoro",
-      "location": "Franchisee in Rwamagana, Rwanda",
-      "image": "https://jibuco.com/wp-content/uploads/2022/10/Uwamahoro-Rehema-Franchisee-Rwamagana-min-731x1024.jpg"
-    },
-    {
-      "name": "Dorcus",
-      "location": "Franchisee in Buruburu, Kenya",
-      "image": "https://jibuco.com/wp-content/uploads/2023/01/MG_2009-1-jpg.webp"
-    },
-    {
-      "name": "Mediatrice Muvuna",
-      "location": "Franchisee in Kinamba, Musanze, Nyagatare - Rwanda",
-      "image": "https://jibuco.com/wp-content/uploads/2022/10/Mediatrice-Muvuna-Franchisee-Kinamba-min-731x1024.jpg"
-    },
-    {
-      "name": "Carol Mbabazi",
-      "location": "Franchisee in Kicukiro & Sonatube, Rwanda",
-      "image": "https://jibuco.com/wp-content/uploads/2022/10/Carol-Mbabazi-Franchisee-Kicukiro-and-Sonatube-min-731x1024.jpg"
-    },
-    {
-      "name": "Ivan Ntabazi",
-      "location": "Franchisee in Ggaba & Munyonyo, Uganda",
-      "image": "https://jibuco.com/wp-content/uploads/2023/02/IVAN-NTABAZI-min-731x1024.webp"
-    },
-    {
-      "name": "Ian Odong",
-      "location": "Franchisee in Ntinda, Uganda",
-      "image": "https://jibuco.com/wp-content/uploads/2022/10/IAN-ODONG-JIBU-NTINDA-MAY_16-min-731x1024.jpg"
-    },
-    {
-      "name": "Charity Wafula",
-      "location": "Franchisee in Karen, Kenya",
-      "image": "https://jibuco.com/wp-content/uploads/2023/02/Charity-Wafula-Franchisee-Karen-min-1-731x1024.webp"
-    },
-    {
-      "name": "Rosine Uwamaharo",
-      "location": "Franchisee in Nyamata & Gasogi 1, Rwanda",
-      "image": "https://jibuco.com/wp-content/uploads/2023/02/Uwamaharo-Rosine-Franchisee-Nyamata-and-Gasogi-1-min-731x1024.webp"
-    },
-    {
-      "name": "Aimee Kanyoni",
-      "location": "Franchisee in Ville, Goma, DRC",
-      "image": "https://jibuco.com/wp-content/uploads/2023/02/Aimee-Kanyoni-Franchisee-Ville-min-819x1024-min-1-731x1024.webp"
-    },
-    {
-      "name": "Bahati Patient",
-      "location": "Franchisee in Unigom, Goma, DRC",
-      "image": "https://jibuco.com/wp-content/uploads/2023/02/Bahati-Patient-Franchisee-Unigom-min-min-731x1024.webp"
-    },
-    {
-      "name": "Eric Nsengimana",
-      "location": "Franchisee in Virunga 2, Goma, DRC",
-      "image": "https://jibuco.com/wp-content/uploads/2023/02/Eric-Nsengimana-Franchisee-Virunga-2-min-min-1-731x1024.webp"
-    },
-    {
-      "name": "Walter Opio",
-      "location": "Franchisee in Najjanankumbi",
-      "image": "https://jibuco.com/wp-content/uploads/2023/02/WALTER-OPIYO-OJIJO-JIBU-LWEZA-FEB_16-min-731x1024-min-731x1024.webp"
+    setExecs(data);
+  });
+
+  getTeam().then((data) => {
+    if (process.env.NODE_ENV === "development") {
+      console.log("Board:", data);
     }
-];
+    setBoard(data);
+  });
+}, []);
 
   return (
     <main>
       <PageTitle title="Meet Our Team" />
-      <CardCarousel items={board} title="Our Board Members"/>
-      <CardCarousel items={execs} title="Our Executive Team"/>
+
+      {/* Uncomment these when you want to visually test */}
+      <CardCarousel items={board} title="Our Board Members" />
+      <CardCarousel items={execs} title="Our Executive Team" />
     </main>
-  )};
+  );
+}

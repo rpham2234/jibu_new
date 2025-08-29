@@ -38,12 +38,12 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:underline">
+                <a href="/careers" className="hover:underline">
                   Careers
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:underline">
+                <a href="/faqs" className="hover:underline">
                   FAQ
                 </a>
               </li>

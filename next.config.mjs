@@ -4,11 +4,15 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "tailwindcss.com",
+        hostname: "images.ctfassets.net",
       },
       {
         protocol: "https",
         hostname: "jibuco.com",
+      },
+      {
+        protocol: "https",
+        hostname: "committed-paradise-9b1cb948f5.media.strapiapp.com",
       }
     ],
   },

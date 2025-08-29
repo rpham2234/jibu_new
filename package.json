@@ -9,11 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@headlessui/react": "^2.2.6",
     "@heroicons/react": "^2.2.0",
     "@tailwindplus/elements": "^1.0.2",
+    "contentful-typescript-codegen": "^3.4.0",
+    "dotenv": "^17.2.1",
     "embla-carousel-react": "^8.6.0",
     "flyonui": "^2.3.1",
+    "framer-motion": "^12.23.12",
     "leaflet": "^1.9.4",
     "lucide-react": "^0.535.0",
     "next": "^15.4.4",
