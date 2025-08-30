@@ -7,7 +7,7 @@ import React from "react";
 import {getJobs} from "./getJobs"
 import { Job } from "@/components/careers/careers-card"
 
-export default function franchise() {
+export default function Page() {
 
   const [jobs, setJobs] = useState<Job[]>([]);
   
