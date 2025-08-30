@@ -11,18 +11,8 @@ export type Job = {
   department: string;
   type: "Full-time" | "Part-time" | "Contract" | "Internship";
   location: string;
-  url: string;
+  description: string;
 };
-
-// ------------------------------------------------------------
-// Demo data — replace with CMS/ATS feed
-// ------------------------------------------------------------
-const JOBS: Job[] = [
-  { id: "1", title: "Senior Frontend Engineer", department: "Engineering", type: "Full-time", location: "Remote (US)", url: "#" },
-  { id: "2", title: "Product Designer", department: "Design", type: "Full-time", location: "New York, NY", url: "#" },
-  { id: "3", title: "Technical Writer", department: "Marketing", type: "Contract", location: "Remote", url: "#" },
-  { id: "4", title: "Data Analyst (Intern)", department: "Data", type: "Internship", location: "Austin, TX", url: "#" },
-];
 
 // ------------------------------------------------------------
 // Utilities
@@ -76,20 +66,27 @@ function useJobFilters(jobs: Job[]) {
 }
 
 // ------------------------------------------------------------
-// Page Component (mobile-first rendering)
+// Component (parameterized)
 // ------------------------------------------------------------
-export default function OpenPositionsPage() {
-  const { q, setQ, category, setCategory, type, setType, location, setLocation, facets, filtered, reset } = useJobFilters(JOBS);
+export default function OpenPositionsPage({ jobs }: { jobs: Job[] }) {
+  const { q, setQ, category, setCategory, type, setType, location, setLocation, facets, filtered, reset } =
+    useJobFilters(jobs);
+
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 
   return (
     <main className="min-h-screen p-4 sm:p-10">
-      <section className="mx-auto w-full max-w-5xl rounded-2xl bg-white p-6 shadow-md sm:p-8" aria-labelledby="open-positions-heading">
+      <section
+        className="mx-auto w-full max-w-5xl rounded-2xl bg-white p-6 shadow-md sm:p-8"
+        aria-labelledby="open-positions-heading"
+      >
         <div className="mb-6">
           <h1 id="open-positions-heading" className="text-2xl font-bold tracking-tight sm:text-4xl">
             Open Positions
           </h1>
-          <p className="mt-1 text-sm text-slate-600">Browse our current openings and use the filters to find your fit.</p>
+          <p className="mt-1 text-sm text-slate-600">
+            Browse our current openings and use the filters to find your fit.
+          </p>
         </div>
 
         {/* Mobile controls */}
@@ -111,16 +108,46 @@ export default function OpenPositionsPage() {
 
           {mobileFiltersOpen && (
             <div className="mt-3 grid grid-cols-2 gap-3">
-              <select value={category} onChange={(e) => setCategory(e.target.value)} className="rounded-lg border px-3 py-2 text-sm">
-                {facets.categories.map((c) => <option key={c} value={c}>{c}</option>)}
+              <select
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+                className="rounded-lg border px-3 py-2 text-sm"
+              >
+                {facets.categories.map((c) => (
+                  <option key={c} value={c}>
+                    {c}
+                  </option>
+                ))}
               </select>
-              <select value={type} onChange={(e) => setType(e.target.value)} className="rounded-lg border px-3 py-2 text-sm">
-                {facets.types.map((t) => <option key={t} value={t}>{t}</option>)}
+              <select
+                value={type}
+                onChange={(e) => setType(e.target.value)}
+                className="rounded-lg border px-3 py-2 text-sm"
+              >
+                {facets.types.map((t) => (
+                  <option key={t} value={t}>
+                    {t}
+                  </option>
+                ))}
               </select>
-              <select value={location} onChange={(e) => setLocation(e.target.value)} className="rounded-lg border px-3 py-2 text-sm">
-                {facets.locations.map((l) => <option key={l} value={l}>{l}</option>)}
+              <select
+                value={location}
+                onChange={(e) => setLocation(e.target.value)}
+                className="rounded-lg border px-3 py-2 text-sm"
+              >
+                {facets.locations.map((l) => (
+                  <option key={l} value={l}>
+                    {l}
+                  </option>
+                ))}
               </select>
-              <button onClick={() => { reset(); setMobileFiltersOpen(false); }} className="rounded-lg border px-3 py-2 text-sm font-medium text-slate-700">
+              <button
+                onClick={() => {
+                  reset();
+                  setMobileFiltersOpen(false);
+                }}
+                className="rounded-lg border px-3 py-2 text-sm font-medium text-slate-700"
+              >
                 Reset
               </button>
             </div>
@@ -136,17 +163,44 @@ export default function OpenPositionsPage() {
               onChange={(e) => setQ(e.target.value)}
               className="w-full max-w-xs rounded-lg border border-slate-300 px-3 py-2 text-sm"
             />
-            <select value={category} onChange={(e) => setCategory(e.target.value)} className="rounded-lg border px-3 py-2 text-sm">
-              {facets.categories.map((c) => <option key={c} value={c}>{c}</option>)}
+            <select
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+              className="rounded-lg border px-3 py-2 text-sm"
+            >
+              {facets.categories.map((c) => (
+                <option key={c} value={c}>
+                  {c}
+                </option>
+              ))}
             </select>
-            <select value={type} onChange={(e) => setType(e.target.value)} className="rounded-lg border px-3 py-2 text-sm">
-              {facets.types.map((t) => <option key={t} value={t}>{t}</option>)}
+            <select
+              value={type}
+              onChange={(e) => setType(e.target.value)}
+              className="rounded-lg border px-3 py-2 text-sm"
+            >
+              {facets.types.map((t) => (
+                <option key={t} value={t}>
+                  {t}
+                </option>
+              ))}
             </select>
-            <select value={location} onChange={(e) => setLocation(e.target.value)} className="rounded-lg border px-3 py-2 text-sm">
-              {facets.locations.map((l) => <option key={l} value={l}>{l}</option>)}
+            <select
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+              className="rounded-lg border px-3 py-2 text-sm"
+            >
+              {facets.locations.map((l) => (
+                <option key={l} value={l}>
+                  {l}
+                </option>
+              ))}
             </select>
           </div>
-          <button onClick={reset} className="rounded-lg border px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50">
+          <button
+            onClick={reset}
+            className="rounded-lg border px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+          >
             Reset
           </button>
         </div>
@@ -162,11 +216,20 @@ export default function OpenPositionsPage() {
             <div key={job.id} className="rounded-lg border border-slate-200 p-4">
               <div className="font-medium text-slate-900">{job.title}</div>
               <div className="mt-1 flex flex-wrap gap-2 text-xs text-slate-600">
-                <span className="rounded-full bg-slate-100 px-2 py-0.5">{job.department}</span>
-                <span className="rounded-full bg-slate-100 px-2 py-0.5">{job.type}</span>
-                <span className="rounded-full bg-slate-100 px-2 py-0.5">{job.location}</span>
+                <span className="rounded-full bg-slate-100 px-2 py-0.5">
+                  {job.department}
+                </span>
+                <span className="rounded-full bg-slate-100 px-2 py-0.5">
+                  {job.type}
+                </span>
+                <span className="rounded-full bg-slate-100 px-2 py-0.5">
+                  {job.location}
+                </span>
               </div>
-              <a href={`/careers/${job.id}`} className="mt-3 inline-flex w-full items-center justify-center rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50">
+              <a
+                href={`/careers/${job.id}`}
+                className="mt-3 inline-flex w-full items-center justify-center rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+              >
                 Apply
               </a>
             </div>
@@ -187,19 +250,29 @@ export default function OpenPositionsPage() {
             <tbody className="divide-y divide-slate-200">
               {filtered.length === 0 && (
                 <tr>
-                  <td colSpan={4} className="px-6 py-8 text-center text-slate-500">No positions match your filters.</td>
+                  <td
+                    colSpan={4}
+                    className="px-6 py-8 text-center text-slate-500"
+                  >
+                    No positions match your filters.
+                  </td>
                 </tr>
               )}
               {filtered.map((job) => (
                 <tr key={job.id} className="hover:bg-slate-50">
                   <td className="px-6 py-4">
                     <div className="font-medium text-slate-900">{job.title}</div>
-                    <div className="mt-0.5 text-xs text-slate-500">{job.department}</div>
+                    <div className="mt-0.5 text-xs text-slate-500">
+                      {job.department}
+                    </div>
                   </td>
                   <td className="px-6 py-4 text-slate-700">{job.type}</td>
                   <td className="px-6 py-4 text-slate-700">{job.location}</td>
                   <td className="px-6 py-4 text-right">
-                    <a href={`/careers/${job.id}`} className="inline-flex items-center rounded-full border border-slate-300 px-3 py-1 text-xs font-medium text-slate-700 hover:bg-slate-50">
+                    <a
+                      href={`/careers/${job.id}`}
+                      className="inline-flex items-center rounded-full border border-slate-300 px-3 py-1 text-xs font-medium text-slate-700 hover:bg-slate-50"
+                    >
                       Apply
                     </a>
                   </td>
@@ -211,7 +284,7 @@ export default function OpenPositionsPage() {
 
         {/* Footer count */}
         <div className="mt-4 text-right text-xs text-slate-500">
-          Showing <span className="font-medium text-slate-700">{filtered.length}</span> of {JOBS.length} positions
+          Showing <span className="font-medium text-slate-700">{filtered.length}</span> of {jobs.length} positions
         </div>
       </section>
     </main>

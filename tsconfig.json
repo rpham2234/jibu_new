@@ -33,7 +33,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts"
-, "src/app/ourTeam/getTeam.js", "src/app/ourTeam/page.jsx", "src/lib/apidata.js"  ],
+, "src/app/ourTeam/getTeam.ts", "src/app/ourTeam/page.jsx", "src/lib/apidata.js", "src/app/getFranchisees.js", "src/app/getFranchisees.js"  ],
   "exclude": [
     "node_modules"
   ]

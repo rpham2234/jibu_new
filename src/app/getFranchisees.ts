@@ -1,6 +1,6 @@
 import { Franchisee } from "@/components/SampleCarousel";
 
-const STRAPI_URL = "https://committed-paradise-9b1cb948f5.strapiapp.com/api";
+const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
 
 function mapToFranchisee(item: any): Franchisee {
   const headshot = item.Headshot;

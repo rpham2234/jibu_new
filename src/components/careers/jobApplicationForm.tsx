@@ -2,31 +2,55 @@
 
 import { useState } from "react";
 
-export default function JobApplicationForm({ jobTitle }: { jobTitle: string }) {
+export default function JobApplicationForm({
+  jobTitle,
+  location,
+  description,
+  type,
+}: {
+  jobTitle: string;
+  location?: string;
+  description?: string;
+  type?: string;
+}) {
   const [submitted, setSubmitted] = useState(false);
 
   return (
     <form
       className="max-w-2xl mx-auto p-6 sm:p-10 bg-white rounded-2xl shadow-md space-y-6"
-      action="https://getform.io/f/your-endpoint-here" // replace with your Getform/Formspree/Strapi API
+      action="https://getform.io/f/your-endpoint-here" // replace with Getform/Formspree/Strapi endpoint
       method="POST"
       encType="multipart/form-data"
       onSubmit={() => setSubmitted(true)}
     >
-      <h2 className="text-2xl font-bold">Apply for {jobTitle}</h2>
+      {/* Header with job info */}
+      <header className="space-y-1">
+        <h2 className="text-2xl font-bold">Apply for {jobTitle}</h2>
+        {location && <p className="text-sm text-slate-600">{location}</p>}
+        {type && <p className="text-sm text-slate-600">{type}</p>}
+        {description && (
+          <p className="text-sm text-slate-500 leading-relaxed">{description}</p>
+        )}
+      </header>
 
-      {/* Hidden job title (so backend knows which role) */}
+      {/* Hidden inputs so backend knows the role */}
       <input type="hidden" name="jobTitle" value={jobTitle} />
+      {location && <input type="hidden" name="jobLocation" value={location} />}
+      {description && (
+        <input type="hidden" name="jobDescription" value={description} />
+      )}
 
-      {/* Basic info */}
+      {/* Applicant fields */}
       {[
         { label: "Full Name", name: "name" },
         { label: "Email", name: "email", type: "email" },
         { label: "Phone Number", name: "phone" },
-        { label: "Location", name: "location" },
+        { label: "Current Location", name: "applicantLocation" },
       ].map(({ label, name, type = "text" }) => (
         <div key={name}>
-          <label className="block text-sm font-medium text-slate-700">{label} *</label>
+          <label className="block text-sm font-medium text-slate-700">
+            {label} *
+          </label>
           <input
             type={type}
             name={name}
@@ -36,7 +60,7 @@ export default function JobApplicationForm({ jobTitle }: { jobTitle: string }) {
         </div>
       ))}
 
-      {/* Resume or LinkedIn */}
+      {/* Resume / LinkedIn */}
       <div>
         <label className="block text-sm font-medium text-slate-700">
           Upload Resume/CV *
@@ -94,7 +118,6 @@ export default function JobApplicationForm({ jobTitle }: { jobTitle: string }) {
         Submit Application
       </button>
 
-      {/* Success message */}
       {submitted && (
         <p className="text-sm text-green-600 pt-2">
           ✅ Your application has been submitted!

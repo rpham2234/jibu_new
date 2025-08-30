@@ -2,7 +2,7 @@
 
 import { TeamMember } from "@/components/ExecutiveCarousel";
 
-const STRAPI_URL = "https://committed-paradise-9b1cb948f5.strapiapp.com/api";
+const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
 
 function mapToTeamMember(item: any): TeamMember {
   const headshot = item.Headshot;
