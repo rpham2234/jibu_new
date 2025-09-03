@@ -13,7 +13,7 @@ function mapToFranchisee(item: any): Franchisee {
 
   return {
     name: item.Name,
-    location: item.location,
+    location: item.Location,
     image: headshotUrl,
   };
 }

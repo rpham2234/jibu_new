@@ -7,7 +7,7 @@ export default function FranchiseForm() {
   const [submitting, setSubmitting] = useState(false);
 
   // STRAPI_URL should be like: https://your-domain.strapiapp.com
-  // We'll post to `${STRAPI_URL}/api/franchisee-forms`
+  // We'll post to `${STRAPI_URL}/franchisee-forms`
   const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL ?? "";
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -18,13 +18,7 @@ export default function FranchiseForm() {
     const formEl = e.currentTarget;
     const formData = new FormData(formEl);
 
-    // Build multipart body per Strapi v4 rules:
-    // - scalar fields must be under "data[...]" keys
-    // - file fields must be under "files.<fieldName>"
-    const payload = new FormData();
-
-    // Map your input names 1:1 to Strapi fields
-    // (these names match the inputs below)
+    // Build scalar fields exactly as they exist in your Strapi model
     const data = {
       Name: String(formData.get("name") || ""),
       Email: String(formData.get("email") || ""),
@@ -36,42 +30,61 @@ export default function FranchiseForm() {
       confirmationAccepted: !!formData.get("true"),
     };
 
-    // Append scalars as data[...]
-    Object.entries(data).forEach(([key, value]) => {
-      // Booleans should be stringified for FormData
-      payload.append(`data[${key}]`, typeof value === "boolean" ? String(value) : value);
-    });
-
-    // Append file if present
-    const resumeFile = formData.get("resume");
-    if (resumeFile instanceof File && resumeFile.size > 0) {
-      payload.append("files.resume", resumeFile);
-    }
+    // Grab resume file
+    const resumeFile = formData.get("resume") as File | null;
+    let resumeId: number | null = null;
 
     try {
-      const res = await fetch(`${STRAPI_URL}/franchisee-forms`, {
+      // STEP 1: upload file (Strapi v4 upload endpoint)
+      if (resumeFile && resumeFile.size > 0) {
+        const uploadFD = new FormData();
+        uploadFD.append("files", resumeFile, resumeFile.name);
+
+        const uploadRes = await fetch(`${STRAPI_URL}/upload`, {
+          method: "POST",
+          // headers: { Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_TOKEN}` }, // if needed
+          body: uploadFD,
+        });
+        if (!uploadRes.ok) throw new Error(`Upload failed: ${await uploadRes.text()}`);
+
+        const uploaded = await uploadRes.json(); // [{ id, url, ... }]
+        resumeId = uploaded?.[0]?.id ?? null;
+        if (!resumeId) throw new Error("Upload returned no file id.");
+      }
+
+      // STEP 2: create the entry and link the file id under the "Resume" field
+      const createRes = await fetch(`${STRAPI_URL}/franchisee-forms`, {
         method: "POST",
-        // If you're using a public role with "create" allowed, no headers needed.
-        // If using an API token, uncomment below:
-        // headers: {
-        //   Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_TOKEN}`,
-        // },
-        body: payload,
+        headers: {
+          "Content-Type": "application/json",
+          // ...(process.env.NEXT_PUBLIC_STRAPI_TOKEN
+          //   ? { Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_TOKEN}` }
+          //   : {}),
+        },
+        body: JSON.stringify({
+          data: {
+            ...data,
+            // IMPORTANT: use the exact attribute name from Strapi (case-sensitive)
+            Resume: resumeId, // single-media expects a single numeric id
+          },
+        }),
       });
 
-      if (!res.ok) {
-        const err = await safeJson(res);
+      if (!createRes.ok) {
+        const err = await createRes.json().catch(async () => ({ error: await createRes.text() }));
         setStatus(`❌ Failed: ${JSON.stringify(err)}`);
       } else {
         setStatus("✅ Application submitted!");
         formEl.reset();
       }
-    } catch (error) {
-      setStatus("❌ Network error");
+    } catch (error: any) {
+      setStatus(`❌ Error: ${error.message || "Network error"}`);
     } finally {
       setSubmitting(false);
     }
   };
+
+
 
   // Helper to avoid JSON parse errors on non-JSON responses
   async function safeJson(res: Response) {

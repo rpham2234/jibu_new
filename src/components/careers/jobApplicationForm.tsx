@@ -3,7 +3,7 @@
 // ==========================
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 
 export default function JobApplicationForm({
   jobTitle,
@@ -16,41 +16,91 @@ export default function JobApplicationForm({
   description?: string;
   type?: string;
 }) {
+  const [status, setStatus] = useState<string>("");
+  const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  // STRAPI_URL should be like: https://your-domain.strapiapp.com
+  // We'll post to `${STRAPI_URL}/api/job-applications`
+  const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL ?? "";
+
+    async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setError(null);
+    setError(null); setSubmitted(false);
+
+    const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL!;
+    const TOKEN = process.env.NEXT_PUBLIC_STRAPI_TOKEN; // if you use one
 
     const form = e.currentTarget;
-    const formData = new FormData(form);
+    const fields = Object.fromEntries(new FormData(form).entries());
 
-    // Basic client-side guard: make sure a file exists
-    const resumeInput = form.elements.namedItem("resume") as HTMLInputElement | null;
-    const resume = resumeInput?.files?.[0];
-    if (!resume) {
-      setError("Please attach your resume.");
-      return;
-    }
+    const resume = (form.elements.namedItem("resume") as HTMLInputElement)?.files?.[0];
+    if (!resume) { setError("Please attach your resume."); return; }
 
     try {
-      const res = await fetch(`${STRAPI_URL}/api/job-applications`, {
+        // 1) Upload the file to /api/upload
+        const fileFD = new FormData();
+        fileFD.append("files", resume, resume.name ?? "resume");
+        const upRes = await fetch(`${STRAPI_URL}/upload`, {
         method: "POST",
-        body: formData,
-      });
+        body: fileFD,
+        headers: TOKEN ? { Authorization: `Bearer ${TOKEN}` } : undefined,
+        });
+        if (!upRes.ok) throw new Error(await upRes.text());
+        const uploaded = await upRes.json(); // [{ id, url, ... }]
+        const fileId = uploaded?.[0]?.id;
+        if (!fileId) throw new Error("Upload succeeded but no file id returned.");
 
-      if (!res.ok) {
-        const msg = await res.text();
-        throw new Error(msg || "Failed to submit application");
-      }
+        // 2) Create the job-application and link the file id
+        const createRes = await fetch(`${STRAPI_URL}/job-applications`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            ...(TOKEN ? { Authorization: `Bearer ${TOKEN}` } : {}),
+        },
+        body: JSON.stringify({
+            data: {
+            name: fields.name,
+            email: fields.email,
+            phone: fields.phone,
+            applicantLocation: fields.applicantLocation,
+            linkedin: fields.linkedin || null,
+            coverLetter: fields.coverLetter || null,
+            consent: Boolean(fields.consent),
+            jobTitle,
+            jobLocation: location ?? null,
+            jobDescription: description ?? null,
+            jobType: type ?? null,
+            resume: fileId, // single-media expects a single id
+            },
+        }),
+        });
+        if (!createRes.ok) throw new Error(await createRes.text());
 
-      setSubmitted(true);
-      form.reset();
+        setSubmitted(true);
+        form.reset();
     } catch (err: any) {
-      setError(err?.message ?? "Something went wrong. Please try again.");
+        setError(err?.message ?? "Something went wrong. Please try again.");
     }
+    }
+
+
+  // Helper to avoid JSON parse errors on non-JSON responses
+  async function safeJson(res: Response) {
+    try {
+      return await res.json();
+    } catch {
+      const text = await res.text();
+      return { status: res.status, message: text } as any;
+    }
+  }
+  function formatErr(err: any) {
+    if (!err) return "Unknown error";
+    if (typeof err === "string") return err;
+    if (err.error) return JSON.stringify(err.error);
+    if (err.message) return err.message;
+    return JSON.stringify(err);
   }
 
   return (
@@ -139,7 +189,7 @@ export default function JobApplicationForm({
       {/* Consent */}
       <div>
         <label className="flex items-start gap-2 text-sm">
-          <input type="checkbox" name="consent" required className="mt-1" />
+          <input id="consent" type="checkbox" name="consent" required className="mt-1" />
           <span>
             I confirm that the information provided is accurate and may be used
             for recruitment purposes.
@@ -150,9 +200,10 @@ export default function JobApplicationForm({
       {/* Submit */}
       <button
         type="submit"
-        className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-2 rounded-lg transition"
+        disabled={submitting}
+        className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-2 rounded-lg transition disabled:opacity-60 disabled:cursor-not-allowed"
       >
-        Submit Application
+        {submitting ? "Submitting…" : "Submit Application"}
       </button>
 
       {submitted && (
@@ -161,9 +212,9 @@ export default function JobApplicationForm({
         </p>
       )}
 
-      {error && (
-        <p className="text-sm text-red-600 pt-2" role="alert">
-          {error}
+      {status && (
+        <p className="text-sm pt-2" role="status">
+          {status}
         </p>
       )}
     </form>
@@ -171,116 +222,17 @@ export default function JobApplicationForm({
 }
 
 // ==========================
-// File: app/api/apply/route.ts (Next.js App Router)
-// ==========================
-import { NextRequest, NextResponse } from "next/server";
-
-/**
- * Proxy the form submission to Strapi securely.
- *
- * Expected Strapi setup (v4):
- * - Collection type: `job-application` (API UID `job-application` → endpoint `/api/job-applications`)
- *   Fields (examples):
- *     - name (Text)
- *     - email (Email)
- *     - phone (Text)
- *     - applicantLocation (Text)
- *     - linkedin (Text / URL)
- *     - coverLetter (Rich text or Text)
- *     - consent (Boolean)
- *     - jobTitle (Text)
- *     - jobLocation (Text)
- *     - jobDescription (Rich text or Text)
- *     - jobType (Text)
- *     - resume (Media, single file)
- *
- * Permissions: allow `create` for this content-type via API token
- * or temporarily for Public role if you prefer no token.
- */
-export async function POST(req: NextRequest) {
-  try {
-    const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL; // e.g. https://cms.example.com
-    //const STRAPI_TOKEN = process.env.STRAPI_TOKEN; // Strapi API Token with create perms for job-application
-
-    if (!STRAPI_URL) {
-      return NextResponse.json(
-        { error: "Missing STRAPI_URL env" },
-        { status: 500 }
-      );
-    }
-
-    // Read incoming multipart form data
-    const incoming = await req.formData();
-
-    // Build multipart payload compatible with Strapi's combined upload
-    // https://docs.strapi.io/dev-docs/api/rest/interactive-api-explorer#create-an-entry-with-files
-    const data = {
-      name: incoming.get("name"),
-      email: incoming.get("email"),
-      phone: incoming.get("phone"),
-      applicantLocation: incoming.get("applicantLocation"),
-      linkedin: incoming.get("linkedin"),
-      coverLetter: incoming.get("coverLetter"),
-      consent: !!incoming.get("consent"),
-      jobTitle: incoming.get("jobTitle"),
-      jobLocation: incoming.get("jobLocation"),
-      jobDescription: incoming.get("jobDescription"),
-      jobType: incoming.get("jobType"),
-    } as Record<string, any>;
-
-    const resume = incoming.get("resume") as File | null;
-
-    const outgoing = new FormData();
-    outgoing.set("data", JSON.stringify(data));
-    if (resume) {
-      outgoing.append("files.resume", resume, (resume as any).name ?? "resume" );
-    }
-
-    const headers: Record<string, string> = {};
-    //if (STRAPI_TOKEN) headers["Authorization"] = `Bearer ${STRAPI_TOKEN}`;
-
-    const res = await fetch(`${STRAPI_URL}/api/job-applications`, {
-      method: "POST",
-      headers,
-      body: outgoing,
-    });
-
-    if (!res.ok) {
-      const text = await res.text();
-      return NextResponse.json(
-        { error: `Strapi error: ${text}` },
-        { status: 500 }
-      );
-    }
-
-    const json = await res.json();
-    return NextResponse.json({ ok: true, id: json?.data?.id ?? null });
-  } catch (err: any) {
-    return NextResponse.json(
-      { error: err?.message ?? "Unknown server error" },
-      { status: 500 }
-    );
-  }
-}
-
-// ==========================
 // File: .env.local (example)
 // ==========================
-// STRAPI_URL=https://cms.your-domain.com
-// STRAPI_TOKEN=your_strapi_api_token_with_create_permission
+// NEXT_PUBLIC_STRAPI_URL=https://cms.your-domain.com
+// NEXT_PUBLIC_STRAPI_TOKEN=your_public_or_pat_token_if_used
 
 // ==========================
-// Notes
+// Strapi setup notes
 // ==========================
-// 1) In Strapi Admin → Settings → Users & Permissions Plugin → Roles → (If using API token, skip) Public:
-//    - Enable `create` on the `job-application` content-type if you prefer tokenless submissions.
-//    Using an API token via the proxy is recommended.
-//
-// 2) If you use a different collection UID, adjust the route `${STRAPI_URL}/api/<your-uid>`.
-//
-// 3) CORS: allow your Next.js site origin in Strapi (Settings → Global Settings → CORS),
-//    though the proxy means the browser only talks to your Next.js domain.
-//
-// 4) Spam protection: you can add a hidden honeypot field (e.g., `website`) in the form and drop if filled.
-//
-// 5) If you later want to send notifications (Slack/Email), do it in this API route after a successful Strapi create.
+// * Content-Type: `job-application` (pluralized route → /api/job-applications)
+//   Fields: name, email, phone, applicantLocation, linkedin, coverLetter, consent (boolean),
+//           jobTitle, jobLocation, jobDescription, jobType, resume (media)
+// * If you use a token, create an API Token with `create` permission for the content-type and
+//   allow your site domain in CORS. If you don’t want a public token in the client, proxy via
+//   a Next.js Route Handler and keep the token server-side.
