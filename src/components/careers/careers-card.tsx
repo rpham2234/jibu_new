@@ -12,6 +12,7 @@ export type Job = {
   type: "Full-time" | "Part-time" | "Contract" | "Internship";
   location: string;
   description: string;
+  fullDescription: string;
 };
 
 // ------------------------------------------------------------

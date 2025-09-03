@@ -2,6 +2,7 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { getPersonByDocumentId } from "../getTeam"; // should return Promise<TeamMember | null/undefined>
+import BackButton from "@/components/subcomponents/BackButton";
 
 export default async function Page({
   params,
@@ -19,6 +20,7 @@ export default async function Page({
   return (
     <main className="mx-auto max-w-4xl px-4 py-10">
       <header className="mb-8">
+        <BackButton></BackButton>
         <h1 className="text-3xl md:text-4xl font-semibold tracking-tight">
           {person.name}
         </h1>

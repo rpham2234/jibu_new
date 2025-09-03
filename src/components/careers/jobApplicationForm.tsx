@@ -3,17 +3,29 @@
 // ==========================
 "use client";
 
+import { Link } from "lucide-react";
 import React, { useState } from "react";
+import BackLink from "../subcomponents/BackButton";
+
+const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL!;
+const TOKEN = process.env.NEXT_PUBLIC_STRAPI_TOKEN; // if you use one
+
+function normalizeUrl(u?: string) {
+  if (!u) return "";
+  return u.startsWith("http") ? u : `${STRAPI_URL}${u}`;
+}
 
 export default function JobApplicationForm({
   jobTitle,
   location,
   description,
+  fullDescription,
   type,
 }: {
   jobTitle: string;
   location?: string;
   description?: string;
+  fullDescription?: string;
   type?: string;
 }) {
   const [status, setStatus] = useState<string>("");
@@ -29,8 +41,7 @@ export default function JobApplicationForm({
     e.preventDefault();
     setError(null); setSubmitted(false);
 
-    const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL!;
-    const TOKEN = process.env.NEXT_PUBLIC_STRAPI_TOKEN; // if you use one
+    
 
     const form = e.currentTarget;
     const fields = Object.fromEntries(new FormData(form).entries());
@@ -111,12 +122,22 @@ export default function JobApplicationForm({
     >
       {/* Header with job info */}
       <header className="space-y-1">
+        <BackLink />
         <h2 className="text-2xl font-bold">Apply for {jobTitle}</h2>
         {location && <p className="text-sm text-slate-600">{location}</p>}
         {type && <p className="text-sm text-slate-600">{type}</p>}
         {description && (
           <p className="text-sm text-slate-500 leading-relaxed">{description}</p>
         )}
+        {fullDescription && (
+        <a
+            className="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors"
+            href={normalizeUrl(fullDescription)}
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            Full Job Description
+        </a>)}
       </header>
 
       {/* Hidden inputs so backend knows the role */}

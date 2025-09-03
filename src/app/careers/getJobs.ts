@@ -12,6 +12,11 @@ function mapToJob(item: any): Job {
     type: item.Type,
     location: item.Location,
     description: item.Description,
+    fullDescription: item.FullDescription
+    ? (item.FullDescription.url.startsWith("http")
+        ? item.FullDescription.url
+        : `${process.env.NEXT_PUBLIC_STRAPI_URL}${item.FullDescription.url}`)
+    : null,
   };
 }
 
@@ -26,7 +31,7 @@ export async function getJobs(): Promise<Job[]> {
 
 export async function getJobByDocumentId(documentId: string): Promise<Job> {
   const res = await fetch(
-    `${STRAPI_URL}/jobs/${documentId}`,
+    `${STRAPI_URL}/jobs/${documentId}?populate=FullDescription`,
     { cache: "no-store" }
   );
 

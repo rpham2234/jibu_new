@@ -14,7 +14,7 @@ export default async function Page({
   return (
     <main className="px-4 py-8 bg-[#1b559b]">
       <h1 className="sr-only">Apply for the {job.title} position</h1>
-      <JobApplicationForm jobTitle={job.title} location={job.location} description={job.description} type={job.type}/>
+      <JobApplicationForm jobTitle={job.title} location={job.location} description={job.description} type={job.type} fullDescription={job.fullDescription}/>
     </main>
   );
 }
