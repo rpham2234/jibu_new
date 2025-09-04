@@ -44,7 +44,7 @@ export default function HeroImage({
           {showButton && (
             <Link
               href="/about"
-              className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-md text-sm sm:text-base transition"
+              className="border-2 border-white text-white px-6 py-3 rounded-full hover:bg-white hover:text-black"
             >
               Learn More
             </Link>
