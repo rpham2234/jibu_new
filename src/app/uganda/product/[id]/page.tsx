@@ -1,17 +1,17 @@
-// app/uganda/product/[id]/page.tsx
+// app/uganda/product/[id]/page.tsx  (server component)
 
 import ProductPage from "@/components/countries/productPage";
 import { notFound } from "next/navigation";
-import { getProductById } from "../../getProducts"; // adjust if your file lives elsewhere
+import { getProductById } from "@/app/uganda/getProducts"; // adjust if needed
 import { info } from "../../info";
 
-type PageProps = { params: { id: string } };
+type PageProps = { params: Promise<{ id: string }> };
 
 export default async function Page({ params }: PageProps) {
-  // If you want the “Refill” price initially:
-  const product = await getProductById(params.id, { Type: "Refill" });
-  // Or use "New": const product = await getProductById(params.id, { Type: "New" });
+  const { id } = await params;               // ✅ await the params object
+  const product = await getProductById(id, { Type: "Refill" });
 
   if (!product) notFound();
+
   return <ProductPage product={product} country={info.country.toLowerCase()} />;
 }
