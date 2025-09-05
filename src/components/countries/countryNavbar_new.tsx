@@ -19,6 +19,7 @@ export default function Example({country="uganda",}:{country?: string;}) {
     { name: 'Franchise Location', href: `/${country}/franchise`, current: false },
     { name: 'Bids & Tenders', href: '#', current: false },
     { name: 'Contact Us', href: `/${country}/contact`, current: false },
+    { name: 'Your Cart', href: `/${country}/cart`, current: false },
     ]
 
   return (
