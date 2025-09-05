@@ -1,22 +1,17 @@
-'use client'
-import ProductPage from '@/components/countries/productPage'
-import { products } from '../../products'
-import { notFound } from 'next/navigation'
+// app/uganda/product/[id]/page.tsx
 
-type PageProps = {
-  params: Promise<{ id: string }>; // Fix for Next.js typing
-};
+import ProductPage from "@/components/countries/productPage";
+import { notFound } from "next/navigation";
+import { getProductById } from "../../getProducts"; // adjust if your file lives elsewhere
+import { info } from "../../info";
+
+type PageProps = { params: { id: string } };
 
 export default async function Page({ params }: PageProps) {
-    const productId = parseInt((await params).id, 10);
-    const product = products.find((p) => p._id === productId);
+  // If you want the “Refill” price initially:
+  const product = await getProductById(params.id, { Type: "Refill" });
+  // Or use "New": const product = await getProductById(params.id, { Type: "New" });
 
-    if(!product) return notFound();
-
-    return(
-        <div>
-            <ProductPage product={product}/>
-            
-        </div>
-    )
+  if (!product) notFound();
+  return <ProductPage product={product} country={info.country.toLowerCase()} />;
 }

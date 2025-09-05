@@ -18,6 +18,10 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "committed-paradise-9b1cb948f5.media.strapiapp.com",
+      },
+      {
+        protocol: "https",
+        hostname: "cdn.shopify.com",
       }
     ],
   },
