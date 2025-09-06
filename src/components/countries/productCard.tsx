@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 
 interface ProductCardProps {
-  _id: number;
+  _id: string;
   img: string;
   imgAlt: string;
   productName: string;
@@ -34,7 +34,7 @@ export default function ProductCard({
         </div>
 
         <div className="px-4 py-3 w-72">
-          <span className="text-gray-400 mr-3 uppercase text-xs">{type}</span>
+          
           <p className="text-lg font-bold text-black truncate block capitalize">
             {productName}
           </p>

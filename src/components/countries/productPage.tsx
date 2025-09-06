@@ -4,15 +4,15 @@ import { useEffect, useMemo, useState, useCallback, useRef } from "react";
 import Image from "next/image";
 import { BackLinkCountry } from "../subcomponents/BackButton";
 import { useRouter } from "next/navigation";
-import { useCart } from "@/app/uganda/cart/cart-context";
+import { useCart } from "@/app/[country]/cart/cart-context";
 import {
-  getProductWithVariantsById,
+  getProductWithVariantsById,   // must accept country + language
   findVariantId,
   type ProductWithVariants,
   formatMoney,
-} from "@/lib/shopifyCart"; // ensure this exports formatMoney and matches types
+} from "@/lib/shopifyCart";
 
-interface Product {
+export type Product = {
   _id: string;   // numeric Shopify product id
   img: string;
   imageAlt?: string;
@@ -22,12 +22,21 @@ interface Product {
   description: string;
 }
 
+type Market = {
+  countryCode?: string;  // e.g. "UG", "KE", "RW"
+  languageCode?: string; // e.g. "EN", "FR", "SW"
+};
+
 interface ProductPageProps {
   product: Product;
   country: string;
+  market?: Market;       // <-- NEW
 }
 
-export default function ProductPage({ product, country }: ProductPageProps) {
+export default function ProductPage({ product, country, market }: ProductPageProps) {
+  const countryCode = market?.countryCode ?? "UG";
+  const languageCode = market?.languageCode ?? "EN";
+
   const [fullProduct, setFullProduct] = useState<ProductWithVariants | null>(null);
   const [selections, setSelections] = useState<Record<string, string>>({});
   const [loading, setLoading] = useState(false);
@@ -38,19 +47,20 @@ export default function ProductPage({ product, country }: ProductPageProps) {
 
   useEffect(() => {
     let mounted = true;
-    getProductWithVariantsById(product._id)
+    // IMPORTANT: your getProductWithVariantsById should accept (id, country, language)
+    getProductWithVariantsById(product._id, countryCode, languageCode)
       .then((p) => {
         if (!mounted || !p) return;
         setFullProduct(p);
         const initial: Record<string, string> = {};
-        (p.options ?? []).forEach((o) => {
+        (p.options ?? []).forEach((o: { values: string | any[]; name: string | number; }) => {
           if (o.values?.length) initial[o.name] = o.values[0];
         });
         setSelections(initial);
       })
       .catch((e) => setErr(e.message));
     return () => { mounted = false; };
-  }, [product._id]);
+  }, [product._id, countryCode, languageCode]);
 
   const activeVariant = useMemo(() => {
     if (!fullProduct) return null;
@@ -61,14 +71,14 @@ export default function ProductPage({ product, country }: ProductPageProps) {
 
   const displayPrice = useMemo(() => {
     if (activeVariant?.price) return formatMoney(activeVariant.price);
-    const min = (fullProduct as any)?.priceRange?.minVariantPrice; // ensure type includes priceRange
+    const min = (fullProduct as any)?.priceRange?.minVariantPrice;
     const max = (fullProduct as any)?.priceRange?.maxVariantPrice;
     if (min && max && (min.amount !== max.amount)) return `${formatMoney(min)} – ${formatMoney(max)}`;
     return min ? formatMoney(min) : (product.price ?? "");
   }, [activeVariant, fullProduct, product.price]);
 
   const displayCompareAt = useMemo(() => {
-    const c = (activeVariant as any)?.compareAtPrice; // ensure Variant has compareAtPrice in your lib
+    const c = (activeVariant as any)?.compareAtPrice;
     const p = activeVariant?.price;
     if (!c || !p) return "";
     if (Number(c.amount) <= Number(p.amount)) return "";
@@ -82,7 +92,6 @@ export default function ProductPage({ product, country }: ProductPageProps) {
 
   const handleAddToCart = useCallback(async () => {
     if (!fullProduct) return;
-    // require selections for all options
     const missing = (fullProduct.options ?? []).filter(o => !selections[o.name]);
     if (missing.length) {
       setErr(`Please choose: ${missing.map(o => o.name).join(", ")}`);
@@ -92,20 +101,21 @@ export default function ProductPage({ product, country }: ProductPageProps) {
       setErr("Selected option is unavailable.");
       return;
     }
-    if (addingRef.current) return; // single-flight guard
+    if (addingRef.current) return;
     addingRef.current = true;
     setLoading(true);
     setErr("");
     try {
+      // NOTE: Ensure your CartProvider creates/updates cart with buyerIdentity.countryCode = countryCode
       await addLine(activeVariant.id, 1);
-      router.push("/uganda/cart");
+      router.push(`/${country}/cart`);
     } catch (e: any) {
       setErr(e?.message || "Failed to add to cart");
-      setLoading(false); // we stay on page if error
+      setLoading(false);
     } finally {
       addingRef.current = false;
     }
-  }, [fullProduct, selections, activeVariant?.id, addLine, router]);
+  }, [fullProduct, selections, activeVariant?.id, addLine, router, country]);
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-10 grid grid-cols-1 lg:grid-cols-2 gap-8">

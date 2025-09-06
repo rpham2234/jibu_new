@@ -2,27 +2,35 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useCart } from "../cart/cart-context";
+import { useCart } from "@/app/[country]/cart/cart-context";
 
-export default function CartPage() {
+type SiteInfo = { country: string };
+export function CartClient({ siteInfo }: { siteInfo: SiteInfo }) {
   const { cart, updateLine, removeLine, formatMoney } = useCart();
 
-  const subtotal = formatMoney(cart.cost.subtotalAmount);
   const checkout = () => {
-    if (cart.checkoutUrl) window.location.href = cart.checkoutUrl;
+    if (cart?.checkoutUrl) window.location.href = cart.checkoutUrl;
   };
 
-  if (!cart.lines.length) {
+  if (!cart || !cart.lines?.length) {
     return (
       <main className="max-w-4xl mx-auto px-4 py-10">
         <h1 className="text-2xl font-semibold mb-4">Your Cart</h1>
         <p className="text-gray-600">Your cart is empty.</p>
         <div className="mt-6">
-          <Link href="/" className="text-blue-600 hover:underline">Continue shopping</Link>
+          <Link
+            href={`/${siteInfo.country.toLowerCase()}#products`}
+            prefetch={false} // avoid extra prefetch calls
+            className="text-blue-600 hover:underline"
+          >
+            Continue shopping
+          </Link>
         </div>
       </main>
     );
   }
+
+  const subtotal = formatMoney(cart.cost.subtotalAmount);
 
   return (
     <main className="max-w-5xl mx-auto px-4 py-10">
@@ -75,16 +83,28 @@ export default function CartPage() {
         })}
       </div>
 
-      <div className="mt-8 flex items-center justify-between">
+      <div className="mt-8 flex items-center">
         <div className="text-lg">
           Subtotal: <span className="font-semibold">{subtotal}</span>
         </div>
-        <button
-          onClick={checkout}
-          className="px-6 py-3 rounded bg-[#005499] hover:bg-indigo-700 text-white"
-        >
-          Checkout
-        </button>
+
+        <div className="ml-auto flex items-center gap-3 whitespace-nowrap">
+          <Link
+            href={`/${siteInfo.country.toLowerCase()}#products`}
+            prefetch={false}
+            className="text-[#005499] hover:underline focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#005499]"
+          >
+            Continue Shopping
+          </Link>
+
+          <button
+            type="button"
+            onClick={checkout}
+            className="px-6 py-3 rounded bg-[#005499] hover:bg-indigo-700 text-white"
+          >
+            Checkout
+          </button>
+        </div>
       </div>
     </main>
   );

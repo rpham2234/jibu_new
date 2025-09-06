@@ -60,14 +60,22 @@ async function shopifyFetch<T>(query: string, variables?: Record<string, any>): 
 }
 
 /** Fetch one product (by numeric id) with its options and variants */
-export async function getProductWithVariantsById(numericId: string): Promise<ProductWithVariants | null> {
-  const query = `
+export async function getProductWithVariantsById(
+  numericId: string,
+  countryCode = "UG",
+  languageCode = "EN"
+) {
+  const raw = `
     query GetProduct($id: ID!) {
       product(id: $id) {
         id
         title
         description
         images(first: 1) { edges { node { url altText } } }
+        priceRange {
+          minVariantPrice { amount currencyCode }
+          maxVariantPrice { amount currencyCode }
+        }
         options { name values }
         variants(first: 100) {
           edges {
@@ -76,13 +84,19 @@ export async function getProductWithVariantsById(numericId: string): Promise<Pro
               title
               availableForSale
               price { amount currencyCode }
+              compareAtPrice { amount currencyCode }
               selectedOptions { name value }
+              image { url altText }
+              product { id title }
             }
           }
         }
       }
     }
   `;
+
+  const query = applyContextToQuery(raw, countryCode, languageCode);
+
   const variables = { id: `gid://shopify/Product/${numericId}` };
   const data = await shopifyFetch<{ data: any }>(query, variables);
   const p = data.data.product;
@@ -132,4 +146,15 @@ export async function addToCartAndCheckout(variantId: string, quantity = 1): Pro
   const checkoutUrl = json.data.cartCreate.cart.checkoutUrl as string;
   if (!checkoutUrl) throw new Error("No checkoutUrl returned");
   window.location.href = checkoutUrl; // redirect to Shopify checkout
+}
+
+function applyContextToQuery(q: string, country = "UG", language = "EN") {
+  // Only touch queries; leave mutations alone
+  const re = /^(\s*query)\s*([A-Za-z_][A-Za-z0-9_]*)?\s*(\([^)]*\))?\s*\{/;
+  return q.replace(re, (_m, _query, name = "", vars = "") => {
+    // query <name>? <vars>? @inContext(...) {
+    const namePart = name ? ` ${name}` : "";
+    const varsPart = vars ? ` ${vars}` : "";
+    return `query${namePart}${varsPart} @inContext(country: ${country}, language: ${language}) {`;
+  });
 }

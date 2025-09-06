@@ -4,7 +4,7 @@
 import React from 'react';
 import ContactInfo from '@/components/countries/uganda/contact/contactinfo';
 import ContactForm from '@/components/countries/uganda/contact/contactForm';
-import {info} from '../../uganda/info'
+import {info} from '../siteInfo'
 
 export default function Contact() {
   return (

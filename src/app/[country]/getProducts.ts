@@ -1,18 +1,15 @@
 // getProducts.ts
 
-export type ProductOutput = {
-  _id: string;            // numeric product id
-  productName: string;
-  price?: string;         // formatted (e.g., "UGX 48,050" or "UGX 40,000 – UGX 48,050")
-  type: string;
-  img: string;
-  imageAlt?: string;
-  description: string;
-};
+import { Product } from "@/components/countries/productPage"
+
 
 const SHOPIFY_DOMAIN = process.env.NEXT_PUBLIC_SHOPIFY_DOMAIN!;
 const STOREFRONT_TOKEN = process.env.NEXT_PUBLIC_STOREFRONT_TOKEN!;
 const API_URL = `https://${SHOPIFY_DOMAIN}/api/2024-07/graphql.json`;
+
+/** Defaults: override per call */
+const DEFAULT_COUNTRY = "UG";
+const DEFAULT_LANGUAGE = "EN";
 
 /** Helpers */
 function extractNumericId(gid: string): string {
@@ -33,6 +30,11 @@ function formatMoney(m?: MoneyV2 | null): string | undefined {
   }).format(n);
 }
 
+/** Inject @inContext(country:, language:) into a query string */
+function applyContext(q: string, country = DEFAULT_COUNTRY, language = DEFAULT_LANGUAGE) {
+  return q.replace(/^(\s*query)(\b)/, `$1 @inContext(country: ${country}, language: ${language})$2`);
+}
+
 function pickVariantBySelections(node: any, selections?: Record<string, string>) {
   if (!selections) return null;
   const norm = (s: string) => s.trim().toLowerCase();
@@ -48,7 +50,7 @@ function pickVariantBySelections(node: any, selections?: Record<string, string>)
   return null;
 }
 
-/** Query multiple products with priceRange (cheapest + highest variant price) */
+/** Query multiple products with priceRange (min+max) */
 const PRODUCTS_QUERY = `
   query {
     products(first: 15) {
@@ -57,9 +59,7 @@ const PRODUCTS_QUERY = `
           id
           title
           description
-          images(first: 1) {
-            edges { node { url altText } }
-          }
+          images(first: 1) { edges { node { url altText } } }
           priceRange {
             minVariantPrice { amount currencyCode }
             maxVariantPrice { amount currencyCode }
@@ -70,7 +70,7 @@ const PRODUCTS_QUERY = `
   }
 `;
 
-/** Query a single product with ALL variants + options (so we can price by selection) */
+/** Query a single product with ALL variants + options */
 function singleProductQuery(numericId: string) {
   return `
     query {
@@ -102,10 +102,9 @@ function singleProductQuery(numericId: string) {
 }
 
 /** Map a Shopify product node → ProductOutput (optionally using a selected variant) */
-function mapProduct(node: any, selections?: Record<string, string>): ProductOutput {
+function mapProduct(node: any, selections?: Record<string, string>): Product {
   const image = node.images?.edges?.[0]?.node;
 
-  // Try to use a specific variant (e.g., { Type: "Refill" }) if provided
   const selectedVariant = pickVariantBySelections(node, selections);
   let priceStr: string | undefined;
 
@@ -115,7 +114,7 @@ function mapProduct(node: any, selections?: Record<string, string>): ProductOutp
     const min = node.priceRange.minVariantPrice as MoneyV2;
     const max = node.priceRange.maxVariantPrice as MoneyV2;
     priceStr = (min.amount !== max.amount)
-      ? `${formatMoney(min)} – ${formatMoney(max)}`
+      ? `${formatMoney(min)} - ${formatMoney(max)}`
       : formatMoney(min);
   }
 
@@ -123,22 +122,23 @@ function mapProduct(node: any, selections?: Record<string, string>): ProductOutp
     _id: extractNumericId(node.id),
     productName: node.title,
     price: priceStr,
-    type: "New", // keep as-is; your UI can ignore/change this
+    type: "New",
     img: image?.url || "",
     imageAlt: image?.altText || node.title,
     description: node.description,
   };
 }
 
-/** Fetch and map multiple products (grid) */
-export async function getShopifyProducts(): Promise<ProductOutput[]> {
+/** Fetch and map multiple products (grid), for a specific Market */
+export async function getShopifyProducts(country = DEFAULT_COUNTRY, language = DEFAULT_LANGUAGE): Promise<Product[]> {
+  const query = applyContext(PRODUCTS_QUERY, country, language);
   const res = await fetch(API_URL, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       "X-Shopify-Storefront-Access-Token": STOREFRONT_TOKEN,
     },
-    body: JSON.stringify({ query: PRODUCTS_QUERY }),
+    body: JSON.stringify({ query }),
     cache: "no-store",
   });
   if (!res.ok) throw new Error(`Shopify API error: ${res.status} ${res.statusText}`);
@@ -149,20 +149,24 @@ export async function getShopifyProducts(): Promise<ProductOutput[]> {
 }
 
 /**
- * Fetch and map a single product by numeric ID.
- * Pass selections (e.g., { Type: "Refill" }) to price the correct variant.
+ * Fetch and map a single product by numeric ID (with selections),
+ * for a specific Market (country/language).
  */
 export async function getProductById(
   id: string,
-  selections?: Record<string, string>
-): Promise<ProductOutput | null> {
+  selections?: Record<string, string>,
+  country = DEFAULT_COUNTRY,
+  language = DEFAULT_LANGUAGE
+): Promise<Product | null> {
+  const raw = singleProductQuery(id);
+  const query = applyContext(raw, country, language);
   const res = await fetch(API_URL, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       "X-Shopify-Storefront-Access-Token": STOREFRONT_TOKEN,
     },
-    body: JSON.stringify({ query: singleProductQuery(id) }),
+    body: JSON.stringify({ query }),
     cache: "no-store",
   });
   if (!res.ok) throw new Error(`Shopify API error: ${res.status} ${res.statusText}`);

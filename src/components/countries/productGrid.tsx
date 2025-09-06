@@ -5,7 +5,7 @@ import ProductCard from "@/components/countries/productCard";
 
 // Define the Product interface
 interface Product {
-  _id: number;
+  _id: string;
   img: string;
   imageAlt: string;
   productName: string;
