@@ -1,33 +1,36 @@
-import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react'
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+"use client";
+
+import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/react";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
-import Image from "next/image"
+import Image from "next/image";
 import CountryDropDown from "@/components/subcomponents/dropdown";
-import { capitalizeFirstLetter } from '../subcomponents/capitalizeFirstLetter';
+import { capitalizeFirstLetter } from "../subcomponents/capitalizeFirstLetter";
 
-
-function classNames(...classes: (string | false | null | undefined)[]): string {
-  return classes.filter(Boolean).join(' ');
+function classNames(...classes: (string | false | null | undefined)[]) {
+  return classes.filter(Boolean).join(" ");
 }
 
-export default function Example({country="uganda",}:{country?: string;}) {
+export default function Header({ country = "uganda" }: { country?: string }) {
+  // Always treat this prop as a URL slug (not ISO code)
+  const slug = (country || "uganda").toLowerCase();
 
-    var navigation = [
-    { name: 'Home', href: `/${country}`, current: true },
-    { name: 'Jibu Global', href: '/', current: false },
-    { name: 'Our Products', href: `/${country}#products`, current: false },
-    { name: 'Franchise Location', href: `/${country}/franchise`, current: false },
-    { name: 'Bids & Tenders', href: '#', current: false },
-    { name: 'Contact Us', href: `/${country}/contact`, current: false },
-    { name: 'Your Cart', href: `/${country}/cart`, current: false },
-    ]
+  const navigation = [
+    { name: "Home", href: `/${slug}`, current: false },
+    { name: "Jibu Global", href: "/", current: false },
+    { name: "Our Products", href: `/${slug}#products`, current: false },
+    { name: "Franchise Location", href: `/${slug}/franchise`, current: false },
+    { name: "Bids & Tenders", href: "#", current: false },
+    { name: "Contact Us", href: `/${slug}/contact`, current: false },
+    { name: "Your Cart", href: `/${slug}/cart`, current: false },
+  ];
 
   return (
     <Disclosure as="nav" className="relative bg-[#005499]">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
-            {/* Mobile menu button*/}
+            {/* Mobile menu button */}
             <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-white/5 hover:text-white focus:outline-2 focus:-outline-offset-1 focus:outline-indigo-500">
               <span className="absolute -inset-0.5" />
               <span className="sr-only">Open main menu</span>
@@ -35,56 +38,61 @@ export default function Example({country="uganda",}:{country?: string;}) {
               <XMarkIcon aria-hidden="true" className="hidden size-6 group-data-open:block" />
             </DisclosureButton>
           </div>
+
           <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
             <div className="flex shrink-0 items-center">
               {/* Logo */}
-                <Link href={`/${country}`} className="flex items-center">
+              <Link href={`/${slug}`} className="flex items-center" prefetch={false}>
                 <Image
-                    src="https://jibuco.com/wp-content/uploads/2022/09/Jibu-Website-Artwork-2_Jibu-Logo-150x48-white.png"
-                    alt="Jibu Logo"
-                    height={48}
-                    width={150}
+                  src="https://jibuco.com/wp-content/uploads/2022/09/Jibu-Website-Artwork-2_Jibu-Logo-150x48-white.png"
+                  alt="Jibu Logo"
+                  height={48}
+                  width={150}
                 />
-                </Link>
+              </Link>
             </div>
+
+            {/* Desktop nav */}
             <div className="hidden sm:ml-6 sm:block">
               <div className="hover:text-gray-200 font-semibold px-4 py-2 flex items-center">
                 {navigation.map((item) => (
-                  <a
+                  <Link
                     key={item.name}
                     href={item.href}
-                    aria-current={item.current ? 'page' : undefined}
+                    prefetch={false}
+                    aria-current={item.current ? "page" : undefined}
                     className={classNames(
-                      item.current ? 'bg-blue-900 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white',
-                      'rounded-md px-3 py-2 text-sm font-medium',
+                      item.current ? "bg-blue-900 text-white" : "text-gray-300 hover:bg-white/5 hover:text-white",
+                      "rounded-md px-3 py-2 text-sm font-medium"
                     )}
                   >
                     {item.name}
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>
           </div>
-          <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-            
 
+          <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
             {/* Country Dropdown */}
-            <CountryDropDown country={`${capitalizeFirstLetter(country)}`} />
+            <CountryDropDown country={capitalizeFirstLetter(slug)} />
           </div>
         </div>
       </div>
 
+      {/* Mobile nav */}
       <DisclosurePanel className="sm:hidden">
         <div className="space-y-1 px-2 pt-2 pb-3">
           {navigation.map((item) => (
             <DisclosureButton
               key={item.name}
-              as="a"
+              as={Link}
               href={item.href}
-              aria-current={item.current ? 'page' : undefined}
+              prefetch={false}
+              aria-current={item.current ? "page" : undefined}
               className={classNames(
-                item.current ? 'bg-blue-900 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white',
-                'block rounded-md px-3 py-2 text-base font-medium',
+                item.current ? "bg-blue-900 text-white" : "text-gray-300 hover:bg:white/5 hover:text-white",
+                "block rounded-md px-3 py-2 text-base font-medium"
               )}
             >
               {item.name}
@@ -93,5 +101,5 @@ export default function Example({country="uganda",}:{country?: string;}) {
         </div>
       </DisclosurePanel>
     </Disclosure>
-  )
+  );
 }

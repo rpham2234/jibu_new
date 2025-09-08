@@ -1,19 +1,26 @@
 // app/[country]/product/[id]/page.tsx (Server Component)
+
+// Disable caching / static optimization for this route
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+export const fetchCache = "force-no-store";
+
+import { unstable_noStore as noStore } from "next/cache";
 import { notFound } from "next/navigation";
-import ProductPage from "@/components/countries/productPage";
-import { getProductById } from "@/app/[country]/getProducts"; // adjust if needed
-import { getSiteInfo } from "@/app/[country]/siteInfo";       // adjust if needed
 import type { Metadata } from "next";
 
-// If you prefer runtime rendering only for product pages, uncomment:
-// export const dynamic = "force-dynamic";
-// export const revalidate = 0;
+import ProductPage from "@/components/countries/productPage";
+import { getProductById } from "@/app/[country]/getProducts";
+import { getSiteInfo } from "@/app/[country]/siteInfo";
 
-export type PageParams = { params: { country: string; id: string } };
+type RouteParams = { country: string; id: string };
+type PageProps = { params: Promise<RouteParams> };
 
-export async function generateMetadata({ params }: PageParams): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  noStore();
   try {
-    const siteInfo = await getSiteInfo(params.country);
+    const { country } = await params;
+    const siteInfo = await getSiteInfo(country);
     return {
       title: `${siteInfo?.country ?? "Shop"} – Product`,
       description: `Details and delivery options in ${siteInfo?.country ?? "your country"}.`,
@@ -23,10 +30,11 @@ export async function generateMetadata({ params }: PageParams): Promise<Metadata
   }
 }
 
-export default async function Page({ params }: PageParams) {
-  const { id, country } = params; // ✅ no awaiting params
+export default async function Page({ params }: PageProps) {
+  noStore();
 
-  // 1) Country context
+  const { id, country } = await params;
+
   let siteInfo: any;
   try {
     siteInfo = await getSiteInfo(country);
@@ -36,7 +44,6 @@ export default async function Page({ params }: PageParams) {
     return notFound();
   }
 
-  // 2) Product fetch
   let product: any | null = null;
   try {
     const raw = await getProductById(id, { Type: "Refill" });
@@ -47,7 +54,6 @@ export default async function Page({ params }: PageParams) {
 
   if (!product) return notFound();
 
-  // 3) Render product page
   return (
     <ProductPage
       product={product}
@@ -56,12 +62,3 @@ export default async function Page({ params }: PageParams) {
     />
   );
 }
-
-// Optional: pre-generate a small subset of known product pages per country at build time.
-// Remove this if your product catalog changes frequently or is large.
-// export async function generateStaticParams() {
-//   const countries = ["uganda", "kenya", "tanzania", "rwanda"]; // keep in sync with supported markets
-//   // Example: pre-render a few hero SKUs by id for each market
-//   const featuredIds = ["sku-123", "sku-456"]; // replace with real IDs
-//   return countries.flatMap((country) => featuredIds.map((id) => ({ country, id })));
-// }

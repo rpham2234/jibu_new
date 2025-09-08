@@ -1,17 +1,47 @@
 "use client";
 
+import React, { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useCart } from "@/app/[country]/cart/cart-context";
 
 type SiteInfo = { country: string };
+
 export function CartClient({ siteInfo }: { siteInfo: SiteInfo }) {
-  const { cart, updateLine, removeLine, formatMoney } = useCart();
+  const {
+    cart,
+    updateLine,
+    removeLine,
+    formatMoney,
+    ensureCart,
+    bootstrapped,
+    country, // active market (from provider)
+  } = useCart();
+
+  // On cart page, only load an existing cart; don't create a new one
+  useEffect(() => {
+    if (!bootstrapped) return;
+    ensureCart({ createIfMissing: false });
+  }, [bootstrapped, ensureCart, country]);
 
   const checkout = () => {
     if (cart?.checkoutUrl) window.location.href = cart.checkoutUrl;
   };
 
+  // Show a tiny skeleton while we restore cart ID from storage
+  if (!bootstrapped) {
+    return (
+      <main className="max-w-5xl mx-auto px-4 py-10">
+        <h1 className="text-2xl font-semibold mb-6">Your Cart</h1>
+        <div className="space-y-4">
+          <div className="h-24 bg-gray-100 animate-pulse rounded" />
+          <div className="h-24 bg-gray-100 animate-pulse rounded" />
+        </div>
+      </main>
+    );
+  }
+
+  // After bootstrapping, if no cart (or no lines), show empty state WITHOUT creating one
   if (!cart || !cart.lines?.length) {
     return (
       <main className="max-w-4xl mx-auto px-4 py-10">
@@ -20,7 +50,7 @@ export function CartClient({ siteInfo }: { siteInfo: SiteInfo }) {
         <div className="mt-6">
           <Link
             href={`/${siteInfo.country.toLowerCase()}#products`}
-            prefetch={false} // avoid extra prefetch calls
+            prefetch={false}
             className="text-blue-600 hover:underline"
           >
             Continue shopping
@@ -40,14 +70,21 @@ export function CartClient({ siteInfo }: { siteInfo: SiteInfo }) {
         {cart.lines.map((line) => {
           const img = line.merchandise.image;
           const title = line.merchandise.product.title;
-          const opts = line.merchandise.selectedOptions?.map(o => `${o.name}: ${o.value}`).join(" · ");
+          const opts = line.merchandise.selectedOptions
+            ?.map((o) => `${o.name}: ${o.value}`)
+            .join(" · ");
           const linePrice = formatMoney(line.cost.totalAmount);
 
           return (
             <div key={line.id} className="flex items-center gap-4 border-b pb-4">
               <div className="relative w-20 h-20 flex-shrink-0 bg-gray-50 rounded overflow-hidden">
                 {img?.url && (
-                  <Image src={img.url} alt={img.altText || title} fill className="object-contain" />
+                  <Image
+                    src={img.url}
+                    alt={img.altText || title}
+                    fill
+                    className="object-contain"
+                  />
                 )}
               </div>
 

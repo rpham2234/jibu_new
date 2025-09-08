@@ -4,7 +4,7 @@ import Image from "next/image";
 interface ProductCardProps {
   _id: string;
   img: string;
-  imgAlt: string;
+  imageAlt: string;
   productName: string;
   price: string;
   type: string;
@@ -14,7 +14,7 @@ interface ProductCardProps {
 export default function ProductCard({
   _id,
   img,
-  imgAlt,
+  imageAlt,
   productName,
   price,
   type,
@@ -26,7 +26,7 @@ export default function ProductCard({
         <div className="relative w-72 h-80">
           <Image
             src={img}
-            alt={imgAlt || "Product"}
+            alt={imageAlt || "Product"}
             fill
             className="object-cover rounded-t-xl"
             sizes="(max-width: 768px) 100vw, 288px"

@@ -1,17 +1,23 @@
-'use client';
+import ContactInfo from "@/components/countries/uganda/contact/contactinfo";
+import ContactForm from "@/components/countries/uganda/contact/contactForm";
+import { getSiteInfo } from "../siteInfo";
 
+type Props = { params: Promise<{ country: string }> };
 
-import React from 'react';
-import ContactInfo from '@/components/countries/uganda/contact/contactinfo';
-import ContactForm from '@/components/countries/uganda/contact/contactForm';
-import {info} from '../siteInfo'
-
-export default function Contact() {
+export default async function Contact({ params }: Props) {
+  const { country } = await params;
+  const info = await getSiteInfo(country); // e.g. "uganda", "kenya", ...
   return (
     <div>
-        {/* Header and contact Info */}
-        <ContactInfo phone={info.phone} address={info.address} facebook={info.facebook} twitter={info.twitter} instagram={info.instagram} linkedin={info.linkedin} />
-        <ContactForm />
+      <ContactInfo
+        phone={info.phone}
+        address={info.address}
+        facebook={info.facebook}
+        twitter={info.twitter}
+        instagram={info.instagram}
+        linkedin={info.linkedin}
+      />
+      <ContactForm />
     </div>
   );
 }

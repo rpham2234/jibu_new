@@ -1,23 +1,36 @@
 "use client";
 
-import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 
+import { MARKETS } from "@/lib/markets";
+
+/** ====== Shopify config ====== */
 const SHOPIFY_DOMAIN = process.env.NEXT_PUBLIC_SHOPIFY_DOMAIN!;
 const STOREFRONT_TOKEN = process.env.NEXT_PUBLIC_STOREFRONT_TOKEN!;
 const API_URL = `https://${SHOPIFY_DOMAIN}/api/2024-07/graphql.json`;
 
+/** ====== Types ====== */
+type CountryCode = string; // ISO-3166-1 alpha-2, e.g. "UG", "KE", "RW"
+
 type MoneyV2 = { amount: string; currencyCode: string };
 
 export type CartLine = {
-  id: string; // cartLine id
+  id: string;
   quantity: number;
   cost: { totalAmount: MoneyV2 };
   merchandise: {
-    id: string; // variant id
+    id: string;
     title: string;
     product: { id: string; title: string; handle?: string };
     image?: { url: string; altText?: string };
-    price?: MoneyV2; // (not always present in cart, we use cost.totalAmount)
+    price?: MoneyV2;
     selectedOptions?: { name: string; value: string }[];
   };
 };
@@ -35,38 +48,83 @@ export type CartState = {
   currencyCode?: string;
 };
 
+type EnsureCartOpts = { createIfMissing?: boolean };
+
 type CartContextType = {
   cart: CartState;
-  ensureCart: () => Promise<void>;
+  country: CountryCode;
+  bootstrapped: boolean;
+
+  ensureCart: (opts?: EnsureCartOpts) => Promise<void>;
   loadCart: () => Promise<void>;
+
   addLine: (variantId: string, quantity?: number) => Promise<void>;
   updateLine: (lineId: string, quantity: number) => Promise<void>;
   removeLine: (lineId: string) => Promise<void>;
-  clearCartId: () => void; // helpful for debugging
+
+  clearCartForCountry: (code?: CountryCode) => void;
+  setCountry: (code: CountryCode) => Promise<void>;
+  formatMoney: (m?: MoneyV2 | null, localeOverride?: string) => string;
 };
 
-const CartContext = createContext<CartContextType | null>(null);
+/** ====== Storage helpers (per-country cart IDs) ====== */
+const CART_IDS_KEY = "shopify_cart_ids"; // JSON: { "UG": "<id>", "KE": "<id>", ... }
+const COUNTRY_KEY = "shopify_country";   // currently selected country
 
-function formatMoney(m?: MoneyV2 | null): string {
-  if (!m) return "";
-  const noCents = m.currencyCode === "UGX";
-  const n = Number(m.amount);
-  return new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: m.currencyCode,
-    minimumFractionDigits: noCents ? 0 : 2,
-    maximumFractionDigits: noCents ? 0 : 2,
-  }).format(n);
+function readCartIds(): Record<string, string> {
+  try {
+    const raw = localStorage.getItem(CART_IDS_KEY);
+    return raw ? JSON.parse(raw) : {};
+  } catch {
+    return {};
+  }
+}
+function writeCartIds(map: Record<string, string>) {
+  localStorage.setItem(CART_IDS_KEY, JSON.stringify(map));
+}
+function getCartIdForCountry(code: CountryCode): string | null {
+  return readCartIds()[code] ?? null;
+}
+function setCartIdForCountry(code: CountryCode, id: string) {
+  const map = readCartIds();
+  map[code] = id;
+  writeCartIds(map);
+}
+function removeCartIdForCountry(code: CountryCode) {
+  const map = readCartIds();
+  if (map[code]) {
+    delete map[code];
+    writeCartIds(map);
+  }
 }
 
-async function shopifyFetch<T>(query: string, variables?: Record<string, any>): Promise<T> {
+/** ====== Context ====== */
+const CartContext = createContext<CartContextType | null>(null);
+
+/** ====== Utils ====== */
+function formatMoneyWithLocale(
+  m?: MoneyV2 | null,
+  locale = "en-US"
+): string {
+  if (!m) return "";
+  return new Intl.NumberFormat(locale, {
+    style: "currency",
+    currency: m.currencyCode,
+  }).format(Number(m.amount));
+}
+
+async function shopifyFetch<T>(
+  query: string,
+  variables: Record<string, any>,
+  country: CountryCode
+): Promise<T> {
   const res = await fetch(API_URL, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       "X-Shopify-Storefront-Access-Token": STOREFRONT_TOKEN,
     },
-    body: JSON.stringify(variables ? { query, variables } : { query }),
+    body: JSON.stringify({ query, variables: { country, ...variables } }),
     cache: "no-store",
   });
   if (!res.ok) throw new Error(`Shopify API: ${res.status} ${res.statusText}`);
@@ -75,6 +133,7 @@ async function shopifyFetch<T>(query: string, variables?: Record<string, any>): 
   return json;
 }
 
+/** ====== GraphQL ====== */
 const CART_FRAGMENT = `
   fragment CartFields on Cart {
     id
@@ -106,15 +165,20 @@ const CART_FRAGMENT = `
 
 const CART_QUERY = `
   ${CART_FRAGMENT}
-  query CartQuery($id: ID!) {
+  query CartQuery($id: ID!, $country: CountryCode!)
+  @inContext(country: $country) {
     cart(id: $id) { ...CartFields }
   }
 `;
 
 const CART_CREATE = `
   ${CART_FRAGMENT}
-  mutation CartCreate($lines: [CartLineInput!]) {
-    cartCreate(input: { lines: $lines }) {
+  mutation CartCreate($lines: [CartLineInput!], $country: CountryCode!)
+  @inContext(country: $country) {
+    cartCreate(input: {
+      lines: $lines,
+      buyerIdentity: { countryCode: $country }
+    }) {
       cart { ...CartFields }
       userErrors { message }
     }
@@ -123,7 +187,8 @@ const CART_CREATE = `
 
 const CART_LINES_ADD = `
   ${CART_FRAGMENT}
-  mutation CartLinesAdd($cartId: ID!, $lines: [CartLineInput!]!) {
+  mutation CartLinesAdd($cartId: ID!, $lines: [CartLineInput!]!, $country: CountryCode!)
+  @inContext(country: $country) {
     cartLinesAdd(cartId: $cartId, lines: $lines) {
       cart { ...CartFields }
       userErrors { message }
@@ -133,7 +198,8 @@ const CART_LINES_ADD = `
 
 const CART_LINES_UPDATE = `
   ${CART_FRAGMENT}
-  mutation CartLinesUpdate($cartId: ID!, $lines: [CartLineUpdateInput!]!) {
+  mutation CartLinesUpdate($cartId: ID!, $lines: [CartLineUpdateInput!]!, $country: CountryCode!)
+  @inContext(country: $country) {
     cartLinesUpdate(cartId: $cartId, lines: $lines) {
       cart { ...CartFields }
       userErrors { message }
@@ -143,7 +209,8 @@ const CART_LINES_UPDATE = `
 
 const CART_LINES_REMOVE = `
   ${CART_FRAGMENT}
-  mutation CartLinesRemove($cartId: ID!, $lineIds: [ID!]!) {
+  mutation CartLinesRemove($cartId: ID!, $lineIds: [ID!]!, $country: CountryCode!)
+  @inContext(country: $country) {
     cartLinesRemove(cartId: $cartId, lineIds: $lineIds) {
       cart { ...CartFields }
       userErrors { message }
@@ -151,13 +218,15 @@ const CART_LINES_REMOVE = `
   }
 `;
 
+/** ====== Mapping ====== */
 function mapCart(json: any): CartState {
-  const c = json?.data?.cart
-    ?? json?.data?.cartCreate?.cart
-    ?? json?.data?.cartLinesAdd?.cart
-    ?? json?.data?.cartLinesUpdate?.cart
-    ?? json?.data?.cartLinesRemove?.cart
-    ?? null;
+  const c =
+    json?.data?.cart ??
+    json?.data?.cartCreate?.cart ??
+    json?.data?.cartLinesAdd?.cart ??
+    json?.data?.cartLinesUpdate?.cart ??
+    json?.data?.cartLinesRemove?.cart ??
+    null;
 
   const edges: any[] = c?.lines?.edges ?? [];
   const lines: CartLine[] = edges.map((e) => e.node);
@@ -174,76 +243,232 @@ function mapCart(json: any): CartState {
   };
 }
 
-export function CartProvider({ children }: { children: React.ReactNode }) {
-  const [cart, setCart] = useState<CartState>({ id: null, checkoutUrl: null, lines: [], cost: {} });
+/** ====== Provider ====== */
+export function CartProvider({
+  children,
+  countryCode = "US",
+}: {
+  children: React.ReactNode;
+  countryCode?: CountryCode;
+}) {
+  const [country, setCountryState] = useState<CountryCode>(countryCode);
+  const countryRef = useRef<CountryCode>(countryCode); // always-current for async work
+  const [cart, setCart] = useState<CartState>({
+    id: null,
+    checkoutUrl: null,
+    lines: [],
+    cost: {},
+  });
+  const [bootstrapped, setBootstrapped] = useState(false);
 
-  // Restore cartId from localStorage
+  // keep ref in sync with state
   useEffect(() => {
-    const saved = localStorage.getItem("shopify_cart_id");
-    if (saved && !cart.id) {
-      setCart((c) => ({ ...c, id: saved }));
+    countryRef.current = country;
+  }, [country]);
+
+  /** Restore selected country & its cartId on mount (lazy; no creation) */
+  useEffect(() => {
+    const savedCountry = localStorage.getItem(COUNTRY_KEY);
+    const initialCountry = savedCountry ?? countryCode;
+    if (initialCountry !== country) setCountryState(initialCountry);
+    countryRef.current = initialCountry;
+
+    // Migrate legacy single-cart key if present
+    const legacy = localStorage.getItem("shopify_cart_id");
+    if (legacy) {
+      const map = readCartIds();
+      if (!map[initialCountry]) {
+        map[initialCountry] = legacy;
+        writeCartIds(map);
+      }
+      localStorage.removeItem("shopify_cart_id");
     }
+
+    const cid = getCartIdForCountry(initialCountry);
+    if (cid) setCart((c) => ({ ...c, id: cid }));
+
+    setBootstrapped(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const ensureCart = async () => {
-    if (cart.id) return;
-    const json = await shopifyFetch<any>(CART_CREATE, { lines: [] });
-    const mapped = mapCart(json);
-    setCart(mapped);
-    if (mapped.id) localStorage.setItem("shopify_cart_id", mapped.id);
+  /** If route-provided country changes (e.g., /uganda -> /kenya), switch carts */
+  useEffect(() => {
+    if (countryCode && countryCode !== country) {
+      void setCountry(countryCode);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [countryCode]);
+
+  /** Load cart for a specific country (no stale closures) */
+  const loadCartFor = async (code: CountryCode, id?: string) => {
+    const cid = id ?? getCartIdForCountry(code);
+    if (!cid) return;
+    try {
+      const json = await shopifyFetch<any>(CART_QUERY, { id: cid }, code);
+      const mapped = mapCart(json);
+      if (countryRef.current === code) setCart(mapped);
+    } catch (e) {
+      // expired/invalid → clear only this market
+      removeCartIdForCountry(code);
+      if (countryRef.current === code) {
+        setCart({ id: null, checkoutUrl: null, lines: [], cost: {} });
+      }
+      console.warn(`Failed to load cart ${cid} for ${code}`, e);
+    }
   };
 
-  const loadCart = async () => {
-    if (!cart.id) return;
-    const json = await shopifyFetch<any>(CART_QUERY, { id: cart.id });
-    setCart(mapCart(json));
-  };
+  const loadCart = async () => loadCartFor(countryRef.current);
 
-  const addLine = async (variantId: string, quantity = 1) => {
-    let cartId = cart.id;
-    if (!cartId) {
-      const created = await shopifyFetch<any>(CART_CREATE, { lines: [{ merchandiseId: variantId, quantity }] });
-      const mapped = mapCart(created);
-      setCart(mapped);
-      if (mapped.id) localStorage.setItem("shopify_cart_id", mapped.id);
+  /** Ensure a cart exists; optionally avoid creation (for cart page) */
+  const ensureCart = async (
+    opts: EnsureCartOpts = { createIfMissing: true }
+  ) => {
+    if (!bootstrapped) return;
+
+    const code = countryRef.current;
+    let id = cart.id ?? getCartIdForCountry(code);
+
+    if (id) {
+      try {
+        const json = await shopifyFetch<any>(CART_QUERY, { id }, code);
+        const mapped = mapCart(json);
+        if (countryRef.current === code) setCart(mapped);
+      } catch {
+        removeCartIdForCountry(code);
+        if (countryRef.current === code) {
+          setCart({ id: null, checkoutUrl: null, lines: [], cost: {} });
+        }
+      }
       return;
     }
-    const json = await shopifyFetch<any>(CART_LINES_ADD, { cartId, lines: [{ merchandiseId: variantId, quantity }] });
-    setCart(mapCart(json));
+
+    if (opts.createIfMissing === false) return;
+
+    const created = await shopifyFetch<any>(CART_CREATE, { lines: [] }, code);
+    const mapped = mapCart(created);
+    if (mapped.id) setCartIdForCountry(code, mapped.id);
+    if (countryRef.current === code) setCart(mapped);
+  };
+
+  /** Mutations always operate on the CURRENT country's cart id (read at call time) */
+  const addLine = async (variantId: string, quantity = 1) => {
+    const code = countryRef.current;
+    let id = getCartIdForCountry(code);
+
+    if (!id) {
+      const created = await shopifyFetch<any>(
+        CART_CREATE,
+        { lines: [{ merchandiseId: variantId, quantity }] },
+        code
+      );
+      const mapped = mapCart(created);
+      if (mapped.id) setCartIdForCountry(code, mapped.id);
+      if (countryRef.current === code) setCart(mapped);
+      return;
+    }
+
+    if (cart.id !== id && countryRef.current === code) {
+      setCart((c) => ({ ...c, id }));
+    }
+
+    const json = await shopifyFetch<any>(
+      CART_LINES_ADD,
+      { cartId: id, lines: [{ merchandiseId: variantId, quantity }] },
+      code
+    );
+    const mapped = mapCart(json);
+    if (mapped.id && mapped.id !== id) setCartIdForCountry(code, mapped.id);
+    if (countryRef.current === code) setCart(mapped);
   };
 
   const updateLine = async (lineId: string, quantity: number) => {
-    if (!cart.id) return;
-    const json = await shopifyFetch<any>(CART_LINES_UPDATE, { cartId: cart.id, lines: [{ id: lineId, quantity }] });
-    setCart(mapCart(json));
+    const code = countryRef.current;
+    const id = getCartIdForCountry(code);
+    if (!id) return;
+
+    const json = await shopifyFetch<any>(
+      CART_LINES_UPDATE,
+      { cartId: id, lines: [{ id: lineId, quantity }] },
+      code
+    );
+    const mapped = mapCart(json);
+    if (mapped.id && mapped.id !== id) setCartIdForCountry(code, mapped.id);
+    if (countryRef.current === code) setCart(mapped);
   };
 
   const removeLine = async (lineId: string) => {
-    if (!cart.id) return;
-    const json = await shopifyFetch<any>(CART_LINES_REMOVE, { cartId: cart.id, lineIds: [lineId] });
-    setCart(mapCart(json));
+    const code = countryRef.current;
+    const id = getCartIdForCountry(code);
+    if (!id) return;
+
+    const json = await shopifyFetch<any>(
+      CART_LINES_REMOVE,
+      { cartId: id, lineIds: [lineId] },
+      code
+    );
+    const mapped = mapCart(json);
+    if (mapped.id && mapped.id !== id) setCartIdForCountry(code, mapped.id);
+    if (countryRef.current === code) setCart(mapped);
   };
 
-  const clearCartId = () => {
-    localStorage.removeItem("shopify_cart_id");
-    setCart({ id: null, checkoutUrl: null, lines: [], cost: {} });
+  /** Clear only the current country's cart (keep others) */
+  const clearCartForCountry = (code: CountryCode = countryRef.current) => {
+    removeCartIdForCountry(code);
+    if (countryRef.current === code) {
+      setCart({ id: null, checkoutUrl: null, lines: [], cost: {} });
+    }
   };
 
-  const value = useMemo<CartContextType>(() => ({
-    cart,
-    ensureCart,
-    loadCart,
-    addLine,
-    updateLine,
-    removeLine,
-    clearCartId,
-  }), [cart]);
+  /** Switch the active country WITHOUT repointing carts across markets */
+  const setCountry = async (code: CountryCode) => {
+    if (code === countryRef.current) return;
 
-  return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
+    localStorage.setItem(COUNTRY_KEY, code);
+    setCountryState(code);
+    countryRef.current = code;
+
+    const nextId = getCartIdForCountry(code);
+    setCart({ id: nextId ?? null, checkoutUrl: null, lines: [], cost: {} });
+
+    if (nextId) {
+      await loadCartFor(code, nextId);
+    } else {
+      // lazily create on first add; or uncomment to eagerly create:
+      // await ensureCart({ createIfMissing: true });
+    }
+  };
+
+  const value = useMemo<CartContextType>(
+    () => ({
+      cart,
+      country,
+      bootstrapped,
+      ensureCart,
+      loadCart,
+      addLine,
+      updateLine,
+      removeLine,
+      clearCartForCountry,
+      setCountry,
+      formatMoney: (m, localeOverride) => {
+        const locale =
+          localeOverride ??
+          MARKETS?.[countryRef.current as keyof typeof MARKETS]?.locale ??
+          "en-US";
+        return formatMoneyWithLocale(m, locale);
+      },
+    }),
+    [cart, country, bootstrapped]
+  );
+
+  return (
+    <CartContext.Provider value={value}>{children}</CartContext.Provider>
+  );
 }
 
+/** ====== Hook ====== */
 export function useCart() {
   const ctx = useContext(CartContext);
   if (!ctx) throw new Error("useCart must be used within CartProvider");
-  return { ...ctx, formatMoney };
+  return ctx;
 }

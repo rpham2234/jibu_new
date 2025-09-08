@@ -17,10 +17,10 @@ export type Product = {
   img: string;
   imageAlt?: string;
   productName: string;
-  price?: string;
+  price?: string | undefined;
   type: string;
   description: string;
-}
+};
 
 type Market = {
   countryCode?: string;  // e.g. "UG", "KE", "RW"
@@ -30,7 +30,7 @@ type Market = {
 interface ProductPageProps {
   product: Product;
   country: string;
-  market?: Market;       // <-- NEW
+  market?: Market;
 }
 
 export default function ProductPage({ product, country, market }: ProductPageProps) {
@@ -42,39 +42,41 @@ export default function ProductPage({ product, country, market }: ProductPagePro
   const [loading, setLoading] = useState(false);
   const [err, setErr] = useState("");
   const router = useRouter();
-  const { addLine } = useCart();
+  const { addLine, country: activeCountry, setCountry } = useCart();
   const addingRef = useRef(false);
 
   useEffect(() => {
     let mounted = true;
-    // IMPORTANT: your getProductWithVariantsById should accept (id, country, language)
     getProductWithVariantsById(product._id, countryCode, languageCode)
       .then((p) => {
         if (!mounted || !p) return;
         setFullProduct(p);
         const initial: Record<string, string> = {};
-        (p.options ?? []).forEach((o: { values: string | any[]; name: string | number; }) => {
+        (p.options ?? []).forEach((o: { values: string[]; name: string }) => {
           if (o.values?.length) initial[o.name] = o.values[0];
         });
         setSelections(initial);
       })
       .catch((e) => setErr(e.message));
-    return () => { mounted = false; };
+    return () => {
+      mounted = false;
+    };
   }, [product._id, countryCode, languageCode]);
 
   const activeVariant = useMemo(() => {
     if (!fullProduct) return null;
     if (!fullProduct.options?.length) return fullProduct.variants?.[0] ?? null;
     const id = findVariantId(fullProduct, selections);
-    return fullProduct.variants.find(v => v.id === id) ?? null;
+    return fullProduct.variants.find((v) => v.id === id) ?? null;
   }, [fullProduct, selections]);
 
   const displayPrice = useMemo(() => {
     if (activeVariant?.price) return formatMoney(activeVariant.price);
     const min = (fullProduct as any)?.priceRange?.minVariantPrice;
     const max = (fullProduct as any)?.priceRange?.maxVariantPrice;
-    if (min && max && (min.amount !== max.amount)) return `${formatMoney(min)} – ${formatMoney(max)}`;
-    return min ? formatMoney(min) : (product.price ?? "");
+    if (min && max && min.amount !== max.amount)
+      return `${formatMoney(min)} – ${formatMoney(max)}`;
+    return min ? formatMoney(min) : product.price ?? "";
   }, [activeVariant, fullProduct, product.price]);
 
   const displayCompareAt = useMemo(() => {
@@ -86,27 +88,35 @@ export default function ProductPage({ product, country, market }: ProductPagePro
   }, [activeVariant]);
 
   const choose = (optName: string, val: string) => {
-    setSelections(prev => ({ ...prev, [optName]: val }));
+    setSelections((prev) => ({ ...prev, [optName]: val }));
     setErr("");
   };
 
   const handleAddToCart = useCallback(async () => {
     if (!fullProduct) return;
-    const missing = (fullProduct.options ?? []).filter(o => !selections[o.name]);
+
+    const missing = (fullProduct.options ?? []).filter((o) => !selections[o.name]);
     if (missing.length) {
-      setErr(`Please choose: ${missing.map(o => o.name).join(", ")}`);
+      setErr(`Please choose: ${missing.map((o) => o.name).join(", ")}`);
       return;
     }
+
     if (!activeVariant?.id) {
       setErr("Selected option is unavailable.");
       return;
     }
+
     if (addingRef.current) return;
     addingRef.current = true;
     setLoading(true);
     setErr("");
+
     try {
-      // NOTE: Ensure your CartProvider creates/updates cart with buyerIdentity.countryCode = countryCode
+      // ensure cart context is set to this page's market
+      if (activeCountry !== countryCode) {
+        await setCountry(countryCode);
+      }
+
       await addLine(activeVariant.id, 1);
       router.push(`/${country}/cart`);
     } catch (e: any) {
@@ -115,7 +125,17 @@ export default function ProductPage({ product, country, market }: ProductPagePro
     } finally {
       addingRef.current = false;
     }
-  }, [fullProduct, selections, activeVariant?.id, addLine, router, country]);
+  }, [
+    fullProduct,
+    selections,
+    activeVariant?.id,
+    addLine,
+    router,
+    country,
+    activeCountry,
+    countryCode,
+    setCountry,
+  ]);
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-10 grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -143,7 +163,9 @@ export default function ProductPage({ product, country, market }: ProductPagePro
         </div>
 
         <div className="flex items-baseline gap-2 mb-4">
-          {displayCompareAt && <span className="text-gray-500 line-through">{displayCompareAt}</span>}
+          {displayCompareAt && (
+            <span className="text-gray-500 line-through">{displayCompareAt}</span>
+          )}
           <h3 className="text-xl font-semibold">{displayPrice}</h3>
         </div>
 
@@ -157,7 +179,11 @@ export default function ProductPage({ product, country, market }: ProductPagePro
                   <button
                     key={val}
                     onClick={() => choose(opt.name, val)}
-                    className={`px-3 py-1 border rounded ${selected ? "border-black bg-black text-white" : "border-gray-300"}`}
+                    className={`px-3 py-1 border rounded ${
+                      selected
+                        ? "border-black bg-black text-white"
+                        : "border-gray-300"
+                    }`}
                   >
                     {val}
                   </button>

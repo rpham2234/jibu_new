@@ -8,17 +8,17 @@ import { getSiteInfo } from "@/app//[country]/siteInfo"; // adjust path if neede
 
 type Props = {
   children: React.ReactNode;
-  params: { country: string };
+  params: Promise<{ country: string }>;
 };
 
 export default async function CountryLayout({ children, params }: Props) {
-  const country = params.country.toLowerCase();
+  const country = (await params).country.toLowerCase();
   const siteInfo = await getSiteInfo(country); // now dynamic from /[country]
 
   return (
     <div>
       <Example country={country} />
-      <CartProvider>{children}</CartProvider>
+      <CartProvider countryCode={siteInfo.countryCode}>{children}</CartProvider>
       <Footer />
     </div>
   );

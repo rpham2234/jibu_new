@@ -9,7 +9,7 @@ interface Product {
   img: string;
   imageAlt: string;
   productName: string;
-  price: string;
+  price?: string | undefined;
   type:string;
 }
 
@@ -27,9 +27,9 @@ export default function ProductGrid({ products = [], country }: ProductGridProps
             key={product._id || index}
             _id={product._id}
             img={product.img}
-            imgAlt={product.imageAlt}
+            imageAlt={product.imageAlt}
             productName={product.productName}
-            price={product.price}
+            price={product.price || ""}
             type={product.type}
             country={country}
           />
