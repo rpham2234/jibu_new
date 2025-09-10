@@ -1,0 +1,141 @@
+'use client';
+
+import React from 'react';
+import Image from 'next/image';
+import PageTitle from '@/components/subcomponents/pageTitle';
+
+export default function AboutPage() {
+  return (
+    <div className="flex justify-center px-4 py-8 bg-[#1b559b]">
+      <div className="max-w-6xl w-full space-y-8">
+        {/*<PageTitle title='About Us'/>*/}
+        {/* Section 1 */}
+        <section className="bg-[#ffffff] rounded shadow p-6">
+          <div className="grid md:grid-cols-2 gap-6 items-center">
+            <div>
+              <h1 className="text-3xl font-semibold md:text-4xl">Jibu Means &quot;Solution&quot;</h1>
+              <h3 className="text-xl text-gray-500 mb-4">What we do</h3>
+              <p className="mb-3">
+                Jibu capitalizes, equips, and trains emerging market entrepreneurs to launch and grow essential service franchises, with drinking water as our anchor product.
+              </p>
+              <p className="mb-4">
+                Franchises purify existing water sources in high-density urban and peri-urban communities and distribute to the neighborhood within walking distance of their storefronts. Franchisees also sell additional Jibu products and services.
+              </p>
+              
+            </div>
+            <div>
+              <Image
+                src="https://jibuco.com/wp-content/uploads/2022/09/Jibu-Website-Artwork_Jibu-Mum-and-Son-min-768x612.jpg"
+                alt="Jibu Franchise"
+                width={768}
+                height={612}
+                unoptimized
+                className="w-full rounded"
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* Section 2 */}
+        <section className="bg-[#ffffff] rounded shadow p-6">
+          <div className="grid md:grid-cols-2 gap-6 items-center">
+            <div>
+              <h2 className="text-3xl font-semibold mb-4">Who we are</h2>
+              <p className="mb-3">
+                Jibu, Inc is a for-profit social enterprise that prioritizes impact in our communities. Our hybrid approach stimulates responsible economic growth and independence. Through local entrepreneurship we produce safe drinking water as well as supply other essential products like LPG and fortified porridge.
+              </p>
+              <p>
+                The Jibu ecosystem is made of Jibu, Inc (founding franchisor), Jibu Area Master Franchisors (AMFs), and Jibu Franchisees.
+              </p>
+            </div>
+            <div>
+              <Image
+                src="https://jibuco.com/wp-content/uploads/2022/09/Jibu-Website-Artwork_Jibu-Mum-and-Son-min-768x612.jpg"
+                alt="Jibu Mom and Son"
+                width={768}
+                height={612}
+                unoptimized
+                className="w-full rounded"
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* Section 3 */}
+        <section className="bg-[#ffffff] rounded shadow p-6">
+          <div className="grid md:grid-cols-2 gap-6 items-center">
+            <div>
+              <h2 className="text-3xl font-semibold mb-4">The Jibu Story</h2>
+              <div className="aspect-video max-w-xl mx-auto">
+                <iframe
+                  className="w-full h-full rounded"
+                  src="https://www.youtube.com/embed/aXImu7_Th30"
+                  title="Jibu Rwanda"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            </div>
+            <div>
+              <h2 className="text-3xl font-semibold mb-4">Our Production Process</h2>
+              <div className="aspect-video max-w-xl mx-auto">
+                <iframe
+                  className="w-full h-full rounded"
+                  src="https://www.youtube.com/embed/VM1wh0NDGpY"
+                  title="Jibu Production"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 4 */}
+        <section className="bg-[#ffffff] rounded shadow p-6">
+          <div className="grid md:grid-cols-2 gap-6 items-center">
+            <div>
+              <h2 className="text-3xl font-semibold mb-4">The Jibu Water Purifying Process</h2>
+              <p className="mb-3">
+                Jibu aims at consistently producing safe drinking water through its four-step filtration method. We use internationally accredited purification systems like ultrafiltration and blended RO-hybrid technology.
+              </p>
+              <p>
+                We are proud partners of{" "}
+                <a
+                  href="https://healingwaters.org/"
+                  className="text-blue-600 underline"
+                >
+                  Healing Waters
+                </a>{" "}
+                for our Water Treatment System technology.
+              </p>
+            </div>
+            <div>
+              <Image
+                src="https://jibuco.com/wp-content/uploads/2022/09/Jibu-Website-Artwork-Production-Unit_Jibu-768x510.jpeg"
+                alt="Jibu Production"
+                width={768}
+                height={510}
+                unoptimized
+                className="w-full rounded"
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* Section 5 */}
+        <section className="bg-[#ffffff] rounded shadow p-6">
+          <Image
+            src="https://jibuco.com/wp-content/uploads/2022/09/Jibu-Website-Artwork-Water-Process-Table_Jibu-Water-Purifying-Process-1536x831.png"
+            alt="Water Process Table"
+            width={1536}
+            height={831}
+            unoptimized
+            className="w-full rounded"
+          />
+        </section>
+     
+      </div>
+    </div>
+  );
+}

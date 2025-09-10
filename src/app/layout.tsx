@@ -1,0 +1,34 @@
+'use client';
+
+import { Inter } from "next/font/google";
+import "./globals.css";
+import Container from "@/components/container";
+
+import Footer from "@/components/footer";
+import { usePathname } from "next/navigation";
+import Example from "@/components/header_new";
+
+const inter = Inter({ subsets: ["latin"] });
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  const pathname = usePathname()
+  const noLayoutRoutes = ['/uganda', '/kenya', '/burundi', '/kenya', '/tanzania', '/zambia', '/rwanda', '/drc', '/ghana']; //this is layout for global site. We dont want this to apply to country sites.
+  const hideLayout = noLayoutRoutes.some(route => pathname.startsWith(route));
+  return (
+    <html lang="en">
+      <body className={`${inter.className} bg-zinc-200`}>
+        <Container>
+          {!hideLayout && <Example />}
+          {children}
+          {!hideLayout && <Footer />}
+        </Container>
+      </body>
+    </html>
+  );
+}
+
+
