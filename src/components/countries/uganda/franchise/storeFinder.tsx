@@ -9,6 +9,7 @@ export interface Store {
   name: string;
   address: string;
   position: [number, number];
+  phone: string;
 }
 
 interface StoreLocatorProps {
@@ -71,6 +72,7 @@ export default function StoreLocator({ stores, center, zoom = 13, country }: Sto
                 <Popup>
                   <h3 className="font-bold">{store.name}</h3>
                   <p>{store.address}</p>
+                  <p>{store.phone}</p>
                 </Popup>
               </Marker>
             ))}

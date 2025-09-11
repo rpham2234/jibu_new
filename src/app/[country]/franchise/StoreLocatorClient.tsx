@@ -3,6 +3,7 @@
 
 import dynamic from "next/dynamic";
 import React from "react";
+import { Location } from "./getLocations"
 
 type LatLng = [number, number];
 
@@ -16,7 +17,7 @@ export default function StoreLocatorClient({
   center,
   country,
 }: {
-  stores: { name: string; address: string; position: LatLng }[];
+  stores: Location[];
   center: LatLng;
   country: string; // slug, e.g. "uganda"
 }) {

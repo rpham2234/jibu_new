@@ -20,7 +20,7 @@ export default function Header({ country = "uganda" }: { country?: string }) {
     { name: "Jibu Global", href: "/", current: false },
     { name: "Our Products", href: `/${slug}#products`, current: false },
     { name: "Franchise Location", href: `/${slug}/franchise`, current: false },
-    { name: "Bids & Tenders", href: "#", current: false },
+ 
     { name: "Contact Us", href: `/${slug}/contact`, current: false },
     { name: "Your Cart", href: `/${slug}/cart`, current: false },
   ];
