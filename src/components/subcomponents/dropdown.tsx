@@ -1,7 +1,7 @@
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 
-export default function CountryDropDown({country="Global",}:{country?: string;}) {
+export default function CountryDropDown({ country = "Global", }: { country?: string; }) {
   return (
     <Menu as="div" className="relative inline-block">
       <MenuButton className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-[#0d5d9e] px-3 py-2 text-sm font-semibold text-white shadow-xs  ring-inset hover:bg-blue-500">
@@ -15,31 +15,31 @@ export default function CountryDropDown({country="Global",}:{country?: string;})
       >
         <div className="py-1">
           <MenuItem key={"Global"} as="a" href={"/"}
-                    className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
-                    >
-                    
-                    Global
-                  
-                </MenuItem>
-          
+            className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
+          >
+
+            Global
+
+          </MenuItem>
+
           {[
-                "Burundi",
-                "Ghana",
-                "Kenya",
-                "Tanzania",
-                "Zambia",
-                "DRC",
-                "Rwanda",
-                "Uganda",
-              ].map((country) => (
-                <MenuItem key={country} as="a" href={"/" + country.toLowerCase()}
-                    className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
-                    >
-                   
-                    {country}
-               
-                </MenuItem>
-              ))}
+            "Burundi",
+            "Ghana",
+            "Kenya",
+            "Tanzania",
+            "Zambia",
+            "DRC",
+            "Rwanda",
+            "Uganda",
+          ].map((country) => (
+            <MenuItem key={country} as="a" href={"/" + country.toLowerCase()}
+              className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
+            >
+
+              {country}
+
+            </MenuItem>
+          ))}
         </div>
       </MenuItems>
     </Menu>
