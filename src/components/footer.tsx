@@ -1,104 +1,104 @@
+
 import Image from "next/image";
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#005499] text-white">
-      <div className="max-w-7xl mx-auto px-4 py-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-          
-          {/* Logo + Text */}
-          <div className="space-y-4 text-center md:text-left">
-            <Image
-              src="https://jibuco.com/wp-content/uploads/2022/09/Jibu-Website-Artwork-2_Jibu-Logo-150x48-white.png"
-              alt="Jibu Logo"
-              width={150}
-              height={48}
-            />
-            <p className="text-sm">
-              Local Owners Driving Lasting Solutions
-            </p>
-            <p className="text-sm">
-              Jibu capitalizes and equips emerging market entrepreneurs to create affordable access to drinking water and other necessities
-            </p>
-          </div>
+    <div className="px-4 pb-4">
+      <footer className="bg-[#005499] text-white pt-20 pb-6 px-6 md:px-12 overflow-hidden relative rounded-b-[3rem] mx-auto max-w-[95%]">
+        <div className="max-w-[90rem] mx-auto relative z-10">
 
-          {/* Explore Links */}
-          <div className="space-y-4 text-center md:text-left">
-            <h6 className="uppercase font-bold">Explore</h6>
-            <ul className="space-y-2">
-              <li>
-                <a href="/about" className="hover:underline">
-                  About
-                </a>
-              </li>
-              <li>
-                <a href="/franchise" className="hover:underline">
-                  Jibu Franchise Opportunity
-                </a>
-              </li>
-              <li>
-                <a href="/careers" className="hover:underline">
-                  Careers
-                </a>
-              </li>
-              <li>
-                <a href="/faqs" className="hover:underline">
-                  FAQ
-                </a>
-              </li>
-            </ul>
-          </div>
+          {/* Top Section: Info & Socials */}
+          <div className="mb-24 max-w-lg">
+            <div className="mb-6">
+              <Image
+                src="https://jibuco.com/wp-content/uploads/2022/09/Jibu-Website-Artwork-2_Jibu-Logo-150x48-white.png"
+                alt="Jibu Logo"
+                width={120}
+                height={38}
+                className="mb-6"
+              />
+              <p className="text-lg font-medium leading-relaxed text-blue-100 mb-4">
+                Local Owners Driving Lasting Solutions.
+              </p>
+              <p className="text-sm text-blue-200 leading-relaxed">
+                Jibu capitalizes and equips emerging market entrepreneurs to create affordable access to drinking water and other necessities.
+              </p>
+            </div>
 
-          {/* Social Links */}
-          <div className="space-y-4 text-center md:text-left">
-            <h6 className="uppercase font-bold">Social</h6>
-            <div className="flex justify-center md:justify-start gap-2">
-              <a href="https://www.facebook.com/JibuCo" className="bg-blue-600 p-2 rounded hover:bg-blue-700">
-                <FaFacebook className="text-white h-5 w-5" />
+            {/* Social Links */}
+            <div className="flex gap-4">
+              <a href="https://www.facebook.com/JibuCo" className="bg-white/10 p-3 rounded-full hover:bg-white hover:text-[#005499] transition-all duration-300">
+                <FaFacebook className="h-5 w-5" />
               </a>
-              <a href="#" className="bg-pink-600 p-2 rounded hover:bg-pink-700">
-                <FaInstagram className="text-white h-5 w-5" />
+              <a href="#" className="bg-white/10 p-3 rounded-full hover:bg-white hover:text-[#005499] transition-all duration-300">
+                <FaInstagram className="h-5 w-5" />
               </a>
-              <a href="https://x.com/JibuCo" className="bg-blue-400 p-2 rounded hover:bg-blue-500">
-                <FaTwitter className="text-white h-5 w-5" />
+              <a href="https://x.com/JibuCo" className="bg-white/10 p-3 rounded-full hover:bg-white hover:text-[#005499] transition-all duration-300">
+                <FaTwitter className="h-5 w-5" />
               </a>
-              <a href="https://www.linkedin.com/company/jibu/posts/?feedView=all" className="bg-blue-700 p-2 rounded hover:bg-blue-900">
-                <FaLinkedin className="text-white h-5 w-5" />
+              <a href="https://www.linkedin.com/company/jibu/posts/?feedView=all" className="bg-white/10 p-3 rounded-full hover:bg-white hover:text-[#005499] transition-all duration-300">
+                <FaLinkedin className="h-5 w-5" />
               </a>
             </div>
           </div>
 
-          {/* Jibu Countries */}
-          <div className="space-y-4 text-center md:text-left">
-            <h6 className="uppercase font-bold">Jibu Countries</h6>
-            <ul className="space-y-2">
-              {[
-                "Burundi",
-                "Ghana",
-                "Kenya",
-                "Tanzania",
-                "Zambia",
-                "DRC",
-                "Rwanda",
-                "Uganda",
-              ].map((country) => (
-                <li key={country}>
-                  <a href={country.toLowerCase()} className="hover:underline inline-flex items-center gap-1">
-                    <i className="bi bi-skype"></i>
-                    {country}
-                  </a>
-                </li>
-              ))}
-            </ul>
+          {/* Bottom Section: Big Text + Links */}
+          <div className="flex flex-col lg:flex-row items-end justify-between gap-10 border-t border-white/10 pt-10">
+
+            {/* Huge Text */}
+            <h1 className="text-[18vw] lg:text-[15rem] leading-[0.8] font-serif font-bold tracking-tighter opacity-100 select-none">
+              Jibu
+            </h1>
+
+            {/* Links Columns */}
+            <div className="flex gap-16 md:gap-32 pb-4 lg:pb-12 pr-4 lg:pr-10 text-right lg:text-left">
+
+              {/* Explore */}
+              <div className="space-y-6">
+                <h6 className="uppercase font-bold tracking-widest text-sm text-blue-200">Explore</h6>
+                <ul className="space-y-3 text-lg font-medium">
+                  <li><a href="/about" className="hover:text-blue-200 transition-colors">About</a></li>
+                  <li><a href="/franchise" className="hover:text-blue-200 transition-colors">Franchise</a></li>
+                  <li><a href="/ourTeam" className="hover:text-blue-200 transition-colors">Our Team</a></li>
+                  <li><a href="/careers" className="hover:text-blue-200 transition-colors">Careers</a></li>
+                  <li><a href="/stories" className="hover:text-blue-200 transition-colors">Stories</a></li>
+                  <li><a href="/faqs" className="hover:text-blue-200 transition-colors">FAQ</a></li>
+                </ul>
+              </div>
+
+              {/* Countries */}
+              <div className="space-y-6">
+                <h6 className="uppercase font-bold tracking-widest text-sm text-blue-200">Countries</h6>
+                <ul className="space-y-3 text-lg font-medium">
+                  {[
+                    "Burundi", "Ghana", "Kenya", "Tanzania",
+                    "Zambia", "DRC", "Rwanda", "Uganda"
+                  ].map((country) => (
+                    <li key={country}>
+                      <a href={"/" + country.toLowerCase()} className="hover:text-blue-200 transition-colors">
+                        {country}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+            </div>
+          </div>
+
+          {/* Copyright */}
+          <div className="mt-10 pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-sm text-blue-300">
+            <p>2025 © Jibu, Inc. All Rights Reserved.</p>
+            <div className="flex gap-6 mt-4 md:mt-0">
+              <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+              <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+            </div>
           </div>
 
         </div>
-      </div>
-
-      <div className="bg-gray-900 text-center text-xs py-3">
-        <p className="font-bold">2025 © Jibu, Inc, All Rights Reserved</p>
-      </div>
-    </footer>
+      </footer>
+    </div>
   );
 }
+
