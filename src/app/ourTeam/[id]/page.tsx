@@ -18,7 +18,7 @@ export default async function Page({
   }
 
   return (
-    <main className="mx-auto max-w-4xl px-4 py-10">
+    <main className="mt-20 mx-auto max-w-4xl px-4 py-10">
       <header className="mb-8">
         <BackButton></BackButton>
         <h1 className="text-3xl md:text-4xl font-semibold tracking-tight">
@@ -41,9 +41,7 @@ export default async function Page({
           )}
         </div>
 
-        <article className="md:col-span-2 prose prose-slate max-w-none">
-          {/* If you have a `bio` field, render it here */}
-          {/* <p>{person.bio}</p> */}
+        <article className="md:col-span-2 prose prose-slate max-w-none text-justify ml-10">
           <p>
             {person.bio}
           </p>

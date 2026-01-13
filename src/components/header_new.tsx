@@ -28,12 +28,12 @@ export default function Example() {
   const pathname = usePathname();
 
   return (
-    <Disclosure as="nav" className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-7xl rounded-full bg-white/10 backdrop-blur-md shadow-lg border border-white/20 transition-all duration-300">
+    <Disclosure as="nav" className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-7xl rounded-full bg-white/10 backdrop-blur-md shadow-lg border border-black/5 transition-all duration-300">
       <div className="mx-auto px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
             {/* Mobile menu button*/}
-            <DisclosureButton className="group relative inline-flex items-center justify-center rounded-full p-2 text-gray-200 hover:bg-white/10 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+            <DisclosureButton as="button" suppressHydrationWarning className="group relative inline-flex items-center justify-center rounded-full p-2 text-gray-700 hover:bg-black/5 hover:text-black focus:outline-none focus:ring-2 focus:ring-inset focus:ring-black">
               <span className="absolute -inset-0.5" />
               <span className="sr-only">Open main menu</span>
               <Bars3Icon aria-hidden="true" className="block size-6 group-data-open:hidden" />
@@ -45,10 +45,10 @@ export default function Example() {
               {/* Logo */}
               <Link href="/" className="flex items-center">
                 <Image
-                  src="https://jibuco.com/wp-content/uploads/2022/09/Jibu-Website-Artwork-2_Jibu-Logo-150x48-white.png"
+                  src="/jibu_blue_logo.png"
                   alt="Jibu Logo"
-                  height={40}
-                  width={125}
+                  height={60}
+                  width={150}
                   className="h-10 w-auto"
                 />
               </Link>
@@ -65,10 +65,10 @@ export default function Example() {
                     >
                       <motion.div
                         className={classNames(
-                          isCurrent ? 'text-lg font-bold text-white' : 'text-sm font-medium text-gray-200',
+                          isCurrent ? 'text-lg font-bold text-black' : 'text-sm font-medium text-gray-700',
                           'px-3 py-2 transition-all duration-300'
                         )}
-                        whileHover={!isCurrent ? { scale: 1.1, color: "#ffffff" } : {}}
+                        whileHover={!isCurrent ? { scale: 1.1, color: "#005499" } : {}}
                         whileTap={!isCurrent ? { scale: 0.95 } : {}}
                         layout // Helps with smooth layout transitions when size changes
                       >
@@ -87,7 +87,7 @@ export default function Example() {
         </div>
       </div>
 
-      <DisclosurePanel className="sm:hidden absolute top-full left-0 right-0 mt-2 rounded-2xl bg-white/10 backdrop-blur-md shadow-xl border border-white/20 overflow-hidden">
+      <DisclosurePanel className="sm:hidden absolute top-full left-0 right-0 mt-2 rounded-2xl bg-white/10 backdrop-blur-md shadow-xl border border-black/5 overflow-hidden">
         <div className="space-y-1 px-2 pt-2 pb-3">
           {navigation.map((item) => (
             <DisclosureButton
@@ -96,7 +96,7 @@ export default function Example() {
               href={item.href}
               aria-current={item.current ? 'page' : undefined}
               className={classNames(
-                item.current ? 'bg-blue-900 text-white' : 'text-gray-300 hover:bg-white/10 hover:text-white',
+                item.current ? 'bg-blue-900 text-white' : 'text-gray-700 hover:bg-black/5 hover:text-black',
                 'block rounded-md px-3 py-2 text-base font-medium',
               )}
             >

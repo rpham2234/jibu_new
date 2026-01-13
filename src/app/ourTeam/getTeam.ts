@@ -47,6 +47,7 @@ export async function getTeamByDocumentId(documentId: string): Promise<TeamMembe
   );
 
   if (!res.ok) {
+    if (res.status === 404) return null;
     console.error("Failed to fetch team member:", res.status);
     return null;
   }
@@ -66,7 +67,8 @@ export async function getExecByDocumentId(documentId: string): Promise<TeamMembe
   );
 
   if (!res.ok) {
-    console.error("Failed to fetch team member:", res.status);
+    if (res.status === 404) return null;
+    console.error("Failed to fetch executive:", res.status);
     return null;
   }
 

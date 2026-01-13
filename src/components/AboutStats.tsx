@@ -30,7 +30,7 @@ export default function AboutStats() {
           {stats.map((stat, index) => (
             <motion.div
               key={index}
-              className="bg-white text-black rounded-2xl p-4 shadow-lg border border-gray-100 flex flex-col items-center justify-center aspect-square"
+              className="bg-[#005499] text-white rounded-2xl p-4 shadow-lg border flex flex-col items-center justify-center aspect-square box-shadow-md"
               initial={{ opacity: 0, scale: 0.5, y: 50 }}
               whileInView={{ opacity: 1, scale: 1, y: 0 }}
               viewport={{ once: true }}
@@ -48,8 +48,8 @@ export default function AboutStats() {
               }}
               style={{ perspective: 1000 }}
             >
-              <p className="text-5xl md:text-7xl font-bold text-sky-500">{stat.value}</p>
-              <p className="text-base md:text-lg font-medium text-gray-500">{stat.label}</p>
+              <p className="text-5xl md:text-7xl font-bold text-white">{stat.value}</p>
+              <p className="text-base md:text-lg font-medium text-white">{stat.label}</p>
             </motion.div>
           ))}
         </div>

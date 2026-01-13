@@ -66,7 +66,10 @@ const franchisees = [
   }
 ];
 
+import { useRouter } from "next/navigation";
+
 export type Franchisee = {
+  id?: string | number; // Added optional id
   name: string;
   location: string;
   image: string;
@@ -79,6 +82,7 @@ export default function CardCarousel({
   items?: Franchisee[];
   title?: string;
 }) {
+  const router = useRouter();
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleNext = () => {
@@ -91,8 +95,13 @@ export default function CardCarousel({
 
   // Calculate visible range (e.g., 2 on each side)
   const getVisibleItems = () => {
+    if (!items.length) return [];
+
+    // Prevent showing duplicate items if the list is small
+    const spread = Math.min(2, Math.floor((items.length - 1) / 2));
+
     const visibleItems = [];
-    for (let i = -2; i <= 2; i++) {
+    for (let i = -spread; i <= spread; i++) {
       const index = (currentIndex + i + items.length) % items.length;
       visibleItems.push({ ...items[index], offset: i, key: index });
     }
@@ -100,9 +109,9 @@ export default function CardCarousel({
   };
 
   return (
-    <section className="w-full py-16 bg-gradient-to-b from-white to-slate-50 overflow-hidden">
+    <section className="w-full py-16 bg-white overflow-hidden">
       <div className="mx-auto max-w-7xl px-4 flex flex-col items-center">
-        <h2 className="text-3xl md:text-5xl font-bold mb-12 text-center text-slate-800">
+        <h2 className="text-4xl md:text-6xl font-bold mb-12 text-center text-slate-800">
           {title}
         </h2>
 
@@ -145,7 +154,9 @@ export default function CardCarousel({
                   transformStyle: "preserve-3d",
                 }}
                 onClick={() => {
-                  if (item.offset !== 0) {
+                  if (item.offset === 0 && item.id) {
+                    router.push(`/ourTeam/${item.id}`);
+                  } else if (item.offset !== 0) {
                     setCurrentIndex(item.key);
                   }
                 }}
