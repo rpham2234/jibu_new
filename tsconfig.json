@@ -14,7 +14,7 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "incremental": true,
     "plugins": [
       {
@@ -32,8 +32,14 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts"
-, "src/app/ourTeam/getTeam.ts", "src/app/ourTeam/page.jsx", "src/lib/apidata.js", "src/app/getFranchisees.js", "src/app/getFranchisees.js"  ],
+    ".next/types/**/*.ts",
+    "src/app/ourTeam/getTeam.ts",
+    "src/app/ourTeam/page.jsx",
+    "src/lib/apidata.js",
+    "src/app/getFranchisees.js",
+    "src/app/getFranchisees.js",
+    ".next/dev/types/**/*.ts"
+  ],
   "exclude": [
     "node_modules"
   ]
