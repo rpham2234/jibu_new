@@ -13,6 +13,7 @@ interface HeroImageProps {
   title?: string;
   subtitle?: string;
   showButton?: boolean;
+  showText?: boolean;
 }
 
 export default function HeroImage({
@@ -20,6 +21,7 @@ export default function HeroImage({
   title,
   subtitle,
   showButton = true,
+  showText = true,
 }: HeroImageProps) {
   // If imageurl is provided, render as a Banner (Standard Page Header)
   if (imageurl) {
