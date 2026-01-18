@@ -2,7 +2,8 @@ export type Location = {
   name: string;
   address:string;
   position:LatLng;
-  phone: string
+  phone: string;
+  email: string;
 };
 
 export type LatLng = [number, number];
@@ -37,7 +38,8 @@ function mapToLocation(item: any): Location {
     name: item.locations.name,
     address: item.locations.address,
     position: toLatLng(item.locations.position),
-    phone: item.locations.phone
+    phone: item.locations.phone,
+    email: item.locations.email
   };
 }
 

@@ -17,7 +17,7 @@ export default async function Contact({ params }: Props) {
         instagram={info.instagram}
         linkedin={info.linkedin}
       />
-      <ContactForm />
+      <ContactForm countryCode={info.countryCode}/>
     </div>
   );
 }
