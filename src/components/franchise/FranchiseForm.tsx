@@ -72,13 +72,13 @@ export default function FranchiseForm() {
 
       if (!createRes.ok) {
         const err = await createRes.json().catch(async () => ({ error: await createRes.text() }));
-        setStatus(`❌ Failed: ${JSON.stringify(err)}`);
+        setStatus(`Failed: ${JSON.stringify(err)}`);
       } else {
-        setStatus("✅ Application submitted!");
+        setStatus("Application submitted!");
         formEl.reset();
       }
     } catch (error: any) {
-      setStatus(`❌ Error: ${error.message || "Network error"}`);
+      setStatus(`Error: ${error.message || "Network error"}`);
     } finally {
       setSubmitting(false);
     }
@@ -97,120 +97,140 @@ export default function FranchiseForm() {
   }
 
   return (
-    <section className="max-w-5xl mx-auto p-6">
-      <div className="bg-white shadow-lg rounded-xl overflow-hidden border border-gray-200">
-        {/* Header */}
-        <div className="p-6">
-          <h2 className="text-3xl font-semibold">AMF &amp; Franchisee Inquiry Form</h2>
-          <p className="text-sm opacity-90 mt-1">
-            Apply to join our mission-driven network of entrepreneurs.
-          </p>
+    <section className="w-full flex flex-col md:flex-row min-h-screen">
+      {/* Left Column: Heading & Info */}
+      <div className="w-full md:w-1/2 bg-white flex flex-col justify-center px-8 py-12 md:px-16 lg:px-24">
+        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
+          AMF &amp; Franchisee Inquiry Form
+        </h2>
+        <p className="text-lg text-gray-600 leading-relaxed mb-8">
+          Apply to join our mission-driven network of entrepreneurs. We are looking for dedicated partners to help us bring affordable, safe drinking water to communities.
+        </p>
+        <div className="hidden md:block">
+          {/* Optional: Add some trust indicators or extra text here if needed later */}
+          <div className="flex gap-4">
+            <div className="h-1 w-20 bg-blue-600 rounded-full" />
+          </div>
         </div>
+      </div>
 
-        {/* Form */}
-        <form className="p-6 space-y-8" onSubmit={handleSubmit} encType="multipart/form-data">
-          {/* Responsive two-column layout */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Left column: Personal Info */}
-            <div className="space-y-6">
-              {[
-                { label: "Full Name", name: "name" },
-                { label: "Email Address", name: "email", type: "email" },
-                { label: "Phone Number", name: "phone" },
-                { label: "Preferred Setup Location", name: "location" },
-                { label: "Country", name: "country" },
-              ].map(({ label, name, type = "text" }) => (
-                <div key={name} className="space-y-1">
-                  <label htmlFor={name} className="block font-medium text-gray-700">
-                    {label} *
-                  </label>
-                  <input
-                    id={name}
-                    type={type}
-                    name={name}
-                    required
-                    className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none transition"
-                  />
-                </div>
-              ))}
+      {/* Right Column: Form Section */}
+      <div className="w-full md:w-1/2 bg-[#005499] flex items-center justify-center p-6 md:p-12 lg:p-16">
+        <div className="w-full max-w-xl bg-white rounded-2xl shadow-2xl overflow-hidden">
+          <form className="p-6 md:p-8 space-y-6" onSubmit={handleSubmit} encType="multipart/form-data">
+
+            {/* Status Message - Top */}
+            {status && (
+              <div className={`p-4 rounded-lg text-sm ${status.includes("✅") ? "bg-green-50 text-green-700" : "bg-red-50 text-red-700"}`}>
+                {status}
+              </div>
+            )}
+
+            {/* Personal Info */}
+            <div className="space-y-4">
+              <div className="grid grid-cols-1 gap-4">
+                {[
+                  { label: "Full Name", name: "name" },
+                  { label: "Email Address", name: "email", type: "email" },
+                  { label: "Phone Number", name: "phone" },
+                  { label: "Preferred Setup Location", name: "location" },
+                  { label: "Country", name: "country" },
+                ].map(({ label, name, type = "text" }) => (
+                  <div key={name}>
+                    <label htmlFor={name} className="block text-sm font-semibold text-gray-700 mb-1">
+                      {label} *
+                    </label>
+                    <input
+                      id={name}
+                      type={type}
+                      name={name}
+                      required
+                      className="w-full rounded-lg border border-gray-300 px-4 py-2.5 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all placeholder-gray-400"
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
 
-            {/* Right column: Options & Uploads */}
-            <div className="space-y-6">
-              {/* Radio */}
-              <div>
-                <p className="font-medium text-gray-700">Do you want a Franchise or an AMF? *</p>
-                <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  {["Franchise", "Area Master Franchise"].map((option) => (
-                    <label
-                      key={option}
-                      className="flex items-center gap-2 border rounded-lg px-4 py-3 cursor-pointer hover:border-blue-500 transition"
-                    >
-                      <input type="radio" name="franchiseType" value={option} required />
-                      <span className="text-gray-700">{option}</span>
-                    </label>
-                  ))}
-                </div>
+            {/* Franchise Type */}
+            <div>
+              <p className="block text-sm font-semibold text-gray-700 mb-2">Do you want a Franchise or an AMF? *</p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {["Franchise", "Area Master Franchise"].map((option) => (
+                  <label
+                    key={option}
+                    className="relative flex items-center justify-center border-2 border-gray-200 rounded-lg px-4 py-3 cursor-pointer hover:border-blue-500 hover:bg-blue-50 transition-all group"
+                  >
+                    <input type="radio" name="franchiseType" value={option} required className="sr-only peer" />
+                    <span className="text-gray-600 font-medium peer-checked:text-blue-700 z-10">{option}</span>
+                    {/* Active state border via CSS or just rely on peer-checked styling if using Tailwind forms plugin, but explicit border logic: */}
+                    <div className="absolute inset-0 border-2 border-transparent peer-checked:border-blue-600 rounded-lg pointer-events-none" />
+                  </label>
+                ))}
               </div>
+            </div>
 
-              {/* Resume */}
-              <div className="space-y-1">
-                <label htmlFor="resume" className="block font-medium text-gray-700">
-                  Upload Resume / CV
+            {/* Upload & LinkedIn */}
+            <div className="space-y-4">
+              <div>
+                <label htmlFor="resume" className="block text-sm font-semibold text-gray-700 mb-1">
+                  Upload Resume / CV <span className="text-gray-400 font-normal">(PDF, DOC)</span>
                 </label>
                 <input
                   id="resume"
                   type="file"
                   name="resume"
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2"
+                  className="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 transition"
                   accept=".pdf,.doc,.docx"
                 />
               </div>
 
-              {/* LinkedIn */}
-              <div className="space-y-1">
-                <label htmlFor="linkedin" className="block font-medium text-gray-700">
-                  Or LinkedIn Profile URL
+              <div className="relative">
+                <div className="absolute inset-0 flex items-center">
+                  <div className="w-full border-t border-gray-200" />
+                </div>
+                <div className="relative flex justify-center text-xs uppercase">
+                  <span className="bg-white px-2 text-gray-500">Or</span>
+                </div>
+              </div>
+
+              <div>
+                <label htmlFor="linkedin" className="block text-sm font-semibold text-gray-700 mb-1">
+                  LinkedIn Profile URL
                 </label>
                 <input
                   id="linkedin"
                   type="url"
                   name="linkedin"
-                  placeholder="https://linkedin.com/in/your-profile"
-                  className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                  placeholder="https://linkedin.com/in/..."
+                  className="w-full rounded-lg border border-gray-300 px-4 py-2.5 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
                 />
               </div>
-
-              {/* Consent */}
-              <div className="flex items-start gap-2 text-sm">
-                <input id="agree" type="checkbox" name="agree" required className="mt-1 accent-blue-600" />
-                <label htmlFor="agree" className="text-gray-600">
-                  I confirm the information provided is true and may be used for verification purposes.
-                </label>
-              </div>
             </div>
-          </div>
 
-          {/* Submit Button */}
-          <div>
+            {/* Consent */}
+            <div className="flex items-start gap-3">
+              <input id="agree" type="checkbox" name="agree" required className="mt-1 w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500" />
+              <label htmlFor="agree" className="text-sm text-gray-600">
+                I confirm the information provided is true.
+              </label>
+            </div>
+
+            {/* Submit Button */}
             <button
               type="submit"
               disabled={submitting}
-              className="w-full bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-blue-700 disabled:opacity-60 disabled:cursor-not-allowed transition"
+              className="w-full bg-[#005499] text-white font-bold py-3.5 rounded-lg hover:bg-blue-800 disabled:opacity-70 disabled:cursor-not-allowed transition-all shadow-md transform active:scale-[0.98]"
             >
-              {submitting ? "Submitting…" : "Submit Application"}
+              {submitting ? "Submitting Application..." : "Submit Application"}
             </button>
-          </div>
 
-          {/* Status Message */}
-          {status && <p className="text-sm mt-3">{status}</p>}
-
-          {/* Footer Notes */}
-          <div className="text-xs text-gray-500 space-y-1 pt-4">
-            <p>* Applications without a resume/CV or LinkedIn profile will not be considered.</p>
-            <p>* By submitting, you authorize Jibu to assess your application and perform any necessary checks.</p>
-          </div>
-        </form>
+            {/* Footer Notes */}
+            <div className="text-xs text-center text-gray-400">
+              * Applications without a resume or LinkedIn will not be considered.
+            </div>
+          </form>
+        </div>
       </div>
     </section>
   );
