@@ -1,0 +1,39 @@
+{
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/uganda/$1",
+      "has": [{ "type": "host", "value": "ug.jibuco.com" }]
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/kenya/$1",
+      "has": [{ "type": "host", "value": "ke.jibuco.com" }]
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/rwanda/$1",
+      "has": [{ "type": "host", "value": "rw.jibuco.com" }]
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/ghana/$1",
+      "has": [{ "type": "host", "value": "gh.jibuco.com" }]
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/zambia/$1",
+      "has": [{ "type": "host", "value": "zambia.jibuco.com" }]
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/drc/$1",
+      "has": [{ "type": "host", "value": "goma.jibuco.com" }]
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/tanzania/$1",
+      "has": [{ "type": "host", "value": "tz.jibuco.com" }]
+    }
+  ]
+}

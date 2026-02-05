@@ -3,6 +3,12 @@
 import React from "react";
 import Image from "next/image";
 import { motion, Variants } from "framer-motion";
+import dynamic from "next/dynamic";
+
+const StoreLocator = dynamic(() => import("@/components/StoreLocator"), {
+  ssr: false,
+  loading: () => <div className="w-full h-[600px] flex items-center justify-center bg-gray-100 rounded-2xl animate-pulse"><p className="text-gray-500">Loading Map...</p></div>
+});
 
 const cardVariants: Variants = {
   offscreen: {
@@ -176,6 +182,16 @@ export default function AboutPage() {
               unoptimized
               className="w-full rounded-xl"
             />
+          </div>
+        </div>
+      </Card>
+
+      {/* Section 6 - Store Locator */}
+      <Card i={5}>
+        <div className="w-full">
+          <h2 className="text-3xl font-bold md:text-4xl mb-8 text-center">Find a franchise near you</h2>
+          <div className="w-full h-[600px] bg-slate-100 rounded-2xl">
+            <StoreLocator />
           </div>
         </div>
       </Card>

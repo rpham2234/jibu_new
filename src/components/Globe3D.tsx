@@ -35,7 +35,7 @@ const Globe3D = ({ width, height }: { width?: number; height?: number }) => {
     useEffect(() => {
         // Load GeoJSON data
         fetch(
-            "https://raw.githubusercontent.com/vasturiano/react-globe.gl/master/example/datasets/ne_110m_admin_0_countries.geojson"
+            "/assets/ne_110m_admin_0_countries.geojson"
         )
             .then((res) => res.json())
             .then(setCountries);
@@ -150,8 +150,8 @@ const Globe3D = ({ width, height }: { width?: number; height?: number }) => {
                 ref={globeEl}
                 onGlobeReady={initFlags}
                 backgroundColor="rgba(0,0,0,0)"
-                globeImageUrl="//unpkg.com/three-globe@2.45.0/example/img/earth-day.jpg"
-                bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png"
+                globeImageUrl="/assets/earth-day.jpg"
+                bumpImageUrl="/assets/earth-topology.png"
 
                 // Country Polygons (Subtle highlight for context, but focus on dots)
                 polygonsData={countries.features.filter(

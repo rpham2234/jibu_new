@@ -6,10 +6,11 @@ import AboutStats from "@/components/AboutStats";
 import HowJibuWorks from "@/components/HowJibuWorks";
 import CardCarousel, { Franchisee } from "@/components/SampleCarousel";
 import { getFranchisees } from "./getFranchisees";
+import InvestorPartners from "@/components/InvestorPartners";
 
 export default function Home() {
   const [franchisees, setFranchisees] = useState<Franchisee[]>([]);
-  const [loading, setLoading] = useState(true);
+
 
   useEffect(() => {
     let alive = true;
@@ -18,13 +19,13 @@ export default function Home() {
         const data = await getFranchisees(); // must return Franchisee[]
         if (alive) setFranchisees(Array.isArray(data) ? data : []);
       } finally {
-        if (alive) setLoading(false);
+
       }
     })();
     return () => { alive = false; };
   }, []);
 
-  if (loading) return <main className="p-8">Loading…</main>;
+
 
   return (
     <main>
@@ -32,6 +33,7 @@ export default function Home() {
       <AboutStats />
       <CardCarousel items={franchisees} />
       <HowJibuWorks />
+      <InvestorPartners />
     </main>
   );
 }

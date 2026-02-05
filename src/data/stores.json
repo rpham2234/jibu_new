@@ -1,0 +1,2903 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    29.006059,
+                    -2.700377
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Bugarama",
+                "phone": "+250788300556",
+                "storeid": "RW047",
+                "description": "KABUSUNZU"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    30.145924,
+                    -1.995829
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Busanza",
+                "phone": "+250788644511",
+                "storeid": "RW044",
+                "description": "KK 152 ST"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    30.103527,
+                    -2.013083
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Gahanga",
+                "phone": "+250788463898",
+                "storeid": "RW30",
+                "description": "KK 15 RD – GAHANGA CENTER"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    30.185889,
+                    -1.969364
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Gasogi",
+                "phone": "+250788300914",
+                "storeid": "RW41",
+                "description": "KK 359 ST"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    30.091563,
+                    -1.977563
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Gatenga",
+                "phone": "+250788419394",
+                "storeid": "RW20",
+                "description": "KK 44 AVE – KK 593 ST"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    30.047694,
+                    -1.920638
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Gatsata",
+                "phone": "+250785786628",
+                "storeid": "RW16",
+                "description": "RN3 – KIGALI - GATUNA RD"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    30.074917,
+                    -1.967
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Gikondo",
+                "phone": "+250788387455",
+                "storeid": "RW07",
+                "description": "KK 4 AVE – KK 686 ST"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    29.256556,
+                    -1.685444
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Gisenyi I",
+                "phone": "+250788350999",
+                "storeid": "RW17",
+                "description": "RN4 – PETITE BARRIERE - GISENYI RD"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    29.263466,
+                    -1.677485
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Gisenyi II",
+                "phone": "+250788302865",
+                "storeid": "RW042",
+                "description": "AMAHORO"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    29.739692,
+                    -2.599694
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Huye",
+                "phone": "+2507882180788",
+                "storeid": "RW21",
+                "description": "RN1 – HUYE - NGOMA RD"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    30.123438,
+                    -1.969688
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Kabeza",
+                "phone": "+250788387455",
+                "storeid": "RW09",
+                "description": "KK 18 AVE – KK 242 ST"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    30.223187,
+                    -1.979687
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Kabuga",
+                "phone": "+250788452850",
+                "storeid": "RW23",
+                "description": "KK 3 RD – KABUGA BUS STATION"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    30.058139,
+                    -1.899028
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Kabuye",
+                "phone": "+250785413091",
+                "storeid": "RW29",
+                "description": "RN3 – KIGALI - GATUNA RD"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    30.085833,
+                    -1.915778
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Kagugu",
+                "phone": "+250788303046",
+                "storeid": "RW12",
+                "description": "KG 14 AVE – KG 438 ST"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    30.167055,
+                    -1.976889
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Kanombe",
+                "phone": "+250788678070",
+                "storeid": "RW06",
+                "description": "KN 5 RD – KK 97 ST"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    29.346101,
+                    -2.06859
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Karongi",
+                "phone": "+250788899835",
+                "storeid": "RW35",
+                "description": "RN7 – KARONGI HOSPITAL"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    30.497085,
+                    -1.901917
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Kayonza",
+                "phone": "+250783402539",
+                "storeid": "RW32",
+                "description": "RN3 – RWAMAGANA - KAYONZA RD"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    30.108188,
+                    -1.935562
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Kibagabaga",
+                "phone": "+250783200933",
+                "storeid": "RW24",
+                "description": "KG 10 AVE – KG 294 ST"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    30.551467,
+                    -2.141553
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Kibungo",
+                "phone": "+250788524198",
+                "storeid": "RW38",
+                "description": "RN3 - BRALIRWA NGOMA STORE"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    30.104386,
+                    -1.976663
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Kicukiro",
+                "phone": "+250788519798",
+                "storeid": "RW05",
+                "description": "KK 15 RD – KK 488 ST"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    30.075667,
+                    -1.952972
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Kimihurura",
+                "phone": "+250788485410",
+                "storeid": "RW33",
+                "description": "KN 7 RD – KN 10 ST"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    30.120771,
+                    -1.95247
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Kimironko I",
+                "phone": "+250788301644",
+                "storeid": "RW01",
+                "description": "KG 11 AVE – KG 184 ST"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    30.130972,
+                    -1.936611
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Kimironko II",
+                "phone": "+250788312309",
+                "storeid": "RW03",
+                "description": "KG 11 AVE – KG 3 ST"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    30.053688,
+                    -1.956938
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Kimisagara",
+                "phone": "+250784507829",
+                "storeid": "RW15",
+                "description": "KN 20 AVE – KN 118 ST"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    30.061694,
+                    -1.934583
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Kinamba",
+                "phone": "+250788303046",
+                "storeid": "RW02",
+                "description": "KN 8 AVE – KN 12 ST"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    30.112694,
+                    -1.91769
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Kinyinya",
+                "phone": "+250788780803",
+                "storeid": "RW40",
+                "description": "KG 22 AVE"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    30.677567,
+                    -2.273816
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Kirehe",
+                "phone": "+250782460833",
+                "storeid": "RW36",
+                "description": "RN3 - OPP. KIREHE MARKET"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    29.341639,
+                    -1.698139
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Mahoko",
+                "phone": "+250788354088",
+                "storeid": "RW34",
+                "description": "RN4 – MAHOKO TAXI PARK"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    30.19399,
+                    -1.99534
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Masaka",
+                "phone": "+250787155984",
+                "storeid": "RW14",
+                "description": "MASAKA HOSPITAL RD"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    29.753688,
+                    -2.087313
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Muhanga I",
+                "phone": "+250788583993",
+                "storeid": "RW22",
+                "description": "RN1 – MUHANGA - HUYE RD"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    30.060142,
+                    -1.941137
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Muhanga II",
+                "phone": "+250788422336",
+                "storeid": "RW43",
+                "description": "RN 1 - CYAKABIRI"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    30.059843,
+                    -1.940941
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Muhima",
+                "phone": "+250785121071",
+                "storeid": "RW26",
+                "description": "KN 2 AVE – KN 87 ST"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    29.640342,
+                    -1.506899
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Musanze",
+                "phone": "+250788587998",
+                "storeid": "RW28",
+                "description": "RN4 – RUE DU PYRETHRE"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    29.626269,
+                    -1.499918
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Musanze II",
+                "phone": "+250788751209",
+                "storeid": "RW46",
+                "description": "BYIMANA"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    30.055611,
+                    -1.917667
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Musezero",
+                "phone": "+250788303046",
+                "storeid": "RW25",
+                "description": "KG 14 AVE – KG 784 ST"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    30.11542,
+                    -1.98014
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Niboye",
+                "phone": "+250788301644",
+                "storeid": "RW13",
+                "description": "KK 21 AVE – KK 353 ST"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    30.048625,
+                    -1.938925
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Nyabugogo",
+                "phone": "+250788635332",
+                "storeid": "RW31",
+                "description": "GAKONI"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    30.328061,
+                    -1.293577
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Nyagatare",
+                "phone": "+250784303425",
+                "storeid": "RW39",
+                "description": "RN13 - OPP. MBTC HOTEL"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    29.579806,
+                    -2.471025
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Nyamagabe",
+                "phone": "+250783129206",
+                "storeid": "RW45",
+                "description": "KABACUZI"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    30.083831,
+                    -2.140584
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Nyamata",
+                "phone": "+250788300914",
+                "storeid": "RW18",
+                "description": "RN15 – NYAMATA CENTER"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    30.058889,
+                    -1.96575
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Nyamirambo I",
+                "phone": "+250788258047",
+                "storeid": "RW04",
+                "description": "KN 2 AVE – KN 102 ST"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    30.045813,
+                    -1.980812
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Nyamirambo II",
+                "phone": "+250788258047",
+                "storeid": "RW10",
+                "description": "KN 2 AVE – KN 245 ST"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    29.749684,
+                    -2.352161
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Nyanza",
+                "phone": "+250788932144",
+                "storeid": "RW37",
+                "description": "OPP. NYANZA MARKET - NYANZA RD"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    28.896667,
+                    -2.483333
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Rusizi",
+                "phone": "+250788322266",
+                "storeid": "RW27",
+                "description": "RN6 – DIOCESE CARITAS CYANGUGU"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    29.98477,
+                    -1.96771
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Ruyenzi",
+                "phone": "+250788303046",
+                "storeid": "RW11",
+                "description": "RN1 – LUX HOUSE"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    30.436089,
+                    -1.954684
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Rwamagana",
+                "phone": "+250788666302",
+                "storeid": "RW19",
+                "description": "RN3 – MTN CENTER"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    30.102447,
+                    -1.96274
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Sonatube",
+                "phone": "+250788519798",
+                "storeid": "RW08",
+                "description": "KG 1 AVE – KG 601 ST"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    32.5609432,
+                    0.3819276
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Kawempe",
+                "phone": "+256777180129",
+                "storeid": "UG001",
+                "description": "Plot 145, Kawempe-Tula Road, Kiiza Zone"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    32.6142991,
+                    0.3034187
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Namuwongo",
+                "phone": "+256753997357",
+                "storeid": "UG002",
+                "description": "Plot 177/179, Bukasa Rd, Namuwongo, Kampala"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    32.6314325,
+                    0.2559256
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Ggaba",
+                "phone": "+256705681118",
+                "storeid": "UG003",
+                "description": "Plot 145, Ggaba road"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    32.5896358,
+                    0.3411991
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Kamwokya",
+                "phone": "+256788010965",
+                "storeid": "UG004",
+                "description": "Plot 37, Bukoto Steet"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    32.6534482,
+                    0.3059953
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Bugolobi",
+                "phone": "+256752113836",
+                "storeid": "UG005",
+                "description": "Plot 8, Butabika road"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    32.647369,
+                    0.3551793
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Kireka",
+                "phone": "+256200901240",
+                "storeid": "UG007",
+                "description": "Plot 230, Kamuli Ndugwa road"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    32.616756,
+                    0.3545858
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Ntinda",
+                "phone": "+256700815507",
+                "storeid": "UG011",
+                "description": "Plot 101, Martyrs Way, Ministers Village"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    32.5699177,
+                    0.3185265
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Downtown",
+                "phone": "+256200923958",
+                "storeid": "UG012",
+                "description": "Plot 50, Rashid Khamis Road, Kampala, Uganda"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    30.6723848,
+                    0.6065897
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Mbarara I",
+                "phone": "+256200901232",
+                "storeid": "UG013",
+                "description": "Plot 55, Buremba road Kakoba"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    32.5528515,
+                    0.2953484
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Kabuusu",
+                "phone": "+256701853933",
+                "storeid": "UG014",
+                "description": "Plot 915, Block 17, Rubaga Road"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    32.71495,
+                    0.3640317
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Seeta",
+                "phone": "+256753997373",
+                "storeid": "UG015",
+                "description": "Plot 1330, Bagala Zone, Namilyango road"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    32.5674899,
+                    0.2841782
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Najjanankumbi",
+                "phone": "+256707700405",
+                "storeid": "UG016",
+                "description": "Plot 269, Masanyalaze Zone, PO BOX 72672"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    32.5814284,
+                    0.2760988
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Makindye",
+                "phone": "+256753997376",
+                "storeid": "UG017",
+                "description": "Salama Road, Kirundu Zone"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    32.6352989,
+                    0.3681251
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Naalya",
+                "phone": "+256751021663",
+                "storeid": "UG018",
+                "description": "Plot 493, Shrine Lane, Naalya Housing Estate"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    30.6478824,
+                    0.603997
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Mbarara II",
+                "phone": "+256751021658",
+                "storeid": "UG019",
+                "description": "Kokonjeru cell, Ntare Road, Kamukuzi division"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    32.5468414,
+                    0.3386114
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Kasubi",
+                "phone": "+256751021932",
+                "storeid": "UG020",
+                "description": "Hoima Road, Namugoona Zone, Lubaga Division, Kampala, P.O BOX 29619"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    33.207952,
+                    0.4245341
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Jinja",
+                "phone": "+256756617297",
+                "storeid": "UG023",
+                "description": "Plot 3B, Iganga road, Jinja town"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    34.1676822,
+                    1.0747464
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Mbale",
+                "phone": "+256707700772",
+                "storeid": "UG024",
+                "description": "Plot 13, Bugwere Road, Muyembe Cell, Malukhu Parish, Industrial Borough"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    30.2023001,
+                    0.5452691
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Bushenyi",
+                "phone": "+256707700400",
+                "storeid": "UG025",
+                "description": "P.O Box 121, Tankhill, Ishaka, Bushenyi"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    31.7335905,
+                    0.3418103
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Masaka",
+                "phone": "+256707700404",
+                "storeid": "UG026",
+                "description": "Plot 20, Kumbu 7 Road, Masaka"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    31.3528411,
+                    1.4312344
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Hoima",
+                "phone": "+256707700406",
+                "storeid": "UG028",
+                "description": "Hoima Mainstreet, Opposite MTN office and KCB Bank"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    30.2775739,
+                    0.6531667
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Fort Portal",
+                "phone": "+256707700408",
+                "storeid": "UG029",
+                "description": "Plot 20/22, Kiboga Road, Fort Portal"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    34.1848069,
+                    0.693262
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Tororo",
+                "phone": "+256707700401",
+                "storeid": "UG030",
+                "description": "Plot 32, Tagore Road"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    32.8948269,
+                    2.2553737
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Lira",
+                "phone": "+256707700402",
+                "storeid": "UG032",
+                "description": "Junior Quarters, Plot 20 Otim Tom Road"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    32.300855,
+                    2.7658893
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Gulu II",
+                "phone": "+256707700770",
+                "storeid": "UG034",
+                "description": "Plot 23, Martin Obalim road, Labour line Road Zone, Nakasero"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    36.928172,
+                    -1.378585
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Syokimau",
+                "phone": "+254720117997",
+                "storeid": "KE002",
+                "description": "Repen complex, B117 Katani Rd, P.O.Box 903-00516, Nairobi"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    36.891753,
+                    -1.299204
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Donholm",
+                "phone": "+254729666645",
+                "storeid": "KE003",
+                "description": "Donholm, Jacaranda road near deliverance church"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    36.880272,
+                    -1.284053
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Buruburu",
+                "phone": "+254706059211",
+                "storeid": "KE004",
+                "description": "Buruburu Phase II, Mumias Road, Next to Mesora Distributor, Kenol Petrol Station, P.O.Box 32001-00600"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    36.660113,
+                    -1.350138
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Ngong",
+                "phone": "+254722439672",
+                "storeid": "KE005",
+                "description": "Kony House, Next to Zambia Stage, P.O.BOX 3-00517"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    36.902662,
+                    -1.282702
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Umoja",
+                "phone": "+254796795414",
+                "storeid": "KE006",
+                "description": "Bee Centre, Manyanja Road, near Greenspan Mall"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    36.758293,
+                    -1.3963778
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Rongai",
+                "phone": "+254110089693",
+                "storeid": "KE007",
+                "description": "Njima Investment Plaza, Maasai Lodge Road, Off Magadi Road, P.O.Box 903-00516"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    36.88422,
+                    -1.209658
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Mirema",
+                "phone": "+254722495719",
+                "storeid": "KE008",
+                "description": "P.O. Box 21313 – 00100 Nairobi, Mirema Drive, Road Junction, Roy Sambu"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    36.73708,
+                    -1.283055
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Riruta",
+                "phone": "+254706340077",
+                "storeid": "KE009",
+                "description": "Kamrose Plaza off Naivasha Road, P.O.Box 21313-00100, Nairobi, Kenya"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    36.95445,
+                    -1.498267
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Kitengela",
+                "phone": "+254718857170",
+                "storeid": "KE010",
+                "description": "Kitengela, Chuna Estate along Namanga Road"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    36.770837,
+                    -1.203527
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Ruaka",
+                "phone": "+254721608804",
+                "storeid": "KE011",
+                "description": "Ruaka Limuru road, P.O.Box 13398-00100, Nairobi"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    36.802203,
+                    -1.33225
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Langata",
+                "phone": "+254752864034",
+                "storeid": "KE012",
+                "description": "Langata, Carnivore Road, Swaminarayan Street, near Red Buffalo Hotel"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    36.70939,
+                    -1.22938
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Kabete",
+                "phone": "+254735429489",
+                "storeid": "KE013",
+                "description": "Lower Kabete, Kamutiini Stage along Wangige Road"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    36.912507,
+                    -1.309334
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Embakasi",
+                "phone": "+254799022763",
+                "storeid": "KE014",
+                "description": "Embakasi, near Atmosphere Bar and Grill, at the junction of Eastern Bypass and Embakasi Road"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    36.887624,
+                    -1.325535
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Imara Daima",
+                "phone": "+254777537100",
+                "storeid": "KE015",
+                "description": "Imara daima, opposite police post"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    36.661069,
+                    -1.24419
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Kikuyu",
+                "phone": "+254757216329",
+                "storeid": "KE016",
+                "description": "Kikuyu, opposite ivory towers"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    36.779921,
+                    -1.221543
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Gachie",
+                "phone": "+254753475143",
+                "storeid": "KE017",
+                "description": "Gachie, River road next to sparks lounge"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    36.817807,
+                    -1.313857
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu South C",
+                "phone": "+254111643131",
+                "storeid": "KE018",
+                "description": "Nairobi west, mai mahiu road."
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    36.835913,
+                    -1.31113
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu South B",
+                "phone": "+254798441606",
+                "storeid": "KE019",
+                "description": "South B shopping center, odssey plaza"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    36.788942,
+                    -1.299309
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Kilimani",
+                "phone": "+254113215974",
+                "storeid": "KE020",
+                "description": "Kilimani, at the junction of ring road and ngong road, opposite Totl petrol station."
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    36.80163,
+                    -1.305154
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu UpperHill",
+                "phone": "+254114237742",
+                "storeid": "KE021",
+                "description": "Upperhill, ngumo estate, opposite kenyatta market stall, next to sunview estate gate."
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    36.78484,
+                    -1.323181
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:30am - 5:30pm",
+                "name": "Jibu Upper Langata",
+                "phone": "+254113169272",
+                "storeid": "KE022",
+                "description": "Upper Langata, south lands, old uchumi road, opposite bundi apartements"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    36.6948679,
+                    -3.3598968
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "08:00am - 08:00pm",
+                "name": "Jibu Sanawari",
+                "phone": "+255 766 960 610",
+                "storeid": "TZ001",
+                "description": "Sanawari, Arusha"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    36.6583804,
+                    -3.4115219
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "08:00am - 08:00pm",
+                "name": "Jibu Morombo",
+                "phone": "+255 766 960 610",
+                "storeid": "TZ002",
+                "description": "Morombo, Arusha"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    36.85726,
+                    -3.3682834
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "08:00am - 08:00pm",
+                "name": "Jibu Usa River",
+                "phone": "+255 767 760 506",
+                "storeid": "TZ003",
+                "description": "Usa River, Arusha"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    36.7046776,
+                    -3.3975858
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "08:00am - 08:00pm",
+                "name": "Jibu Njiro",
+                "phone": "+255 743 899 091",
+                "storeid": "TZ004",
+                "description": "Njiro, Arusha"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    36.6664159,
+                    -3.3621354
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "08:00am - 08:00pm",
+                "name": "Jibu Sakina",
+                "phone": "+255 763 705 017",
+                "storeid": "TZ005",
+                "description": "Sakina, Arusha"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    37.7366913,
+                    -4.0661312
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "08:00am - 08:00pm",
+                "name": "Jibu Same",
+                "phone": "+255 754 426 389",
+                "storeid": "TZ006",
+                "description": "Same, Kilimanjaro"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    35.7713707,
+                    -6.1639591
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "08:00am - 08:00pm",
+                "name": "Jibu Dodoma 1",
+                "phone": "+255 714 038 520",
+                "storeid": "TZ007",
+                "description": "Mlimwa kusini, Dodoma"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    35.7504021,
+                    -4.2043947
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "08:00am - 08:00pm",
+                "name": "Jibu Babati",
+                "phone": "+255 620 471 553",
+                "storeid": "TZ008",
+                "description": "Babati, Manyara"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    35.6986882,
+                    -7.7758092
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "08:00am - 08:00pm",
+                "name": "Jibu Iringa",
+                "phone": "+255 767 123 641",
+                "storeid": "TZ009",
+                "description": "Recto, Iringa"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    34.7515433,
+                    -4.8163057
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "08:00am - 08:00pm",
+                "name": "Jibu Singida",
+                "phone": "+255 717 250 976",
+                "storeid": "TZ010",
+                "description": "Singida, Singida"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    35.7911864,
+                    -6.1692139
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "08:00am - 08:00pm",
+                "name": "Jibu Dodoma 2",
+                "phone": "+255 758 465 064",
+                "storeid": "TZ011",
+                "description": "Kisasa, Dodoma"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    39.2191073,
+                    -6.8324479
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "08:00am - 08:00pm",
+                "name": "Jibu Tabata",
+                "phone": "+255 757 606 138",
+                "storeid": "TZ012",
+                "description": "Tabata, Dar-es-Salaam"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    39.2272376,
+                    -6.880506
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "08:00am - 08:00pm",
+                "name": "Jibu Jet - Lumo",
+                "phone": "+255 629 192 227",
+                "storeid": "TZ013",
+                "description": "Jet - Lumo , Dar-es-Salaam"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    39.255773,
+                    -6.8277654
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "08:00am - 08:00pm",
+                "name": "Jibu Ilala",
+                "phone": "+255 715 917 411",
+                "storeid": "TZ014",
+                "description": "Ilala, Dar-es-Salaam"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    38.9044309,
+                    -6.4503309
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "08:00am - 08:00pm",
+                "name": "Jibu Tegeta",
+                "phone": "+255 745 325 118",
+                "storeid": "TZ015",
+                "description": "Tegeta, Dar-es-Salaam"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    39.1614715,
+                    -6.6374498
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "08:00am - 08:00pm",
+                "name": "Jibu Boko",
+                "phone": "+255 745 325 118",
+                "storeid": "TZ016",
+                "description": "Boko, Dar-es-Salaam"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    37.6449645,
+                    -6.7400592
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "08:00am - 08:00pm",
+                "name": "Jibu Morogoro",
+                "phone": "+255 678 283 641",
+                "storeid": "TZ017",
+                "description": "Morogoro, Dar-es-Salaam"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    39.2857862,
+                    -6.8359619
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "08:00am - 08:00pm",
+                "name": "Jibu Kurasini",
+                "phone": "+255 717 999 279",
+                "storeid": "TZ018",
+                "description": "Kurasini, Dar-es-Salaam"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    39.2432047,
+                    -6.778226
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "08:00am - 08:00pm",
+                "name": "Jibu Makumbusho",
+                "phone": "+255 716 629 605",
+                "storeid": "TZ019",
+                "description": "Makumbusho, Dar-es-Salaam"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    28.2739,
+                    -15.5575
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:00- 19:00",
+                "name": "Jibu Chilanga",
+                "phone": "077 0361511 or 076 3301378",
+                "storeid": "ZM001",
+                "description": "Plot 1361 Kafue Road (Next to Star Beef Butchery), Chilanga"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    28.2859,
+                    -15.4109
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:00- 18:00",
+                "name": "Jibu Kabelenga",
+                "phone": "077 7619935 or 096 0642438",
+                "storeid": "ZM002",
+                "description": "Plot 2354 Kabelenga Road (Behind Levy Mall), Lusaka"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    28.3365,
+                    -15.4082
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8:00- 18:00",
+                "name": "Jibu Kalingalinga",
+                "phone": "077 0013388 or 076 3301338",
+                "storeid": "ZM003",
+                "description": "Plot Z4/01 Kamimbia Road, Off Alick Nkhata Road, Kalingalinga, Lusaka"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    29.374988,
+                    -3.377301
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "9AM- 7PM",
+                "name": "Jibu Bwiza",
+                "phone": "61 00 44 88",
+                "storeid": "BI001",
+                "description": "63, avenue Muyinga, Bwiza"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    29.399196,
+                    -3.346437
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "9AM- 7PM",
+                "name": "Jibu Kamenge",
+                "phone": "61 00 44 77",
+                "storeid": "BI002",
+                "description": "Boulevard Mwambutsa, opposite to Hotel Le Manguier"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    29.35476,
+                    -3.430793
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "9AM- 7PM",
+                "name": "Jibu Kanyosha",
+                "phone": "61 00 33 77",
+                "storeid": "BI003",
+                "description": "Route Rumonge, Station Kobil"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    29.35038,
+                    -3.406302
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "9AM- 7PM",
+                "name": "Jibu Kinindo",
+                "phone": "61 55 55 99",
+                "storeid": "BI004",
+                "description": "Avenue du Large, next to Kinindo Market"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    29.384313,
+                    -3.357688
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "9AM- 7PM",
+                "name": "Jibu Gihosha",
+                "phone": "61 55 66 55",
+                "storeid": "BI005",
+                "description": "Boulevard du 28 Novembre, opposite to Roi Khaled"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    29.372473,
+                    -3.380018
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "9AM- 7PM",
+                "name": "Jibu Centre Ville",
+                "phone": "69 13 13 13",
+                "storeid": "BI006",
+                "description": "Boulevard de l'indépendance, opposite to Smart"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    29.1950941,
+                    -1.6563014
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8AM- 6PM",
+                "name": "Jibu Katindo",
+                "phone": "+243 998088153 or +243 994252919",
+                "storeid": "DRCG003",
+                "description": "Rond point Terminus katindo"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    29.2324801,
+                    -1.6710376
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8AM- 6PM",
+                "name": "Jibu Virunga II ",
+                "phone": "+243 973624141",
+                "storeid": "DRCG006",
+                "description": "Route Vers Virunga Market Après Hotel Volcano"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    29.239549,
+                    -1.686666
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8AM- 6PM",
+                "name": "Jibu Birere",
+                "phone": "+243 973900540",
+                "storeid": "DRCG004",
+                "description": "Enfance de la marie de Goma"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    29.234328,
+                    -1.684127
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8AM- 6PM",
+                "name": "Jibu Goma-Ville",
+                "phone": "+243 895 005 700 or +243 994 201 944",
+                "storeid": "DRCG002",
+                "description": "Maison Kamanze Supermarket"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    29.229636,
+                    -1.66975
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8AM- 6PM",
+                "name": "Jibu Virunga I",
+                "phone": "+243 972801834",
+                "storeid": "DRCG001",
+                "description": "Deux lampes route"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    29.211637,
+                    -1.67659
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8AM- 6PM",
+                "name": "Jibu Unigom",
+                "phone": "+243 976 748 409",
+                "storeid": "DRCG005",
+                "description": "Enfance MONUSCO - RVA Land Office"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    29.171756,
+                    -1.658846
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8AM- 6PM",
+                "name": "Jibu Kyeshero",
+                "phone": "+243 896 726 703",
+                "storeid": "DRCG007",
+                "description": "Avant Abattoir de kituku,Goma"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    32.471,
+                    0.0576
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8AM- 6PM",
+                "name": "Jibu Entebbe",
+                "phone": "+256700565656",
+                "storeid": "UG006 ",
+                "description": "Plot 55, Kiwafu road"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    32.539483,
+                    0.197292
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8AM- 6PM",
+                "name": "Jibu Kitende",
+                "phone": "+256789134955",
+                "storeid": "UG008 ",
+                "description": "Kitende A cell, Kajjansi Town Coucil wakiso"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    30.916451,
+                    2.982977
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8AM- 6PM",
+                "name": "Jibu Arua",
+                "phone": "+256775594318Jibu Nansana",
+                "storeid": "UG027 ",
+                "description": "Plot 15- Euata, off Pakwach Road Omu Village, Driwala Waard , Ayivu Division, Arua City"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    32.5993414,
+                    0.4277039
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8AM- 6PM",
+                "name": "Jibu Gayaza",
+                "phone": "+256772603478",
+                "storeid": "UG035 ",
+                "description": "Kiwalimu LC1, Massoli Parish, Nangabo Subcounty"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    32.5277414,
+                    0.364566
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8AM- 6PM",
+                "name": "Jibu Nansana",
+                "phone": "+256702486699",
+                "storeid": "UG036 ",
+                "description": "Nansana West 1 Town Council, Opposit St. Joseph Nansana Catholic Church"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    31.73359,
+                    0.34181
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8AM- 6PM",
+                "name": "Jibu Nakivale ",
+                "phone": "+256771355174",
+                "storeid": "UG037 ",
+                "description": "Isangano, Isingiro District"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    32.5038395,
+                    0.2958963
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8AM- 6PM",
+                "name": "Jibu Kyengera",
+                "phone": "+256700117454",
+                "storeid": "UG038 ",
+                "description": "Kyengera Town Council, Masaka Road"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    33.67129,
+                    0.120776
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8AM- 6PM",
+                "name": "Jibu Lolwe",
+                "phone": "+256703037087",
+                "storeid": "UG039 ",
+                "description": "Namayingo District, Lolwe Subcounty, Golofa Parish, Kandege Village"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    32.135018,
+                    1.946661
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8AM- 6PM",
+                "name": "Jibu Kiryandongo",
+                "phone": "+256700117454",
+                "storeid": "UG040 ",
+                "description": "Bweyale Town Council, Nyakadot Cell"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    30.077905,
+                    0.169772
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8AM- 6PM",
+                "name": "Jibu Kasese",
+                "phone": "+256772768163",
+                "storeid": "UG041 ",
+                "description": "Chan Piu Building, Kogere Road, Plot 41/43, Kasese"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    32.578411,
+                    0.235175
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8AM- 6PM",
+                "name": "Jibu Ndejje",
+                "phone": "+256752589711",
+                "storeid": "UG042 ",
+                "description": "752589711"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    32.738402,
+                    0.367403
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8AM- 6PM",
+                "name": "Jibu Mukono",
+                "phone": "+256775475335",
+                "storeid": "UG043 ",
+                "description": "P.O.Box 150390, Upper Kauga, Ntawo ward, Mukono Central Division, Mukono."
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    31.487852,
+                    2.152712
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8AM- 6PM",
+                "name": "Jibu Buliisa",
+                "phone": "200905113",
+                "storeid": "UG044 ",
+                "description": "Ngwedo Trading Center, Ngwedo Parish, Buliisa Sub-County, Buliisa District"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    32.610576,
+                    0.309167
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8AM- 6PM",
+                "name": "Jibu Kisugu",
+                "phone": "+256700894447",
+                "storeid": "UG045 ",
+                "description": "Plot 17, 13th Close, Namuwongo Road, Kisugu, Kampala"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    32.590967,
+                    0.364848
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8AM- 6PM",
+                "name": "Jibu Kisaasi",
+                "phone": "+256700439941",
+                "storeid": "UG031 ",
+                "description": "Plot 76 Baha`i Road, Kisaasi, Kampala"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    32.578768,
+                    0.360795
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8AM- 6PM",
+                "name": "Jibu Kyebando ",
+                "phone": "+256704011811, +256770525615",
+                "storeid": "UG046 ",
+                "description": "kyebando@jibuco.com"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    32.627831,
+                    0.245503
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8AM- 6PM",
+                "name": "Jibu Munyonyo ",
+                "phone": "+2567091011811",
+                "storeid": "UG047 ",
+                "description": "Wavamuno Road , Plot 380,Munyonyo"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    32.537285,
+                    0.136842
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8AM- 6PM",
+                "name": "Jibu Kawuku",
+                "phone": "+256",
+                "storeid": "UG048 ",
+                "description": "Kawuku, Kawuku Trading centre. "
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    32.503815,
+                    0.320784
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8AM- 6PM",
+                "name": "Jibu Bulenga",
+                "phone": "+256",
+                "storeid": "UG049 ",
+                "description": "Bulenga Town, Bulenga Parish, Wakiso District"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    32.657981,
+                    0.391995
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8AM- 6PM",
+                "name": "Jibu Namugongo",
+                "phone": "+256.",
+                "storeid": "UG050 ",
+                "description": ""
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    29.640342,
+                    -1.506899
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8AM- 6PM",
+                "name": "Jibu Musanze I",
+                "phone": "07882180788",
+                "storeid": "RW028 ",
+                "description": "MANZI Claude"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    30.384525,
+                    -1.616757
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8AM- 6PM",
+                "name": "Jibu Kabarore",
+                "phone": "788351740",
+                "storeid": "RW048 ",
+                "description": "Jibu Franchise"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    30.071499,
+                    -1.580652
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8AM- 6PM",
+                "name": "Jibu Gicumbi",
+                "phone": "788480730",
+                "storeid": "RW049 ",
+                "description": ""
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    29.787789,
+                    -2.234017
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8AM- 6PM",
+                "name": "Jibu Ruhango",
+                "phone": "0788815410",
+                "storeid": "RW050 ",
+                "description": "Uwera Monique"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    30.14654875,
+                    -2.005056852
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8AM- 6PM",
+                "name": "GIKONDO 2",
+                "phone": "+250788304571",
+                "storeid": " ",
+                "description": ""
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    30.130972,
+                    -1.936611
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8AM- 6PM",
+                "name": "Jibu Bumbogo",
+                "phone": "+250788304571",
+                "storeid": "RW052",
+                "description": ""
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    30.14004707,
+                    -2.204328377
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8AM- 6PM",
+                "name": "Jibu Mayange",
+                "phone": "+250788318987",
+                "storeid": "RW053",
+                "description": ""
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    30.11816293,
+                    -1.999362277
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8AM- 6PM",
+                "name": "Jibu KAGARAMA",
+                "phone": "+250788301644",
+                "storeid": "RW054",
+                "description": ""
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    30.279535,
+                    -1.893359
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8AM- 6PM",
+                "name": "Jibu Nyagasambu",
+                "phone": "+250788666302",
+                "storeid": "RW055",
+                "description": "Eastern Province Nyagasambu"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    29.633517,
+                    -1.849723
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8AM- 6PM",
+                "name": "Jibu Ngororero",
+                "phone": "+25078349806",
+                "storeid": "RW056",
+                "description": " Western Province-Ngororero district"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    30.159636,
+                    -1.972219
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8AM- 6PM",
+                "name": "Jibu Kanombe II",
+                "phone": "+250788258047",
+                "storeid": "RW057",
+                "description": "Kicukiro-Kanombe"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    29.1351549,
+                    -2.332351
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8AM- 6PM",
+                "name": "Jibu Nyamasheke",
+                "phone": "+250788322266",
+                "storeid": "RW058",
+                "description": ""
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    29.821159,
+                    -2.332351
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "category": "franchise",
+                "hours": "8AM- 6PM",
+                "name": "Jibu GISAGARA",
+                "phone": "+250786389532",
+                "storeid": "RW059",
+                "description": "Gisagara Road"
+            }
+        }
+    ]
+}

@@ -20,9 +20,11 @@ function mapToFranchisee(item: any): Franchisee {
 
 export async function getFranchisees(): Promise<Franchisee[]> {
   const res = await fetch(`${STRAPI_URL}/franchisees?populate=Headshot`, {
-    cache: "no-store", // or { next: { revalidate: 60 } } if you want ISR
+    cache: "no-store",
   });
-  if (!res.ok) throw new Error("Failed to fetch executives");
+
+  if (!res.ok) throw new Error("Failed to fetch franchisees");
+
   const json = await res.json();
   return json.data.map(mapToFranchisee);
 }

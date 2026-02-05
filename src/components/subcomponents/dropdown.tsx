@@ -1,3 +1,4 @@
+"use client";
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { motion } from "framer-motion";
@@ -5,7 +6,7 @@ import { motion } from "framer-motion";
 export default function CountryDropDown({ country = "Global", }: { country?: string; }) {
   return (
     <Menu as="div" className="relative inline-block">
-      <MenuButton className="group inline-flex w-full items-center justify-center gap-x-1.5 rounded-md bg-transparent px-3 py-2 text-sm font-bold text-black hover:text-[#e98686ff] transition-colors duration-300 focus:outline-none">
+      <MenuButton suppressHydrationWarning className="group inline-flex w-full items-center justify-center gap-x-1.5 rounded-md bg-transparent px-3 py-2 text-sm font-bold text-black hover:text-[#e98686ff] transition-colors duration-300 focus:outline-none">
         <motion.span
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
