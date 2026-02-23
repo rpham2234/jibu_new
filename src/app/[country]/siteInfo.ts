@@ -38,10 +38,28 @@ function mapToSiteInfo(item: any): SiteInfo {
 }
 
 export async function getSiteInfo(country: string): Promise<SiteInfo> {
-  const res = await fetch(`${STRAPI_URL}/${country}?populate[siteInfo][populate]=banner`, {
-    cache: "no-store", // or { next: { revalidate: 60 } } if you want ISR
-  });
-  if (!res.ok) throw new Error("Failed to fetch site info");
-  const json = await res.json();
-  return mapToSiteInfo(json.data);
+  const url = `${STRAPI_URL}/${country}?populate[siteInfo][populate]=banner`;
+
+  try {
+    const res = await fetch(url, {
+      cache: "no-store", // or { next: { revalidate: 60 } } if you want ISR
+    });
+
+    if (!res.ok) {
+      console.error(`Failed to fetch site info for ${country}. Status: ${res.status}, URL: ${url}`);
+      throw new Error(`Failed to fetch site info for ${country}: ${res.status} ${res.statusText}`);
+    }
+
+    const json = await res.json();
+
+    if (!json.data) {
+      console.error(`No data returned from Strapi for ${country}`, json);
+      throw new Error(`No data returned from Strapi for ${country}`);
+    }
+
+    return mapToSiteInfo(json.data);
+  } catch (error) {
+    console.error(`Error fetching site info for ${country}:`, error);
+    throw error;
+  }
 }

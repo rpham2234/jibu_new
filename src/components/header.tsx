@@ -73,9 +73,9 @@ export default function Navbar() {
               </Link>
             </li>
             <li>
-              <Link href="#" className="hover:text-gray-200 font-semibold px-0 py-2 flex items-center">
+              <a href="https://jibu.byoosi.com/jobs" className="hover:text-gray-200 font-semibold px-0 py-2 flex items-center" target="_blank" rel="noopener noreferrer">
                 Careers
-              </Link>
+              </a>
             </li>
             <li>
               <Link href="#" className="hover:text-gray-200 font-semibold px-0 py-2 flex items-center">
@@ -95,11 +95,11 @@ export default function Navbar() {
           </ul>
 
 
-        
+
 
 
           {/* Country Flag Selector */}
-          
+
 
           {/* Search Bar 
           <form className="flex mt-4 lg:mt-0 lg:ml-6">

@@ -7,9 +7,9 @@ export const fetchCache = "force-no-store";
 
 import { unstable_noStore as noStore } from "next/cache";
 
+import CountryBanner from "@/components/countries/CountryBanner";
 import ProductGrid from "@/components/countries/productGrid";
 import Header from "@/components/countries/uganda/header";
-import HeroImage from "@/components/HeroImage";
 import { getSiteInfo } from "./siteInfo";
 import { getShopifyProducts } from "./getProducts";
 
@@ -44,13 +44,11 @@ export default async function CountryPage({ params }: { params: Promise<RoutePar
   }));
 
   return (
-    <main className="min-h-screen bg-[#1b559b]">
-      <HeroImage
-        imageurl={siteInfo.banner}
-        showText
-        title="We Deliver to your doorstep"
-        subtitle=""
-        showButton={false}
+    <main className="min-h-screen bg-zinc-50">
+      <CountryBanner
+        imageUrl={siteInfo.banner}
+        countryName={siteInfo.country}
+        countryCode={siteInfo.countryCode}
       />
       <Header country={siteInfo.country} countryCode={siteInfo.countryCode} />
       <section id="products" className="px-4 py-8">

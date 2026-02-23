@@ -2,7 +2,7 @@
 import Footer from "@/components/footer";
 export const experimental_ppr = true;
 
-import Example from "@/components/countries/countryNavbar_new";
+import Example from "@/components/header_new";
 import { CartProvider } from "./cart/cart-context";
 import { getSiteInfo } from "@/app//[country]/siteInfo"; // adjust path if needed
 
@@ -17,7 +17,7 @@ export default async function CountryLayout({ children, params }: Props) {
 
   return (
     <div>
-      <Example country={country} />
+      <Example />
       <CartProvider countryCode={siteInfo.countryCode}>{children}</CartProvider>
       <Footer />
     </div>

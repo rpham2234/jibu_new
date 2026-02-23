@@ -47,9 +47,10 @@ export default function Footer() {
           <div className="flex flex-col lg:flex-row items-end justify-between gap-10 border-t border-white/10 pt-10">
 
             {/* Huge Text */}
-            <h1 className="text-[18vw] lg:text-[15rem] leading-[0.8] font-serif font-bold tracking-tighter opacity-100 select-none">
+            <img src="/Jibu-logo.png" alt="Jibu Logo" className="flex-shrink-0 w-64 md:w-[24rem] lg:w-[40rem] h-auto object-contain self-start lg:self-auto -ml-4 lg:-ml-8" />
+            {/* <h1 className="text-[18vw] lg:text-[15rem] leading-[0.8] font-serif font-bold tracking-tighter opacity-100 select-none">
               Jibu
-            </h1>
+            </h1> */}
 
             {/* Links Columns */}
             <div className="flex gap-16 md:gap-32 pb-4 lg:pb-12 pr-4 lg:pr-10 text-right lg:text-left">
@@ -61,9 +62,10 @@ export default function Footer() {
                   <li><a href="/about" className="hover:text-blue-200 transition-colors">About</a></li>
                   <li><a href="/franchise" className="hover:text-blue-200 transition-colors">Franchise</a></li>
                   <li><a href="/ourTeam" className="hover:text-blue-200 transition-colors">Our Team</a></li>
-                  <li><a href="/careers" className="hover:text-blue-200 transition-colors">Careers</a></li>
+                  <li><a href="https://jibu.byoosi.com/jobs" className="hover:text-blue-200 transition-colors" target="_blank" rel="noopener noreferrer">Careers</a></li>
                   <li><a href="/stories" className="hover:text-blue-200 transition-colors">Stories</a></li>
                   <li><a href="/faqs" className="hover:text-blue-200 transition-colors">FAQ</a></li>
+                  <li><a href="mailto:example@gmail.com" className="hover:text-blue-200 transition-colors underline decoration-yellow-400 decoration-2 underline-offset-4">Contact Us</a></li>
                 </ul>
               </div>
 
