@@ -8,6 +8,38 @@ import Globe3D from "./Globe3D";
 
 const MotionLink = motion(Link);
 
+const BackgroundAnimation = () => (
+  <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+    <motion.div
+      className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] rounded-full bg-blue-400/60 filter blur-[120px]"
+      animate={{
+        x: [0, 150, 0],
+        y: [0, 100, 0],
+        scale: [1, 1.2, 1],
+      }}
+      transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+    />
+    <motion.div
+      className="absolute top-[20%] right-[-10%] w-[50%] h-[50%] rounded-full bg-purple-400/60 filter blur-[120px]"
+      animate={{
+        x: [0, -100, 0],
+        y: [0, 150, 0],
+        scale: [1, 1.3, 1],
+      }}
+      transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
+    />
+    <motion.div
+      className="absolute bottom-[-20%] left-[20%] w-[70%] h-[70%] rounded-full bg-cyan-400/60 filter blur-[140px]"
+      animate={{
+        x: [0, 100, -50, 0],
+        y: [0, -100, 50, 0],
+        scale: [1, 1.1, 1],
+      }}
+      transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+    />
+  </div>
+);
+
 interface HeroImageProps {
   imageurl?: string;
   title?: string;
@@ -76,7 +108,8 @@ export default function HeroImage({
 
   // DEFAULT: Home Page Layout (Globe + Animation)
   return (
-    <section className="relative w-full h-screen overflow-hidden bg-white flex items-center">
+    <section className="relative w-full h-screen overflow-hidden bg-slate-50 flex items-center">
+      <BackgroundAnimation />
       {/* Content - Left Side */}
       <div className="w-full md:w-1/2 h-full flex flex-col justify-center px-8 md:pl-32 md:pr-12 z-20">
         <motion.h1
