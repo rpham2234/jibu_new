@@ -9,7 +9,7 @@ import { getFranchisees } from "./getFranchisees";
 import InvestorPartners from "@/components/InvestorPartners";
 
 export default function Home() {
-  const [franchisees, setFranchisees] = useState<Franchisee[]>([]);
+  const [franchisees, setFranchisees] = useState<Franchisee[] | undefined>(undefined);
 
 
   useEffect(() => {
@@ -17,9 +17,9 @@ export default function Home() {
     (async () => {
       try {
         const data = await getFranchisees(); // must return Franchisee[]
-        if (alive) setFranchisees(Array.isArray(data) ? data : []);
-      } finally {
-
+        if (alive) setFranchisees(Array.isArray(data) && data.length > 0 ? data : undefined);
+      } catch (error) {
+        console.error("Failed to fetch franchisees:", error);
       }
     })();
     return () => { alive = false; };

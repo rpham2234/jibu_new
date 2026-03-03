@@ -5,7 +5,7 @@ import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
 export default function Footer() {
   return (
     <div className="px-4 pb-4">
-      <footer className="bg-[#005499] text-white pt-20 pb-6 px-6 md:px-12 overflow-hidden relative rounded-b-[3rem] mx-auto max-w-[95%]">
+      <footer id="footer" className="bg-[#005499] text-white pt-20 pb-6 px-6 md:px-12 overflow-hidden relative rounded-b-[3rem] mx-auto max-w-[95%]">
         <div className="max-w-[90rem] mx-auto relative z-10">
 
           {/* Top Section: Info & Socials */}

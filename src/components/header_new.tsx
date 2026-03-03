@@ -74,7 +74,7 @@ export default function Example() {
                             : (isJibuntu ? 'text-sm font-medium text-white/80' : 'text-sm font-medium text-gray-700'),
                           'px-3 py-2 transition-all duration-300'
                         )}
-                        whileHover={!isCurrent ? { scale: 1.1, color: isJibuntu ? "#fff" : "#005499" } : {}}
+                        whileHover={!isCurrent ? { scale: 1.5, color: isJibuntu ? "#fff" : "#005499" } : {}}
                         whileTap={!isCurrent ? { scale: 0.95 } : {}}
                         layout // Helps with smooth layout transitions when size changes
                       >

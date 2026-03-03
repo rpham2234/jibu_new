@@ -1,23 +1,17 @@
 // app/[country]/page.tsx
 
-// Disable all caching / static optimization for this route
-export const dynamic = "force-dynamic";
-export const revalidate = 0;
-export const fetchCache = "force-no-store";
-
-import { unstable_noStore as noStore } from "next/cache";
+export const revalidate = 3600;
 
 import CountryBanner from "@/components/countries/CountryBanner";
 import ProductGrid from "@/components/countries/productGrid";
 import Header from "@/components/countries/uganda/header";
 import { getSiteInfo } from "./siteInfo";
 import { getShopifyProducts } from "./getProducts";
+import BackgroundAnimation from "@/components/animations/BackgroundAnimation";
 
 type RouteParams = { country: string };
 
 export default async function CountryPage({ params }: { params: Promise<RouteParams> }) {
-  noStore();
-
   const { country } = await params;
   const siteInfo = await getSiteInfo(country);
 
@@ -44,14 +38,17 @@ export default async function CountryPage({ params }: { params: Promise<RoutePar
   }));
 
   return (
-    <main className="min-h-screen bg-zinc-50">
+    <main className="relative min-h-screen bg-zinc-50">
+      <div className="absolute top-0 left-0 w-full h-screen z-0 overflow-hidden pointer-events-none">
+        <BackgroundAnimation />
+      </div>
       <CountryBanner
         imageUrl={siteInfo.banner}
         countryName={siteInfo.country}
         countryCode={siteInfo.countryCode}
       />
       <Header country={siteInfo.country} countryCode={siteInfo.countryCode} />
-      <section id="products" className="px-4 py-8">
+      <section id="products" className="relative z-10 px-4 py-8">
         <ProductGrid
           products={gridProducts}
           country={siteInfo.country.toLowerCase()}
