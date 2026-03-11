@@ -38,7 +38,20 @@ function mapToSiteInfo(item: any): SiteInfo {
 }
 
 export async function getSiteInfo(country: string): Promise<SiteInfo> {
-  const url = `${STRAPI_URL}/${country}?populate[siteInfo][populate]=banner`;
+  // Strapi expects the full name for the endpoint instead of the short slug used in the URL.
+  const endpointMap: Record<string, string> = {
+    rw: 'rwanda',
+    ug: 'uganda',
+    ke: 'kenya',
+    tz: 'tanzania',
+    bi: 'burundi',
+    zm: 'zambia',
+    cd: 'drc',
+    gh: 'ghana',
+  };
+
+  const strapiEndpoint = endpointMap[country.toLowerCase()] || country;
+  const url = `${STRAPI_URL}/${strapiEndpoint}?populate[siteInfo][populate]=banner`;
 
   try {
     const res = await fetch(url, {

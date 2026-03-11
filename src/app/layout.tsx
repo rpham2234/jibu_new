@@ -1,6 +1,6 @@
 'use client';
 
-import { Inter } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import "./globals.css";
 import Container from "@/components/container";
 
@@ -8,7 +8,10 @@ import Footer from "@/components/footer";
 import { usePathname } from "next/navigation";
 import Example from "@/components/header_new";
 
-const inter = Inter({ subsets: ["latin"] });
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  variable: '--font-montserrat',
+});
 
 export default function RootLayout({
   children,
@@ -20,7 +23,7 @@ export default function RootLayout({
   const hideLayout = noLayoutRoutes.some(route => pathname.startsWith(route));
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-zinc-200`}>
+      <body className={`${montserrat.className} ${montserrat.variable} bg-zinc-200 font-sans`}>
         <Container>
           {!hideLayout && <Example />}
           {children}

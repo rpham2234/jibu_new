@@ -4,7 +4,6 @@ export const revalidate = 3600;
 
 import CountryBanner from "@/components/countries/CountryBanner";
 import ProductGrid from "@/components/countries/productGrid";
-import Header from "@/components/countries/uganda/header";
 import { getSiteInfo } from "./siteInfo";
 import { getShopifyProducts } from "./getProducts";
 import BackgroundAnimation from "@/components/animations/BackgroundAnimation";
@@ -47,8 +46,7 @@ export default async function CountryPage({ params }: { params: Promise<RoutePar
         countryName={siteInfo.country}
         countryCode={siteInfo.countryCode}
       />
-      <Header country={siteInfo.country} countryCode={siteInfo.countryCode} />
-      <section id="products" className="relative z-10 px-4 py-8">
+      <section id="products" className="relative z-10 px-4 py-8 mt-12">
         <ProductGrid
           products={gridProducts}
           country={siteInfo.country.toLowerCase()}

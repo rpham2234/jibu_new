@@ -2,7 +2,7 @@
 import Footer from "@/components/footer";
 export const experimental_ppr = true;
 
-import Example from "@/components/header_new";
+import DynamicCountryHeader from "@/components/countries/DynamicCountryHeader";
 import { CartProvider } from "./cart/cart-context";
 import { getSiteInfo } from "@/app//[country]/siteInfo"; // adjust path if needed
 
@@ -17,7 +17,7 @@ export default async function CountryLayout({ children, params }: Props) {
 
   return (
     <div>
-      <Example />
+      <DynamicCountryHeader countrySlug={country} />
       <CartProvider countryCode={siteInfo.countryCode}>{children}</CartProvider>
       <Footer />
     </div>
